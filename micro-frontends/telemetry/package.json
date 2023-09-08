@@ -1,0 +1,14 @@
+{
+  "name": "@wrs/svc-telemetry",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "format": "prettier . --write",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@wrs/shell": "*"
+  },
+  "devDependencies": {}
+}

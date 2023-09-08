@@ -1,0 +1,26 @@
+
+> @wrs/app-web3@1.0.0 dev
+> webpack-dev-server --mode development
+
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: http://localhost:8081/
+<i> [webpack-dev-server] On Your Network (IPv4): http://192.168.226.42:8081/
+<i> [webpack-dev-server] On Your Network (IPv6): http://[fe80::1]:8081/
+<i> [webpack-dev-server] Content not from webpack is served from '/Users/bale01/Repos/web3-rxjs-sandbox/apps/web3/public' directory
+asset bundle.js 837 KiB [emitted] (name: main)
+orphan modules 184 KiB [orphan] 199 modules
+runtime modules 27.3 KiB 12 modules
+cacheable modules 239 KiB
+  modules by path ../../node_modules/ 225 KiB 51 modules
+  modules by path ../../micro-frontends/ 5.19 KiB 12 modules
+  modules by path ../../libs/utility/ 1.26 KiB
+    ../../libs/utility/index.ts 78 bytes [built] [code generated]
+    ../../libs/utility/src/utility.functions.ts 1.17 KiB [built] [code generated]
+    ../../libs/utility/src/utility.types.ts 11 bytes [built] [code generated]
+  modules by path ../../shell/ 6.24 KiB
+    ../../shell/index.ts 98 bytes [built] [code generated]
+    ../../shell/src/event-bus/event-bus.class.ts 6.13 KiB [built] [code generated]
+    ../../shell/src/event-bus/event-bus.types.ts 11 bytes [built] [code generated]
+  ./src/index.ts 1.14 KiB [built] [code generated]
+webpack 5.88.2 compiled successfully in 5548 ms
+<i> [webpack-dev-server] Gracefully shutting down. To force exit, press ^C again. Please wait...

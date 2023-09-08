@@ -1,0 +1,17 @@
+{
+  "name": "@wrs/svc-request",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "format": "prettier . --write",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@wrs/shell": "*",
+    "@wrs/lib-utility": "*",
+    "@wrs/svc-telemetry": "*",
+    "@wrs/svc-config": "*"
+  },
+  "devDependencies": {}
+}
