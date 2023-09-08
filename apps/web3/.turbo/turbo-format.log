@@ -1,9 +1,0 @@
-
-> @wrs/app-web3@1.0.0 format
-> prettier . --write
-
-package.json 30ms
-src/main.spec.ts 83ms
-src/main.ts 8ms
-tsconfig.json 3ms
-webpack.config.cjs 3ms
