@@ -13,13 +13,13 @@ module.exports = {
         // Test files
         '\\.spec|\\.test|\\.mock|\\.e2e|\\.stories',
         // Models and types
-        '\\.type|\\.model',
+        // '\\.type|\\.model',
       ],
       dynamic: true,
     },
     // includeOnly: '\\.service',
     // focus: '\\.service',
-    tsPreCompilationDeps: false,
+    tsPreCompilationDeps: true,
     // extraExtensionsToScan: [".json", ".jpg", ".png", ".svg", ".webp"],
     // combinedDependencies: true,
     // preserveSymlinks: false,
