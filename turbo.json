@@ -1,7 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "dev": {},
+    "start:dev": {},
+    "start:prod": {},
     "lint": {},
     "format": {},
     "test": {}

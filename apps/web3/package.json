@@ -3,7 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack-dev-server --mode development",
+    "start:dev": "webpack-dev-server --mode development",
+    "start:prod": "webpack-dev-server --mode production",
     "lint": "eslint . --fix",
     "format": "prettier . --write",
     "test": "jest"

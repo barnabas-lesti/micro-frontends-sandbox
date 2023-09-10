@@ -6,7 +6,8 @@
   "description": "",
   "scripts": {
     "clean": "npx rimraf package-lock.json --glob **/node_modules **/.turbo **/dist",
-    "dev": "turbo dev",
+    "start:dev": "turbo start:dev",
+    "start:prod": "turbo start:prod",
     "lint": "turbo lint",
     "format": "turbo format",
     "test": "turbo test",
