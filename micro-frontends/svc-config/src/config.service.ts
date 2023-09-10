@@ -1,8 +1,9 @@
-import type { EventBus } from '@wrs/shell';
-import { LoggingCommands, LogPayload } from '@wrs/svc-telemetry';
+import { type EventBus } from '@wrs/shell/public';
+import { LoggingCommand, LoggingContract } from '@wrs/svc-telemetry/public';
+import { getRandomInteger } from '@wrs/utility';
 
-import { ConfigCommands, GetConfigPayload } from './config.contracts';
 import { configMock } from './config.mock';
+import { ConfigCommand, ConfigContract } from './config.types';
 
 export class ConfigService {
   private eventBus: EventBus;
@@ -18,14 +19,14 @@ export class ConfigService {
 
     this.log('constructor');
 
-    this.eventBus.listen<GetConfigPayload>(ConfigCommands.Get, (callback) => {
+    this.eventBus.listen<ConfigContract>(ConfigCommand.Get, (payload) => {
       // TODO: Implement logic
-      window.setTimeout(() => callback(configMock), 1000);
+      window.setTimeout(() => payload.callback(configMock), getRandomInteger(100, 1000));
     });
   }
 
   private log(method: string, message?: string, data?: unknown) {
-    this.eventBus.dispatch<LogPayload>(LoggingCommands.Info, {
+    this.eventBus.dispatch<LoggingContract>(LoggingCommand.Info, {
       sourceId: ConfigService.name,
       method,
       message,

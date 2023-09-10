@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@wrs/shell": "*",
-    "@wrs/svc-telemetry": "*"
-  },
-  "devDependencies": {}
+    "@wrs/svc-telemetry": "*",
+    "@wrs/utility": "*"
+  }
 }

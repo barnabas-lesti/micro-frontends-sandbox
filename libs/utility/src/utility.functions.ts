@@ -16,3 +16,7 @@ export async function resolveObservable<T>(subject: Subject<T> | Observable<T>):
       .subscribe(resolve);
   });
 }
+
+export function unblockThread(callback: () => void) {
+  window.setTimeout(callback, 0);
+}

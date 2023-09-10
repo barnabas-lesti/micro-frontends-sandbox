@@ -1,9 +1,8 @@
-import { EventBus } from '@wrs/shell';
+import { type EventBus } from '@wrs/shell/public';
 
 import { FormattedError } from './logging.classes';
 import { LOGGING_COMMAND_TO_FUNCTION_MAP } from './logging.const';
-import { LoggingCommands } from './logging.contracts';
-import { LogPayload } from './logging.types';
+import { LoggingCommand, LoggingContract, LogPayload } from './logging.types';
 
 export class LoggingService {
   private eventBus: EventBus;
@@ -17,17 +16,17 @@ export class LoggingService {
   private constructor() {
     this.eventBus = document['obgEventBus'];
 
-    this.listenToLoggingCommand(LoggingCommands.Debug);
-    this.listenToLoggingCommand(LoggingCommands.Error);
-    this.listenToLoggingCommand(LoggingCommands.Info);
-    this.listenToLoggingCommand(LoggingCommands.Warn);
+    this.listenToLoggingCommand(LoggingCommand.Debug);
+    this.listenToLoggingCommand(LoggingCommand.Error);
+    this.listenToLoggingCommand(LoggingCommand.Info);
+    this.listenToLoggingCommand(LoggingCommand.Warn);
   }
 
-  private listenToLoggingCommand(command: LoggingCommands): void {
-    this.eventBus.listen<LogPayload>(command, (payload) => this.log(command, payload));
+  private listenToLoggingCommand(command: LoggingCommand): void {
+    this.eventBus.listen<LoggingContract>(command, (payload) => this.log(command, payload));
   }
 
-  private log(command: LoggingCommands, payload: LogPayload): void {
+  private log(command: LoggingCommand, payload: LogPayload): void {
     const logFunction = LOGGING_COMMAND_TO_FUNCTION_MAP[command];
     const formattedMessage = this.getFormattedMessage(payload);
 

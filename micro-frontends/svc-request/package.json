@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@wrs/shell": "*",
-    "@wrs/lib-utility": "*",
+    "@wrs/utility": "*",
     "@wrs/svc-telemetry": "*",
     "@wrs/svc-config": "*"
   },

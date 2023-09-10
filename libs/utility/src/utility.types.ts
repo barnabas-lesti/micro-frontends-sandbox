@@ -1,1 +1,1 @@
-export type FunctionWithPayload<T> = (payload: T) => void;
+export type FunctionWithPayload<PayloadType> = (payload: PayloadType) => void;

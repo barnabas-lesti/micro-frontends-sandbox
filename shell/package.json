@@ -7,6 +7,8 @@
     "format": "prettier . --write",
     "test": "jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@wrs/utility": "*"
+  },
   "devDependencies": {}
 }
