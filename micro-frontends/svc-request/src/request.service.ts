@@ -1,7 +1,7 @@
+import { getRandomInteger, resolveObservable } from '@wrs/lib-utility';
+import { ConfigCommand, ConfigContract } from '@wrs/mfe-svc-config/public';
+import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/public';
 import { type EventBus } from '@wrs/shell/public';
-import { ConfigCommand, ConfigContract } from '@wrs/svc-config/public';
-import { LoggingCommand, LoggingContract } from '@wrs/svc-telemetry/public';
-import { getRandomInteger, resolveObservable } from '@wrs/utility';
 import { BehaviorSubject } from 'rxjs';
 
 import { MakeAPIRequestPayload, RequestCommand, RequestContract } from './request.types';

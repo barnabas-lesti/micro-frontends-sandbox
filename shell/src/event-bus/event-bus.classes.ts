@@ -1,4 +1,4 @@
-import { type FunctionWithPayload, unblockThread } from '@wrs/utility';
+import { type FunctionWithPayload, unblockThread } from '@wrs/lib-utility';
 
 import { EventBusEvent, EventBusEventListenerMap } from './event-bus.types';
 
@@ -9,13 +9,13 @@ export class EventBus {
   dispatch<Contract>(command: keyof Contract, payload?: Contract[typeof command]) {
     const commandAsString = command as string;
 
-    const eventListener = this.eventListenerMap[commandAsString];
-    if (!eventListener) {
+    const callback = this.eventListenerMap[commandAsString];
+    if (!callback) {
       this.unhandledEvents.push({ command: commandAsString, payload });
       return;
     }
 
-    unblockThread(() => eventListener(payload));
+    unblockThread(() => callback(payload));
   }
 
   listen<Contract>(command: keyof Contract, callback: FunctionWithPayload<Contract[typeof command]>) {

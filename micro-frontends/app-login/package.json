@@ -1,12 +1,10 @@
 {
-  "name": "@wrs/mfe-svc-telemetry",
+  "name": "@wrs/mfe-app-login",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint . --fix",
     "format": "prettier . --write"
   },
-  "dependencies": {
-    "@wrs/shell": "*"
-  }
+  "dependencies": {}
 }

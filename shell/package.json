@@ -8,7 +8,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@wrs/utility": "*"
-  },
-  "devDependencies": {}
+    "@wrs/lib-utility": "*"
+  }
 }

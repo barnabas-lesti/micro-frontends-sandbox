@@ -1,6 +1,6 @@
+import { getRandomInteger } from '@wrs/lib-utility';
+import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/public';
 import { type EventBus } from '@wrs/shell/public';
-import { LoggingCommand, LoggingContract } from '@wrs/svc-telemetry/public';
-import { getRandomInteger } from '@wrs/utility';
 
 import { configMock } from './config.mock';
 import { ConfigCommand, ConfigContract } from './config.types';

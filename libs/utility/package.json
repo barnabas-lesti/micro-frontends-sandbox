@@ -1,5 +1,5 @@
 {
-  "name": "@wrs/utility",
+  "name": "@wrs/lib-utility",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -7,6 +7,5 @@
     "format": "prettier . --write",
     "test": "jest"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {}
 }

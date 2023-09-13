@@ -1,15 +1,14 @@
 {
-  "name": "@wrs/svc-config",
+  "name": "@wrs/mfe-svc-config",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint . --fix",
-    "format": "prettier . --write",
-    "test": "jest"
+    "format": "prettier . --write"
   },
   "dependencies": {
-    "@wrs/shell": "*",
-    "@wrs/svc-telemetry": "*",
-    "@wrs/utility": "*"
+    "@wrs/lib-utility": "*",
+    "@wrs/mfe-svc-telemetry": "*",
+    "@wrs/shell": "*"
   }
 }

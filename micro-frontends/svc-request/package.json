@@ -1,17 +1,15 @@
 {
-  "name": "@wrs/svc-request",
+  "name": "@wrs/mfe-svc-request",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint . --fix",
-    "format": "prettier . --write",
-    "test": "jest"
+    "format": "prettier . --write"
   },
   "dependencies": {
-    "@wrs/shell": "*",
-    "@wrs/utility": "*",
-    "@wrs/svc-telemetry": "*",
-    "@wrs/svc-config": "*"
-  },
-  "devDependencies": {}
+    "@wrs/lib-utility": "*",
+    "@wrs/mfe-svc-config": "*",
+    "@wrs/mfe-svc-telemetry": "*",
+    "@wrs/shell": "*"
+  }
 }

@@ -6,15 +6,16 @@
     "start:dev": "webpack-dev-server --mode development",
     "start:prod": "webpack-dev-server --mode production",
     "lint": "eslint . --fix",
-    "format": "prettier . --write",
-    "test": "jest"
+    "format": "prettier . --write"
   },
   "dependencies": {
-    "@wrs/shell": "*",
-    "@wrs/utility": "*",
-    "@wrs/svc-telemetry": "*",
-    "@wrs/svc-config": "*",
-    "@wrs/svc-request": "*"
-  },
-  "devDependencies": {}
+    "@wrs/lib-utility": "*",
+    "@wrs/mfe-app-login": "*",
+    "@wrs/mfe-app-registration": "*",
+    "@wrs/mfe-svc-auth": "*",
+    "@wrs/mfe-svc-config": "*",
+    "@wrs/mfe-svc-request": "*",
+    "@wrs/mfe-svc-telemetry": "*",
+    "@wrs/shell": "*"
+  }
 }
