@@ -4,6 +4,6 @@ export {};
 
 declare global {
   interface Document {
-    obgEventBus: EventBus;
+    wrsEventBus: EventBus;
   }
 }

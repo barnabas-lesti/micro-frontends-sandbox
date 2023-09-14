@@ -1,12 +1,9 @@
-import { type EventBus } from '@wrs/shell/public';
-
 import { FormattedError } from './logging.classes';
 import { LOGGING_COMMAND_TO_FUNCTION_MAP } from './logging.const';
-import { LoggingCommand, LoggingContract, LogPayload } from './logging.types';
+import { LoggingCommand, LoggingContract } from './logging.contract';
+import { LogPayload } from './logging.types';
 
 export class LoggingService {
-  private eventBus: EventBus;
-
   private static instance: LoggingService;
 
   public static get Instance() {
@@ -14,8 +11,6 @@ export class LoggingService {
   }
 
   private constructor() {
-    this.eventBus = document['obgEventBus'];
-
     this.listenToLoggingCommand(LoggingCommand.Debug);
     this.listenToLoggingCommand(LoggingCommand.Error);
     this.listenToLoggingCommand(LoggingCommand.Info);
@@ -23,7 +18,7 @@ export class LoggingService {
   }
 
   private listenToLoggingCommand(command: LoggingCommand): void {
-    this.eventBus.listen<LoggingContract>(command, (payload) => this.log(command, payload));
+    document.wrsEventBus.handle<LoggingContract>(command, (payload) => this.log(command, payload));
   }
 
   private log(command: LoggingCommand, payload: LogPayload): void {

@@ -1,13 +1,12 @@
 import { getRandomInteger, resolveObservable } from '@wrs/lib-utility';
-import { ConfigCommand, ConfigContract } from '@wrs/mfe-svc-config/public';
-import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/public';
-import { type EventBus } from '@wrs/shell/public';
+import { ConfigCommand, ConfigContract } from '@wrs/mfe-svc-config/contract';
+import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/contract';
 import { BehaviorSubject } from 'rxjs';
 
-import { MakeAPIRequestPayload, RequestCommand, RequestContract } from './request.types';
+import { RequestCommand, RequestContract } from './request.contract';
+import { MakeAPIRequestPayload } from './request.types';
 
 export class RequestService {
-  private eventBus: EventBus;
   private baseURL$ = new BehaviorSubject<string | null>(null);
 
   private static instance: RequestService;
@@ -17,15 +16,13 @@ export class RequestService {
   }
 
   private constructor() {
-    this.eventBus = document['obgEventBus'];
-
     this.log('constructor');
 
-    this.eventBus.dispatch<ConfigContract>(ConfigCommand.Get, {
+    document.wrsEventBus.dispatch<ConfigContract>(ConfigCommand.Get, {
       callback: (config) => this.baseURL$.next(config.baseURL),
     });
 
-    this.eventBus.listen<RequestContract<unknown, unknown>>(RequestCommand.MakeAPIRequest, (payload) => {
+    document.wrsEventBus.handle<RequestContract<unknown, unknown>>(RequestCommand.MakeAPIRequest, (payload) => {
       this.makeAPIRequest(payload);
     });
   }
@@ -41,7 +38,7 @@ export class RequestService {
   }
 
   private log(method: string, message?: string, data?: unknown) {
-    this.eventBus.dispatch<LoggingContract>(LoggingCommand.Info, {
+    document.wrsEventBus.dispatch<LoggingContract>(LoggingCommand.Info, {
       sourceId: RequestService.name,
       method,
       message,

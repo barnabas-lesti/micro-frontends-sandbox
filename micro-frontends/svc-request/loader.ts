@@ -1,4 +1,4 @@
-import { RequestService } from './src/request.service';
+import { RequestService } from './src/request/request.service';
 
 export default function () {
   void RequestService.Instance;

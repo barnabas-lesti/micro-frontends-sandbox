@@ -1,5 +1,5 @@
 {
-  "name": "@wrs/mfe-svc-auth",
+  "name": "@wrs/mfe-app-account",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
