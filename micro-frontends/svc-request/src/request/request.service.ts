@@ -1,13 +1,12 @@
-import { getRandomInteger, resolveObservable } from '@wrs/lib-utility';
+import { getRandomInteger } from '@wrs/lib-utility';
 import { ConfigCommand, ConfigContract } from '@wrs/mfe-svc-config/contract';
 import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/contract';
-import { BehaviorSubject } from 'rxjs';
 
 import { RequestCommand, RequestContract } from './request.contract';
-import { MakeAPIRequestPayload } from './request.types';
+import { MakeAPIRequestPayload, MakeAPIRequestResponse } from './request.types';
 
 export class RequestService {
-  private baseURL$ = new BehaviorSubject<string | null>(null);
+  private baseURL: string;
 
   private static instance: RequestService;
 
@@ -18,23 +17,28 @@ export class RequestService {
   private constructor() {
     this.log('constructor');
 
-    document.wrsEventBus.dispatch<ConfigContract>(ConfigCommand.Get, {
-      callback: (config) => this.baseURL$.next(config.baseURL),
-    });
+    Promise.all([document.wrsEventBus.dispatch<ConfigContract>(ConfigCommand.Get)]).then(([config]) => {
+      this.baseURL = config.baseURL;
 
-    document.wrsEventBus.handle<RequestContract<unknown, unknown>>(RequestCommand.MakeAPIRequest, (payload) => {
-      this.makeAPIRequest(payload);
+      document.wrsEventBus.handle<RequestContract<unknown, unknown>>(
+        RequestCommand.MakeAPIRequest,
+        async ({ resolve }, payload) => {
+          const response = await this.makeAPIRequest(payload);
+          resolve(response);
+        },
+      );
     });
   }
 
-  private async makeAPIRequest(payload: MakeAPIRequestPayload<unknown, unknown>): Promise<void> {
-    const log = (message?: string) => this.log('makeAPIRequest', message);
-    log();
+  private async makeAPIRequest(payload: MakeAPIRequestPayload<unknown>): Promise<MakeAPIRequestResponse<unknown>> {
+    return new Promise((resolve) => {
+      const log = (message?: string) => this.log('makeAPIRequest', message);
+      log();
 
-    // TODO: implement logic
-    const baseURL = await resolveObservable(this.baseURL$);
-    log(`fetching from: ${baseURL + payload.apiPath}`);
-    window.setTimeout(() => payload.callback({ status: 200, data: { hey: 'there' } }), getRandomInteger(100, 500));
+      // TODO: implement logic
+      log(`fetching from: ${this.baseURL + payload.apiPath}`);
+      window.setTimeout(() => resolve({ status: 200, data: { hey: 'there' } }), getRandomInteger(100, 500));
+    });
   }
 
   private log(method: string, message?: string, data?: unknown) {

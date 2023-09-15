@@ -1,10 +1,25 @@
-import { type FunctionWithPayload } from 'libs/utility';
+export type EventBusContract = {
+  [key: EventBusCommand]: [unknown, unknown];
+};
 
-export interface EventBusEventListenerMap<T> {
-  [command: string]: FunctionWithPayload<T>;
+export interface EventBusEvent<PayloadType, ResolvedType> {
+  command: string;
+  promise: EventHandlerPromiseArgument<ResolvedType>;
+  payload?: PayloadType;
 }
 
-export interface EventBusEvent<T> {
-  command: string;
-  payload?: T;
+export type EventBusEventHandler<PayloadType, ResolvedType> = (
+  promise: EventHandlerPromiseArgument<ResolvedType>,
+  payload?: PayloadType,
+) => void;
+
+export interface EventBusEventHandlersMap<PayloadType, ResolvedType> {
+  [command: string]: EventBusEventHandler<PayloadType, ResolvedType>;
+}
+
+type EventBusCommand = string;
+
+interface EventHandlerPromiseArgument<ResolvedType> {
+  resolve: (result: ResolvedType) => void;
+  reject: (reason: unknown) => void;
 }

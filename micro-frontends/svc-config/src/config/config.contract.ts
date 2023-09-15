@@ -1,9 +1,9 @@
-import { GetConfigPayload } from './config.types';
+import { GlobalConfig } from './config.types';
 
 export const enum ConfigCommand {
   Get = 'config:get',
 }
 
 export type ConfigContract = {
-  [ConfigCommand.Get]: GetConfigPayload;
+  [ConfigCommand.Get]: [undefined, GlobalConfig];
 };

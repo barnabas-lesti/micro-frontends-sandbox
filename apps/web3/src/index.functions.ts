@@ -3,15 +3,16 @@ import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/contract
 
 import { TestResponseData } from './index.types';
 
-export function makeAPIRequest() {
+export async function makeAPIRequest() {
   const log = logFactory('index', 'makeAPIRequest');
 
-  document.wrsEventBus.dispatch<RequestContract<undefined, TestResponseData>>(RequestCommand.MakeAPIRequest, {
-    apiPath: '/hello',
-    callback: (response) => {
-      log('callback', response.data);
+  const response = await document.wrsEventBus.dispatch<RequestContract<void, TestResponseData>>(
+    RequestCommand.MakeAPIRequest,
+    {
+      apiPath: '/hello',
     },
-  });
+  );
+  log('makeAPIRequest done', response);
 }
 
 export function logFactory(sourceId: string, method: string) {

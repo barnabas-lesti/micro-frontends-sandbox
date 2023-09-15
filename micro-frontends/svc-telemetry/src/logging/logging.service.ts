@@ -18,7 +18,10 @@ export class LoggingService {
   }
 
   private listenToLoggingCommand(command: LoggingCommand): void {
-    document.wrsEventBus.handle<LoggingContract>(command, (payload) => this.log(command, payload));
+    document.wrsEventBus.handle<LoggingContract>(command, ({ resolve }, payload) => {
+      this.log(command, payload);
+      resolve();
+    });
   }
 
   private log(command: LoggingCommand, payload: LogPayload): void {

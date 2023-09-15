@@ -8,8 +8,10 @@ export enum LoggingCommand {
 }
 
 export type LoggingContract = {
-  [LoggingCommand.Debug]: LogPayload;
-  [LoggingCommand.Info]: LogPayload;
-  [LoggingCommand.Warn]: LogPayload;
-  [LoggingCommand.Error]: LogPayload;
+  [LoggingCommand.Debug]: LogCommandTypes;
+  [LoggingCommand.Info]: LogCommandTypes;
+  [LoggingCommand.Warn]: LogCommandTypes;
+  [LoggingCommand.Error]: LogCommandTypes;
 };
+
+type LogCommandTypes = [LogPayload, void];

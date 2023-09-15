@@ -3,5 +3,5 @@ export const enum AuthCommand {
 }
 
 export type AuthContract = {
-  [AuthCommand.TBD]: void;
+  [AuthCommand.TBD]: [void, void];
 };

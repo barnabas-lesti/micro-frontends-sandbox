@@ -14,9 +14,9 @@ export class ConfigService {
   private constructor() {
     this.log('constructor');
 
-    document.wrsEventBus.handle<ConfigContract>(ConfigCommand.Get, (payload) => {
+    document.wrsEventBus.handle<ConfigContract>(ConfigCommand.Get, ({ resolve }) => {
       // TODO: Implement logic
-      window.setTimeout(() => payload.callback(configMock), getRandomInteger(100, 1000));
+      window.setTimeout(() => resolve(configMock), getRandomInteger(100, 1000));
     });
   }
 

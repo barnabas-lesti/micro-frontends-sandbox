@@ -1,9 +1,9 @@
-import { MakeAPIRequestPayload } from './request.types';
+import { MakeAPIRequestPayload, MakeAPIRequestResponse } from './request.types';
 
 export const enum RequestCommand {
   MakeAPIRequest = 'request:makeAPIRequest',
 }
 
-export type RequestContract<RequestData, ResponseData> = {
-  [RequestCommand.MakeAPIRequest]: MakeAPIRequestPayload<RequestData, ResponseData>;
+export type RequestContract<RequestDataType, ResponseDataType> = {
+  [RequestCommand.MakeAPIRequest]: [MakeAPIRequestPayload<RequestDataType>, MakeAPIRequestResponse<ResponseDataType>];
 };

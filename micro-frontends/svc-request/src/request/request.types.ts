@@ -1,10 +1,9 @@
-export type MakeAPIRequestPayload<RequestData, ResponseData> = {
+export type MakeAPIRequestPayload<RequestDataType> = {
   apiPath: string;
-  data?: RequestData;
-  callback: (response: MakeAPIRequestResponse<ResponseData>) => void;
+  data?: RequestDataType;
 };
 
-export interface MakeAPIRequestResponse<ResponseData> {
+export interface MakeAPIRequestResponse<ResponseDataType> {
   status: number;
-  data?: ResponseData;
+  data?: ResponseDataType;
 }
