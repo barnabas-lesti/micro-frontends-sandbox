@@ -1,16 +1,20 @@
+import { type MicroFrontendService } from 'shell/public';
+
 import { FormattedError } from './logging.classes';
 import { LOGGING_COMMAND_TO_FUNCTION_MAP } from './logging.const';
 import { LoggingCommand, LoggingContract } from './logging.contract';
 import { LogPayload } from './logging.types';
 
-export class LoggingService {
+export class LoggingService implements MicroFrontendService {
   private static instance: LoggingService;
 
   public static get Instance() {
     return this.instance || (this.instance = new this());
   }
 
-  private constructor() {
+  private constructor() {}
+
+  registerSubscriptions(): void {
     this.listenToLoggingCommand(LoggingCommand.Debug);
     this.listenToLoggingCommand(LoggingCommand.Error);
     this.listenToLoggingCommand(LoggingCommand.Info);

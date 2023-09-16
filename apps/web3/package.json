@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@wrs/lib-utility": "*",
-    "@wrs/mfe-app-account": "*",
-    "@wrs/mfe-app-login": "*",
-    "@wrs/mfe-app-registration": "*",
     "@wrs/mfe-svc-config": "*",
     "@wrs/mfe-svc-request": "*",
     "@wrs/mfe-svc-telemetry": "*",
