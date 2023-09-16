@@ -1,5 +1,5 @@
 import { getRandomInteger } from '@wrs/lib-utility';
-import { MicroFrontendService } from 'shell/public';
+import { type MicroFrontendService } from 'shell/public';
 
 import { makeAPIRequest } from './index.functions';
 

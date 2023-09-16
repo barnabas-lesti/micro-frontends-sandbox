@@ -1,9 +1,16 @@
 import { logFactory, unblockThread } from './event-bus.functions';
-import { EventBusContract, EventBusEvent, EventBusEventHandler, EventBusEventHandlersMap } from './event-bus.types';
+import {
+  EventBusContract,
+  EventBusDispatchOptions,
+  EventBusEventHandler,
+  EventBusEventHandlersMap,
+  EventBusEventListener,
+  EventBusEventListenersMap,
+} from './event-bus.types';
 
 export class EventBus {
   private eventHandlers: EventBusEventHandlersMap<unknown, unknown> = {};
-  private unhandledEvents: EventBusEvent<unknown, unknown>[] = [];
+  private eventListeners: EventBusEventListenersMap<unknown> = {};
 
   constructor() {
     logFactory('constructor')();
@@ -12,24 +19,26 @@ export class EventBus {
   dispatch<Contract extends EventBusContract>(
     command: keyof Contract,
     payload?: Contract[typeof command][0],
+    options: EventBusDispatchOptions = { requireHandler: true },
   ): Promise<Contract[typeof command][1]> {
     const log = logFactory('dispatch');
     const commandAsString = command as string;
 
     log(commandAsString, payload);
 
+    this.notifyListeners(commandAsString, payload);
+
+    if (!options?.requireHandler) {
+      return Promise.resolve(undefined);
+    }
+
+    const handler = this.eventHandlers[commandAsString];
+    if (!handler) {
+      return Promise.reject(`No handler available for command "${commandAsString}".`);
+    }
+
     return new Promise<Contract[typeof command][1]>((resolve, reject) => {
-      const handler = this.eventHandlers[commandAsString];
-      const promise = { resolve, reject };
-      if (handler) {
-        unblockThread(() => handler(promise, payload));
-      } else {
-        this.unhandledEvents.push({ command: commandAsString, promise, payload });
-        log(
-          `Handler not yet available for command "${commandAsString}", ` +
-            `pushed event to unhandled events. [${this.unhandledEvents.length}] in queue.`,
-        );
-      }
+      unblockThread(() => handler({ resolve, reject }, payload));
     });
   }
 
@@ -46,13 +55,23 @@ export class EventBus {
 
     this.eventHandlers[commandAsString] = handler;
     log(`Registered handler for command "${commandAsString}".`);
+  }
 
-    const unhandledEventsForThisCommand = this.unhandledEvents.filter(({ command }) => command === commandAsString);
-    for (const { promise, payload } of unhandledEventsForThisCommand) {
-      unblockThread(() => handler(promise, payload as Contract[typeof command][0]));
+  private notifyListeners(command: string, payload: unknown) {
+    const listeners = this.eventListeners[command] || [];
+    for (const listener of listeners) {
+      unblockThread(() => listener(payload));
     }
-    this.unhandledEvents = [...this.unhandledEvents.filter(({ command }) => command !== commandAsString)];
-    unhandledEventsForThisCommand.length &&
-      log(`Processed [${unhandledEventsForThisCommand.length}] unhandled events for command "${commandAsString}".`);
+  }
+
+  listen<Contract extends EventBusContract>(
+    command: keyof Contract,
+    listener: EventBusEventListener<Contract[typeof command][0]>,
+  ): void {
+    const log = logFactory('listen');
+    const commandAsString = command as string;
+
+    (this.eventListeners[commandAsString] || (this.eventListeners[commandAsString] = [])).push(listener);
+    log(`Registered listener for command "${commandAsString}".`);
   }
 }

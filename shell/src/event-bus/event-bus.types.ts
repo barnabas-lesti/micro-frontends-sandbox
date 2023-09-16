@@ -13,8 +13,18 @@ export type EventBusEventHandler<PayloadType, ResolvedType> = (
   payload?: PayloadType,
 ) => void;
 
+export type EventBusEventListener<PayloadType> = (payload?: PayloadType) => void;
+
 export interface EventBusEventHandlersMap<PayloadType, ResolvedType> {
   [command: string]: EventBusEventHandler<PayloadType, ResolvedType>;
+}
+
+export interface EventBusEventListenersMap<PayloadType> {
+  [command: string]: EventBusEventListener<PayloadType>[];
+}
+
+export interface EventBusDispatchOptions {
+  requireHandler?: boolean;
 }
 
 type EventBusCommand = string;

@@ -1,13 +1,12 @@
 import { getRandomInteger } from '@wrs/lib-utility';
 import { ConfigCommand, ConfigContract } from '@wrs/mfe-svc-config/contract';
-import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/contract';
 import { type MicroFrontendService } from 'shell/public';
 
 import { RequestCommand, RequestContract } from './request.contract';
 import { MakeAPIRequestPayload, MakeAPIRequestResponse } from './request.types';
 
 export class RequestService implements MicroFrontendService {
-  private _baseURL: string | undefined;
+  private _baseURL: string | null = null;
 
   private static instance: RequestService;
 
@@ -28,7 +27,7 @@ export class RequestService implements MicroFrontendService {
   }
 
   private async getBaseURL(): Promise<string> {
-    if (!this._baseURL) {
+    if (this._baseURL === null) {
       const { baseURL } = await document.wrsEventBus.dispatch<ConfigContract>(ConfigCommand.Get);
       this._baseURL = baseURL;
     }
@@ -36,23 +35,12 @@ export class RequestService implements MicroFrontendService {
   }
 
   private async makeAPIRequest(payload: MakeAPIRequestPayload<unknown>): Promise<MakeAPIRequestResponse<unknown>> {
+    // TODO: implement logic
+    void payload;
     const baseURL = await this.getBaseURL();
+    void baseURL;
     return new Promise((resolve) => {
-      const log = (message?: string) => this.log('makeAPIRequest', message);
-      log();
-
-      // TODO: implement logic
-      log(`fetching from: ${baseURL + payload.apiPath}`);
       window.setTimeout(() => resolve({ status: 200, data: { hey: 'there' } }), getRandomInteger(100, 500));
-    });
-  }
-
-  private log(method: string, message?: string, data?: unknown) {
-    document.wrsEventBus.dispatch<LoggingContract>(LoggingCommand.Info, {
-      sourceId: RequestService.name,
-      method,
-      message,
-      data,
     });
   }
 }

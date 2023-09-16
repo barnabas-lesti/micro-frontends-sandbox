@@ -1,5 +1,4 @@
 import { getRandomInteger } from '@wrs/lib-utility';
-import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/contract';
 import { type MicroFrontendService } from 'shell/public';
 
 import { ConfigCommand, ConfigContract } from './config.contract';
@@ -18,15 +17,6 @@ export class ConfigService implements MicroFrontendService {
     document.wrsEventBus.handle<ConfigContract>(ConfigCommand.Get, ({ resolve }) => {
       // TODO: Implement logic
       window.setTimeout(() => resolve(configMock), getRandomInteger(100, 1000));
-    });
-  }
-
-  private log(method: string, message?: string, data?: unknown) {
-    document.wrsEventBus.dispatch<LoggingContract>(LoggingCommand.Info, {
-      sourceId: ConfigService.name,
-      method,
-      message,
-      data,
     });
   }
 }
