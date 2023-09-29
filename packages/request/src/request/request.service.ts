@@ -1,11 +1,10 @@
 import { ConfigCommand, type ConfigContract } from '@wrs/config/contract';
-import { type MicroFrontendService } from '@wrs/shell/public';
 import { getRandomInteger } from '@wrs/utility';
 
 import { RequestCommand, type RequestContract } from './request.contract';
 import { type MakeAPIRequestPayload, type MakeAPIRequestResponse } from './request.types';
 
-export class RequestService implements MicroFrontendService {
+export class RequestService {
   private _baseURL: string | null = null;
 
   private static instance: RequestService;
@@ -14,9 +13,7 @@ export class RequestService implements MicroFrontendService {
     return this.instance || (this.instance = new this());
   }
 
-  private constructor() {}
-
-  registerSubscriptions(): void {
+  private constructor() {
     document.wrsEventBus.handle<RequestContract<unknown, unknown>>(
       RequestCommand.MakeAPIRequest,
       async ({ resolve }, payload) => {
