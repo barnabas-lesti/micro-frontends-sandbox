@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "lint": "eslint . --fix",
-    "format": "prettier . --write",
     "test": "jest"
   },
-  "dependencies": {}
+  "dependencies": {
+    "rxjs": "^7.8.1"
+  }
 }

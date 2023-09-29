@@ -4,28 +4,17 @@
   "author": "Barnabas Lesti <barnabas.lesti@gmail.com>",
   "license": "ISC",
   "description": "",
+  "packageManager": "pnpm@8.6.0",
   "scripts": {
-    "clean": "npx rimraf package-lock.json --glob **/node_modules **/.turbo **/dist",
+    "clean": "node ./scripts/clean.cli",
     "start:dev": "turbo start:dev",
     "start:prod": "turbo start:prod",
-    "lint": "turbo lint",
-    "format": "turbo format",
     "test": "turbo test",
-    "graph": "node ./tools/graph.cli.js"
+    "graph": "node ./scripts/graph.cli.js",
+    "lint": "prettier . --check && eslint .",
+    "lint:fix": "prettier . --write && eslint . --fix"
   },
-  "workspaces": [
-    "apps/*",
-    "libs/*",
-    "micro-frontends/*",
-    "shell"
-  ],
-  "dependencies": {
-    "rxjs": "^7.8.1",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
-    "webpack-dev-server": "^4.15.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^29.5.4",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
@@ -44,6 +33,10 @@
     "tsconfig-paths": "^4.2.0",
     "tsconfig-paths-jest": "^0.0.1",
     "turbo": "^1.10.13",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-dev-server": "^4.15.1",
+    "ts-loader": "^9.4.4"
   }
 }

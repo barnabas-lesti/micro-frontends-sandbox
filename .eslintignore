@@ -1,2 +1,4 @@
 !.lintstagedrc.js
 !.prettierrc.js
+
+pnpm-lock.yaml

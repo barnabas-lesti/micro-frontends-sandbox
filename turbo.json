@@ -3,8 +3,6 @@
   "pipeline": {
     "start:dev": {},
     "start:prod": {},
-    "lint": {},
-    "format": {},
     "test": {}
   }
 }

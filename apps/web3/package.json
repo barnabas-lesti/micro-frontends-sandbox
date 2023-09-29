@@ -4,9 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start:dev": "webpack-dev-server --mode development",
-    "start:prod": "webpack-dev-server --mode production",
-    "lint": "eslint . --fix",
-    "format": "prettier . --write"
+    "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
     "@wrs/lib-utility": "*",

@@ -2,10 +2,7 @@
   "name": "@wrs/mfe-svc-telemetry",
   "type": "module",
   "version": "1.0.0",
-  "scripts": {
-    "lint": "eslint . --fix",
-    "format": "prettier . --write"
-  },
+  "scripts": {},
   "dependencies": {
     "@wrs/shell": "*"
   }
