@@ -82,7 +82,7 @@ await document.wdsEventBus.listenAsync('site:loaded');
 #### Finite Observable based
 
 ```ts
-const { unsubscribe } = document.wdsEventBus.dispatch$('auth:stateChanged').pipe(
+const { unsubscribe } = document.wdsEventBus.listen$('auth:stateChanged').pipe(
   tap((isLoggedIn) => {
     // Handle state change in the consumer.
   }),
