@@ -1,5 +1,5 @@
 {
-  "name": "@wrs/app-web3",
+  "name": "@wrs/web3",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -7,10 +7,10 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@wrs/lib-utility": "*",
-    "@wrs/mfe-svc-config": "*",
-    "@wrs/mfe-svc-request": "*",
-    "@wrs/mfe-svc-telemetry": "*",
+    "@wrs/utility": "*",
+    "@wrs/config": "*",
+    "@wrs/request": "*",
+    "@wrs/telemetry": "*",
     "@wrs/shell": "*"
   }
 }

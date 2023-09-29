@@ -46,5 +46,7 @@ module.exports = {
       },
     ],
     'simple-import-sort/exports': 'error',
+
+    '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
   },
 };

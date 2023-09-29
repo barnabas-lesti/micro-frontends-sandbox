@@ -1,5 +1,5 @@
-import { getRandomInteger } from '@wrs/lib-utility';
-import { type MicroFrontendService } from 'shell/public';
+import { type MicroFrontendService } from '@wrs/shell/public';
+import { getRandomInteger } from '@wrs/utility';
 
 import { makeAPIRequest } from './index.functions';
 
@@ -19,9 +19,9 @@ async function bootstrap(): Promise<void> {
 
   // Load required micro frontends (MFE-s).
   const loaders = await Promise.all([
-    import('@wrs/mfe-svc-telemetry/loader'),
-    import('@wrs/mfe-svc-request/loader'),
-    import('@wrs/mfe-svc-config/loader'),
+    import('@wrs/telemetry/loader'),
+    import('@wrs/request/loader'),
+    import('@wrs/config/loader'),
   ]);
 
   // Load service instances via the MFE loader function.

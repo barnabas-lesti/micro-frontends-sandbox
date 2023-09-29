@@ -77,66 +77,66 @@ importers:
 
   apps/web3:
     dependencies:
-      '@wrs/lib-utility':
+      '@wrs/config':
         specifier: '*'
-        version: link:../../libs/utility
-      '@wrs/mfe-svc-config':
+        version: link:../../packages/config
+      '@wrs/request':
         specifier: '*'
-        version: link:../../micro-frontends/svc-config
-      '@wrs/mfe-svc-request':
-        specifier: '*'
-        version: link:../../micro-frontends/svc-request
-      '@wrs/mfe-svc-telemetry':
-        specifier: '*'
-        version: link:../../micro-frontends/svc-telemetry
+        version: link:../../packages/request
       '@wrs/shell':
         specifier: '*'
-        version: link:../../shell
+        version: link:../../packages/shell
+      '@wrs/telemetry':
+        specifier: '*'
+        version: link:../../packages/telemetry
+      '@wrs/utility':
+        specifier: '*'
+        version: link:../../packages/utility
 
-  libs/utility:
+  packages/config:
+    dependencies:
+      '@wrs/shell':
+        specifier: '*'
+        version: link:../shell
+      '@wrs/telemetry':
+        specifier: '*'
+        version: link:../telemetry
+      '@wrs/utility':
+        specifier: '*'
+        version: link:../utility
+
+  packages/request:
+    dependencies:
+      '@wrs/config':
+        specifier: '*'
+        version: link:../config
+      '@wrs/shell':
+        specifier: '*'
+        version: link:../shell
+      '@wrs/telemetry':
+        specifier: '*'
+        version: link:../telemetry
+      '@wrs/utility':
+        specifier: '*'
+        version: link:../utility
+
+  packages/shell:
+    dependencies:
+      '@wrs/utility':
+        specifier: '*'
+        version: link:../utility
+
+  packages/telemetry:
+    dependencies:
+      '@wrs/shell':
+        specifier: '*'
+        version: link:../shell
+
+  packages/utility:
     dependencies:
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
-
-  micro-frontends/svc-config:
-    dependencies:
-      '@wrs/lib-utility':
-        specifier: '*'
-        version: link:../../libs/utility
-      '@wrs/mfe-svc-telemetry':
-        specifier: '*'
-        version: link:../svc-telemetry
-      '@wrs/shell':
-        specifier: '*'
-        version: link:../../shell
-
-  micro-frontends/svc-request:
-    dependencies:
-      '@wrs/lib-utility':
-        specifier: '*'
-        version: link:../../libs/utility
-      '@wrs/mfe-svc-config':
-        specifier: '*'
-        version: link:../svc-config
-      '@wrs/mfe-svc-telemetry':
-        specifier: '*'
-        version: link:../svc-telemetry
-      '@wrs/shell':
-        specifier: '*'
-        version: link:../../shell
-
-  micro-frontends/svc-telemetry:
-    dependencies:
-      '@wrs/shell':
-        specifier: '*'
-        version: link:../../shell
-
-  shell:
-    dependencies:
-      '@wrs/lib-utility':
-        specifier: '*'
-        version: link:../libs/utility
 
 packages:
 

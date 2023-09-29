@@ -1,4 +1,4 @@
-import { type EventBus } from './shell/public';
+import { type EventBus } from './packages/shell/public';
 
 export {};
 

@@ -1,7 +1,7 @@
-import { RequestCommand, RequestContract } from '@wrs/mfe-svc-request/contract';
-import { LoggingCommand, LoggingContract } from '@wrs/mfe-svc-telemetry/contract';
+import { RequestCommand, type RequestContract } from '@wrs/request/contract';
+import { LoggingCommand, type LoggingContract } from '@wrs/telemetry/contract';
 
-import { TestResponseData } from './index.types';
+import { type TestResponseData } from './index.types';
 
 export async function makeAPIRequest() {
   const log = logFactory('index', 'makeAPIRequest');

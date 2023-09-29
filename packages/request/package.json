@@ -1,0 +1,12 @@
+{
+  "name": "@wrs/request",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {},
+  "dependencies": {
+    "@wrs/utility": "*",
+    "@wrs/config": "*",
+    "@wrs/telemetry": "*",
+    "@wrs/shell": "*"
+  }
+}

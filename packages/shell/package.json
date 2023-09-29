@@ -1,0 +1,11 @@
+{
+  "name": "@wrs/shell",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@wrs/utility": "*"
+  }
+}
