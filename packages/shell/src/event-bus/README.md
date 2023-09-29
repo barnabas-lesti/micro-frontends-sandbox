@@ -122,3 +122,8 @@ document.wdsEventBus.handle('config:get', (resolve) => {
 - Make EventBus generic and accept Contracts.
 - Have contracts added to the MFE \*.d.ts file (separated with a pipe).
 - Infer the payload and result type based on the contract and commands.
+- Create a `notify` function that doesn't require a handler to be created for a dispatch
+  - Under the hood it will use dispatch but with the `requireHandler` flag set to `false`.
+  - This can be used if a notification should be sent to `listeners`.
+- Issue might come when multiple dispatches are sent and handler executes for example HTTP request to a server multiple
+  times till the resource is loaded (config for example), try to find a solution for this.
