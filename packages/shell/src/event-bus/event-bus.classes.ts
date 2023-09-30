@@ -1,77 +1,87 @@
-import { logFactory, unblockThread } from './event-bus.functions';
-import {
-  type EventBusContract,
-  type EventBusDispatchOptions,
-  type EventBusEventHandler,
-  type EventBusEventHandlersMap,
-  type EventBusEventListener,
-  type EventBusEventListenersMap,
-} from './event-bus.types';
+import { Logger } from '@wrs/utility';
+import { AsyncSubject, lastValueFrom, type Observable, ReplaySubject, type Subject } from 'rxjs';
+
+import { type EventBusContract } from './event-bus.types';
+
+type EventBusCommand = string;
+
+interface EventBusDispatchSubjectMap {
+  [command: EventBusCommand]: EventBusDispatchSubject<unknown, unknown>;
+}
+
+type EventBusDispatchSubject<Payload, Result> = Subject<EventBusDispatchSubjectItem<Payload, Result>>;
+
+type EventBusDispatchSubjectItem<Payload, Result> = {
+  payload?: Payload;
+  subject: Subject<Result>;
+};
+
+type EventBusDispatchHandler<Payload, Result> = (
+  resolve: EventBusDispatchHandlerResolve<Result>,
+  payload?: Payload,
+) => void;
+
+type EventBusDispatchHandlerResolve<Result> = (result?: Result) => void;
+
+const REPLAY_BUFFER_WINDOW_TIME = 10000;
 
 export class EventBus {
-  private eventHandlers: EventBusEventHandlersMap<unknown, unknown> = {};
-  private eventListeners: EventBusEventListenersMap<unknown> = {};
+  private logger = new Logger('EventBus');
+  private dispatchSubjectMap: EventBusDispatchSubjectMap = {};
 
   constructor() {
-    logFactory('constructor')();
+    this.logger.info('constructor');
   }
 
-  dispatch<Contract extends EventBusContract>(
-    command: keyof Contract,
+  async dispatchAsync<Contract extends EventBusContract>(
+    command: keyof Contract & EventBusCommand,
     payload?: Contract[typeof command][0],
-    options: EventBusDispatchOptions = { requireHandler: true },
   ): Promise<Contract[typeof command][1]> {
-    const log = logFactory('dispatch');
-    const commandAsString = command as string;
+    return lastValueFrom(this.dispatch$(command, payload));
+  }
 
-    log(commandAsString, payload);
+  dispatch$<Contract extends EventBusContract>(
+    command: keyof Contract & EventBusCommand,
+    payload?: Contract[typeof command][0],
+  ): Observable<Contract[typeof command][1]> {
+    this.logger.info('dispatch$', command);
 
-    this.notifyListeners(commandAsString, payload);
-
-    if (!options?.requireHandler) {
-      return Promise.resolve(undefined);
-    }
-
-    const handler = this.eventHandlers[commandAsString];
-    if (!handler) {
-      return Promise.reject(`No handler available for command "${commandAsString}".`);
-    }
-
-    return new Promise<Contract[typeof command][1]>((resolve, reject) => {
-      unblockThread(() => handler({ resolve, reject }, payload));
+    const dispatchSubject = new AsyncSubject<Contract[typeof command][1]>();
+    this.ensureDispatchSubject<Contract>(command).next({
+      payload,
+      subject: dispatchSubject,
     });
+
+    return dispatchSubject.asObservable();
   }
 
   handle<Contract extends EventBusContract>(
-    command: keyof Contract,
-    handler: EventBusEventHandler<Contract[typeof command][0], Contract[typeof command][1]>,
+    command: keyof Contract & EventBusCommand,
+    handler: EventBusDispatchHandler<Contract[typeof command][0], Contract[typeof command][1]>,
   ): void {
-    const log = logFactory('handle');
-    const commandAsString = command as string;
+    const commandSubject = this.ensureDispatchSubject<Contract>(command).asObservable();
+    commandSubject.subscribe(({ payload, subject }) => {
+      handler((result?: Contract[typeof command][1]) => {
+        subject.next(result);
+        subject.complete();
+      }, payload);
+    });
 
-    if (this.eventHandlers[commandAsString]) {
-      throw new Error(`Event handler already registered for command: "${commandAsString}".`);
-    }
-
-    this.eventHandlers[commandAsString] = handler;
-    log(`Registered handler for command "${commandAsString}".`);
+    this.logger.info('handle$', `Registered handler fo "${command}"`);
   }
 
-  private notifyListeners(command: string, payload: unknown) {
-    const listeners = this.eventListeners[command] || [];
-    for (const listener of listeners) {
-      unblockThread(() => listener(payload));
+  private ensureDispatchSubject<Contract extends EventBusContract>(
+    command: EventBusCommand,
+  ): EventBusDispatchSubject<Contract[typeof command][0], Contract[typeof command][1]> {
+    if (!this.dispatchSubjectMap[command]) {
+      this.dispatchSubjectMap[command] = new ReplaySubject<
+        EventBusDispatchSubjectItem<Contract[typeof command][0], Contract[typeof command][1]>
+      >(undefined, REPLAY_BUFFER_WINDOW_TIME);
+      this.logger.info('ensureCommandSubject', `Created subject for "${command}"`);
     }
-  }
-
-  listen<Contract extends EventBusContract>(
-    command: keyof Contract,
-    listener: EventBusEventListener<Contract[typeof command][0]>,
-  ): void {
-    const log = logFactory('listen');
-    const commandAsString = command as string;
-
-    (this.eventListeners[commandAsString] || (this.eventListeners[commandAsString] = [])).push(listener);
-    log(`Registered listener for command "${commandAsString}".`);
+    return this.dispatchSubjectMap[command] as EventBusDispatchSubject<
+      Contract[typeof command][0],
+      Contract[typeof command][1]
+    >;
   }
 }

@@ -7,10 +7,11 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@wrs/utility": "*",
     "@wrs/config": "*",
     "@wrs/request": "*",
+    "@wrs/shell": "*",
     "@wrs/telemetry": "*",
-    "@wrs/shell": "*"
+    "@wrs/utility": "*",
+    "rxjs": "^7.8.1"
   }
 }

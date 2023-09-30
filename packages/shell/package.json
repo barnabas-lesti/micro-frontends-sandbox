@@ -6,6 +6,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@wrs/utility": "*"
+    "@wrs/utility": "*",
+    "rxjs": "^7.8.1"
   }
 }
