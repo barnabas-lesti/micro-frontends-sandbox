@@ -1,7 +1,7 @@
-import { RequestCommand, type RequestContract } from '@wrs/request/contract';
-import { delay, Logger } from '@wrs/utility';
+import { RequestCommand, type RequestContract } from '@wrs-micro-frontends/request/contract';
+import { Logger } from '@wrs-packages/utility';
 
-import { MICRO_FRONTENDS } from './index.const';
+import { bootstrap } from './index.functions';
 
 const logger = new Logger('index');
 
@@ -22,16 +22,4 @@ const logger = new Logger('index');
   logInfo('Application started.');
 })();
 
-async function bootstrap(): Promise<void> {
-  const logInfo = (message: string) => logger.info('bootstrap', message);
 
-  logInfo('Loading the application shell...');
-  const shellLoader = await import('@wrs/shell/loader');
-  shellLoader.default();
-  logInfo('Application shell loaded.');
-
-  logInfo('Loading micro frontends...');
-  const loaders = await Promise.all(MICRO_FRONTENDS);
-  await Promise.all(loaders.map((loader) => delay(() => loader.default())));
-  logInfo('Micro frontends loaded.');
-}

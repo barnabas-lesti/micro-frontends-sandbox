@@ -1,4 +1,4 @@
-import { Logger } from '@wrs/utility';
+import { Logger } from '@wrs-packages/utility';
 import { AsyncSubject, lastValueFrom, type Observable, ReplaySubject, take } from 'rxjs';
 
 import { REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';

@@ -1,5 +1,5 @@
 {
-  "name": "@wrs/web3",
+  "name": "@wrs-apps/web3",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -7,10 +7,10 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@wrs/config": "*",
-    "@wrs/request": "*",
-    "@wrs/shell": "*",
-    "@wrs/utility": "*",
+    "@wrs-micro-frontends/config": "*",
+    "@wrs-micro-frontends/request": "*",
+    "@wrs-packages/shell": "*",
+    "@wrs-packages/utility": "*",
     "rxjs": "^7.8.1"
   }
 }

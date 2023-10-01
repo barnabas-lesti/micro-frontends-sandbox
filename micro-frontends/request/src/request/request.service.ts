@@ -1,5 +1,5 @@
-import { RemoteConfigCommand, type RemoteConfigContract } from '@wrs/config/contract';
-import { getRandomInteger, Logger } from '@wrs/utility';
+import { RemoteConfigCommand, type RemoteConfigContract } from '@wrs-micro-frontends/config/contract';
+import { getRandomInteger, Logger } from '@wrs-packages/utility';
 
 import { RequestCommand, type RequestContract } from './request.types';
 import { type MakeAPIRequestPayload, type MakeAPIRequestResponse } from './request.types';
