@@ -1,5 +1,5 @@
-import { EventBus } from './src/event-bus/event-bus.classes';
+import { EventBusService } from './src/event-bus/event-bus.service';
 
 export default function (): void {
-  document.wrsEventBus = new EventBus();
+  window.wrsEventBus = EventBusService.getInstance().createEventBus();
 }

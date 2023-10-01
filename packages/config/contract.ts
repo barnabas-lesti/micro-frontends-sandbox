@@ -1,1 +1,1 @@
-export { ConfigCommand, ConfigContract } from './src/config/config.contract';
+export { RemoteConfig, RemoteConfigCommand, RemoteConfigContract } from './src/remote-config/remote-config.types';

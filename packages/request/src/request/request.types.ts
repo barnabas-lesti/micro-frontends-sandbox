@@ -1,9 +1,17 @@
-export type MakeAPIRequestPayload<RequestDataType> = {
-  apiPath: string;
-  data?: RequestDataType;
+export const enum RequestCommand {
+  MakeAPIRequest = 'request:makeAPIRequest',
+}
+
+export type RequestContract<RequestData, ResponseData> = {
+  [RequestCommand.MakeAPIRequest]: [MakeAPIRequestPayload<RequestData>, MakeAPIRequestResponse<ResponseData>];
 };
 
-export interface MakeAPIRequestResponse<ResponseDataType> {
+export type MakeAPIRequestPayload<RequestData> = {
+  apiPath: string;
+  data?: RequestData;
+};
+
+export interface MakeAPIRequestResponse<ResponseData> {
   status: number;
-  data?: ResponseDataType;
+  data?: ResponseData;
 }

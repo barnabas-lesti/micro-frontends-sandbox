@@ -1,22 +1,22 @@
-import { ConfigCommand, type ConfigContract } from '@wrs/config/contract';
+import { RemoteConfigCommand, type RemoteConfigContract } from '@wrs/config/contract';
 import { getRandomInteger } from '@wrs/utility';
 
-import { RequestCommand, type RequestContract } from './request.contract';
+import { RequestCommand, type RequestContract } from './request.types';
 import { type MakeAPIRequestPayload, type MakeAPIRequestResponse } from './request.types';
 
 export class RequestService {
-  private _baseURL: string | null = null;
+  private static _instance: RequestService;
 
-  private static instance: RequestService;
-
-  static get Instance() {
-    return this.instance || (this.instance = new this());
+  static getInstance() {
+    return this._instance || (this._instance = new this());
   }
 
+  private _baseURL: string | null = null;
+
   private constructor() {
-    document.wrsEventBus.handle<RequestContract<unknown, unknown>>(
+    window.wrsEventBus.handle<RequestContract<unknown, unknown>>(
       RequestCommand.MakeAPIRequest,
-      async ({ resolve }, payload) => {
+      async (resolve, payload) => {
         const response = await this.makeAPIRequest(payload);
         resolve(response);
       },
@@ -25,7 +25,7 @@ export class RequestService {
 
   private async getBaseURL(): Promise<string> {
     if (this._baseURL === null) {
-      const { baseURL } = await document.wrsEventBus.dispatch<ConfigContract>(ConfigCommand.Get);
+      const { baseURL } = await window.wrsEventBus.dispatchAsync<RemoteConfigContract>(RemoteConfigCommand.Get, null);
       this._baseURL = baseURL;
     }
     return this._baseURL;

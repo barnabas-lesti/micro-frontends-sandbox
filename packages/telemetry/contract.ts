@@ -1,1 +1,1 @@
-export { LoggingCommand, LoggingContract } from './src/logging/logging.contract';
+export { LoggingCommand, LoggingContract } from './src/logging/logging.types';

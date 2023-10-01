@@ -1,5 +1,5 @@
-import { ConfigService } from './src/config/config.service';
+import { RemoteConfigService } from './src/remote-config/remote-config.service';
 
 export default function (): void {
-  void ConfigService.Instance;
+  void RemoteConfigService.getInstance();
 }

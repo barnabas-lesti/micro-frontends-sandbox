@@ -1,13 +1,12 @@
 import { FormattedError } from './logging.classes';
 import { LOGGING_COMMAND_TO_FUNCTION_MAP } from './logging.const';
-import { LoggingCommand, type LoggingContract } from './logging.contract';
-import { type LogPayload } from './logging.types';
+import { LoggingCommand, type LoggingContract, type LogPayload } from './logging.types';
 
 export class LoggingService {
-  private static instance: LoggingService;
+  private static _instance: LoggingService;
 
-  public static get Instance() {
-    return this.instance || (this.instance = new this());
+  public static getInstance() {
+    return this._instance || (this._instance = new this());
   }
 
   private constructor() {
@@ -18,7 +17,7 @@ export class LoggingService {
   }
 
   private listenToLoggingCommand(command: LoggingCommand): void {
-    document.wrsEventBus.handle<LoggingContract>(command, ({ resolve }, payload) => {
+    window.wrsEventBus.handle<LoggingContract>(command, (resolve, payload) => {
       this.log(command, payload);
       resolve();
     });

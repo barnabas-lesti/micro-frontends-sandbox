@@ -1,4 +1,4 @@
-import { LoggingCommand } from './logging.contract';
+import { LoggingCommand } from './logging.types';
 
 export const LOGGING_COMMAND_TO_FUNCTION_MAP = {
   [LoggingCommand.Debug]: console.debug,
