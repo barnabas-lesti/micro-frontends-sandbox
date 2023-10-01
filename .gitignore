@@ -1,5 +1,8 @@
+# Files
+.DS_Store
+
+# Folders
+.angular/
 node_modules/
 dist/
 .turbo/
-graphs/
-sandbox/

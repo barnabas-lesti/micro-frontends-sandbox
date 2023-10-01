@@ -73,7 +73,7 @@ export class EventBus {
     if (!this.dispatchSubjectMap[command]) {
       this.dispatchSubjectMap[command] = new ReplaySubject<
         DispatchCommandSubjectEntry<Contract[typeof command][0], Contract[typeof command][1]>
-      >(null, REPLAY_BUFFER_WINDOW_TIME);
+      >(undefined, REPLAY_BUFFER_WINDOW_TIME);
     }
     return this.dispatchSubjectMap[command] as DispatchCommandSubject<
       Contract[typeof command][0],

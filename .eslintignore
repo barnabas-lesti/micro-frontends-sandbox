@@ -1,4 +1,12 @@
 !.lintstagedrc.js
 !.prettierrc.js
 
+# Files
+.DS_Store
 pnpm-lock.yaml
+
+# Folders
+dist/
+.angular/
+.turbo/
+node_modules/

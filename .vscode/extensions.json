@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "redhat.vscode-yaml",
-    "firsttris.vscode-jest-runner"
+    "firsttris.vscode-jest-runner",
+    "angular.ng-template"
   ]
 }

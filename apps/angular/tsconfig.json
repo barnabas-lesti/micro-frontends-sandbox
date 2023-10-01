@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../tsconfig.angular.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./out-tsc/app",
+    "types": [],
+    "paths": {
+      "@src/*": ["src/*"]
+    }
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts", "../../global.d.ts"]
+}
