@@ -6,7 +6,6 @@
   "dependencies": {
     "@wrs/utility": "*",
     "@wrs/config": "*",
-    "@wrs/telemetry": "*",
     "@wrs/shell": "*"
   }
 }

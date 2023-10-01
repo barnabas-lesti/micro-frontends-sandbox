@@ -1,5 +1,5 @@
 import { RemoteConfigCommand, type RemoteConfigContract } from '@wrs/config/contract';
-import { getRandomInteger } from '@wrs/utility';
+import { getRandomInteger, Logger } from '@wrs/utility';
 
 import { RequestCommand, type RequestContract } from './request.types';
 import { type MakeAPIRequestPayload, type MakeAPIRequestResponse } from './request.types';
@@ -11,9 +11,12 @@ export class RequestService {
     return this._instance || (this._instance = new this());
   }
 
+  private logger = new Logger('RequestService');
   private _baseURL: string | null = null;
 
   private constructor() {
+    this.logger.info('constructor');
+
     window.wrsEventBus.handle<RequestContract<unknown, unknown>>(
       RequestCommand.MakeAPIRequest,
       async (resolve, payload) => {

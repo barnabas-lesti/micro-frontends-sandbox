@@ -86,9 +86,6 @@ importers:
       '@wrs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@wrs/telemetry':
-        specifier: '*'
-        version: link:../../packages/telemetry
       '@wrs/utility':
         specifier: '*'
         version: link:../../packages/utility
@@ -101,9 +98,6 @@ importers:
       '@wrs/shell':
         specifier: '*'
         version: link:../shell
-      '@wrs/telemetry':
-        specifier: '*'
-        version: link:../telemetry
       '@wrs/utility':
         specifier: '*'
         version: link:../utility
@@ -116,9 +110,6 @@ importers:
       '@wrs/shell':
         specifier: '*'
         version: link:../shell
-      '@wrs/telemetry':
-        specifier: '*'
-        version: link:../telemetry
       '@wrs/utility':
         specifier: '*'
         version: link:../utility
@@ -132,14 +123,11 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1
 
-  packages/telemetry:
-    dependencies:
-      '@wrs/shell':
-        specifier: '*'
-        version: link:../shell
-
   packages/utility:
     dependencies:
+      moment:
+        specifier: ^2.29.4
+        version: 2.29.4
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
@@ -4544,6 +4532,10 @@ packages:
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
+
+  /moment@2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+    dev: false
 
   /ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}

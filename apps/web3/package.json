@@ -10,7 +10,6 @@
     "@wrs/config": "*",
     "@wrs/request": "*",
     "@wrs/shell": "*",
-    "@wrs/telemetry": "*",
     "@wrs/utility": "*",
     "rxjs": "^7.8.1"
   }
