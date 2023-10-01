@@ -1,26 +1,17 @@
-import { RequestCommand, type RequestContract } from '@wrs/request/contract';
-import { LoggingCommand, type LoggingContract } from '@wrs/telemetry/contract';
+import { delay,Logger } from '@wrs-packages/utility';
 
-import { type TestResponseData } from './index.types';
+import { MICRO_FRONTENDS } from './index.const';
 
-export async function makeAPIRequest() {
-  const log = logFactory('index', 'makeAPIRequest');
+export async function bootstrap(): Promise<void> {
+  const logInfo = (message: string) => (new Logger('index')).info('bootstrap', message);
 
-  const response = await document.wrsEventBus.dispatch<RequestContract<void, TestResponseData>>(
-    RequestCommand.MakeAPIRequest,
-    {
-      apiPath: '/hello',
-    },
-  );
-  log('makeAPIRequest done', response);
-}
+  logInfo('Loading the application shell...');
+  const shellLoader = await import('@wrs-packages/shell/loader');
+  shellLoader.default();
+  logInfo('Application shell loaded.');
 
-export function logFactory(sourceId: string, method: string) {
-  return <T>(message?: string, data?: T) =>
-    document.wrsEventBus.dispatch<LoggingContract>(LoggingCommand.Info, {
-      sourceId,
-      method,
-      message,
-      data,
-    });
+  logInfo('Loading micro frontends...');
+  const loaders = await Promise.all(MICRO_FRONTENDS);
+  await Promise.all(loaders.map((loader) => delay(() => loader.default())));
+  logInfo('Micro frontends loaded.');
 }

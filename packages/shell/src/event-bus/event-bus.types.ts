@@ -1,35 +1,24 @@
-export type EventBusContract = {
-  [key: EventBusCommand]: [unknown, unknown];
+import { type Subject } from 'rxjs';
+
+export type ContractBase = {
+  [key: Command]: [unknown, unknown];
 };
 
-export interface EventBusEvent<PayloadType, ResolvedType> {
-  command: string;
-  promise: EventHandlerPromiseArgument<ResolvedType>;
-  payload?: PayloadType;
+export type Command = string;
+
+export interface DispatchCommandSubjectMap {
+  [command: Command]: DispatchCommandSubject<unknown, unknown>;
 }
 
-export type EventBusEventHandler<PayloadType, ResolvedType> = (
-  promise: EventHandlerPromiseArgument<ResolvedType>,
-  payload?: PayloadType,
-) => void;
+export type DispatchCommandSubject<Payload, Result> = Subject<DispatchCommandSubjectEntry<Payload, Result>>;
 
-export type EventBusEventListener<PayloadType> = (payload?: PayloadType) => void;
+export type DispatchCommandSubjectEntry<Payload, Result> = {
+  payload: Payload;
+  subject: Subject<Result>;
+};
 
-export interface EventBusEventHandlersMap<PayloadType, ResolvedType> {
-  [command: string]: EventBusEventHandler<PayloadType, ResolvedType>;
-}
+export type DispatchHandler<Payload, Result> = (resolve: DispatchHandlerResolve<Result>, payload: Payload) => void;
 
-export interface EventBusEventListenersMap<PayloadType> {
-  [command: string]: EventBusEventListener<PayloadType>[];
-}
+export type DispatchCallback<Result> = (result: Result) => void;
 
-export interface EventBusDispatchOptions {
-  requireHandler?: boolean;
-}
-
-type EventBusCommand = string;
-
-interface EventHandlerPromiseArgument<ResolvedType> {
-  resolve: (result: ResolvedType) => void;
-  reject: (reason: unknown) => void;
-}
+type DispatchHandlerResolve<Result> = (result: Result) => void;

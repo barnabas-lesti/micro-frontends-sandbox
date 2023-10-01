@@ -1,9 +1,9 @@
-import { type EventBus } from './packages/shell/public';
+import { type EventBus } from './packages/shell/contract';
 
 export {};
 
 declare global {
-  interface Document {
+  interface Window {
     wrsEventBus: EventBus;
   }
 }

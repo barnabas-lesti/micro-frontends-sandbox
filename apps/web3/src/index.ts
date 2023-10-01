@@ -1,43 +1,25 @@
-import { type MicroFrontendService } from '@wrs/shell/public';
-import { getRandomInteger } from '@wrs/utility';
+import { RequestCommand, type RequestContract } from '@wrs-micro-frontends/request/contract';
+import { Logger } from '@wrs-packages/utility';
 
-import { makeAPIRequest } from './index.functions';
+import { bootstrap } from './index.functions';
+
+const logger = new Logger('index');
 
 (async () => {
+  const logInfo = (message: string) => logger.info('root', message);
+
+  logInfo('Starting the application...');
   await bootstrap();
 
-  const numberOfRequests = 10;
-  for (let i = 0; i < numberOfRequests; i++) {
-    window.setTimeout(() => makeAPIRequest(), getRandomInteger(100, 1000));
-  }
+  // Testing out the EventBus
+  window.wrsEventBus
+    .dispatch$<RequestContract<{ field: boolean }, object>>(RequestCommand.MakeAPIRequest, {
+      apiPath: '/test',
+      data: { field: false },
+    })
+    .subscribe();
+
+  logInfo('Application started.');
 })();
 
-async function bootstrap(): Promise<void> {
-  // Initialize the shell.
-  const shellLoader = await import('@wrs/shell/loader');
-  shellLoader.default();
 
-  // Load required micro frontends (MFE-s).
-  const loaders = await Promise.all([
-    import('@wrs/telemetry/loader'),
-    import('@wrs/request/loader'),
-    import('@wrs/config/loader'),
-  ]);
-
-  // Load service instances via the MFE loader function.
-  const serviceInstances: MicroFrontendService[] = [];
-  for (const loader of loaders) {
-    const loadedServiceInstances: MicroFrontendService[] = loader.default();
-    serviceInstances.push(...loadedServiceInstances);
-  }
-
-  // Register service subscriptions.
-  for (const serviceInstance of serviceInstances) {
-    serviceInstance.registerSubscriptions?.();
-  }
-
-  // Initialize the services.
-  for (const serviceInstance of serviceInstances) {
-    serviceInstance.initialize?.();
-  }
-}
