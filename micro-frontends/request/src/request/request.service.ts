@@ -1,4 +1,3 @@
-import { StartupConfigCommand, type StartupConfigContract } from '@wrs-micro-frontends/config/types';
 import { delay, Logger } from '@wrs-packages/utility';
 
 import {
@@ -20,7 +19,7 @@ export class RequestService {
   }
 
   private logger = new Logger('RequestService');
-  private _apiBaseURL: Promise<string> | undefined;
+  private apiBaseURL = 'https://run.mocky.io';
 
   private constructor() {
     this.logger.info('constructor');
@@ -37,20 +36,17 @@ export class RequestService {
   }
 
   async getAPI<ResponseData>(payload: GetAPIRequestPayload<ResponseData>): Promise<ResponseData> {
-    const url = (await this.getAPIBaseURL()) + payload.path;
-
-    // TODO: implement logic
-    return delay(() => {
-      const response = { method: 'GET', url } as ResponseData;
-      payload.onSuccess?.(response);
-      return response;
-    });
+    const url = this.apiBaseURL + payload.path;
+    const response = await fetch(url);
+    const data = (await response.json()) as ResponseData;
+    payload.onSuccess?.(data);
+    return data;
   }
 
   async postAPI<RequestData, ResponseData>(
     payload: PostAPIRequestPayload<RequestData, ResponseData>,
   ): Promise<ResponseData> {
-    const url = (await this.getAPIBaseURL()) + payload.path;
+    const url = this.apiBaseURL + payload.path;
 
     // TODO: implement logic
     return delay(() => {
@@ -58,19 +54,5 @@ export class RequestService {
       payload.onSuccess?.(response);
       return response;
     });
-  }
-
-  private async getAPIBaseURL(): Promise<string> {
-    if (!this._apiBaseURL) {
-      this._apiBaseURL = new Promise<string>((resolve) => {
-        window.wrsEventBus?.dispatch<StartupConfigContract[StartupConfigCommand.Get]>(StartupConfigCommand.Get, {
-          onSuccess: (startupConfig) => {
-            resolve(startupConfig.apiBaseURL);
-          },
-        });
-      });
-    }
-
-    return this._apiBaseURL;
   }
 }

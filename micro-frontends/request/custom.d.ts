@@ -1,4 +1,4 @@
-import { type EventBus } from '@wrs-packages/event-bus';
+import { type EventBus } from '@wrs-packages/event-bus/types';
 
 declare global {
   interface Window {

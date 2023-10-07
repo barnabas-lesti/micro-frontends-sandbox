@@ -1,1 +1,5 @@
-export interface RemoteConfig {}
+export interface RemoteConfig {
+  features?: {
+    isHomePageBannerEnabled?: boolean;
+  };
+}

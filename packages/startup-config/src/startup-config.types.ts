@@ -1,3 +1,3 @@
 export interface StartupConfig {
-  apiBaseURL: string;
+  apiBaseURL?: string;
 }

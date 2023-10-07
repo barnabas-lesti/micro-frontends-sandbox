@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
+    "@wrs-micro-frontends/request": "*",
     "@wrs-packages/event-bus": "*",
     "@wrs-packages/utility": "*"
   }
