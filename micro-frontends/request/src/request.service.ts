@@ -21,9 +21,14 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<RequestContract.GetToAPI<unknown>>('request:getToAPI', async (payload) =>
-      this.getToAPI(payload),
-    );
+    window.wrsEventBus?.listen<RequestContract.GetToAPI<unknown>>('request:getToAPI', async (payload) => {
+      try {
+        const data = await this.getToAPI(payload);
+        payload.onSuccess?.(data);
+      } catch (error) {
+        payload.onError?.(error as Error);
+      }
+    });
   }
 
   async getToAPI<ResponseData>(payload: GetAPIRequestPayload<ResponseData>): Promise<ResponseData> {
@@ -32,7 +37,6 @@ export class RequestService {
     const url = this.apiBaseURL + payload.path;
     const response = await fetch(url);
     const data = (await response.json()) as ResponseData;
-    payload.onSuccess?.(data);
     return data;
   }
 }

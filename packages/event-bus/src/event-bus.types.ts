@@ -7,3 +7,8 @@ export interface DispatchSubjectMap {
 }
 
 export type DispatchSubject<Payload> = Subject<Payload>;
+
+export interface DispatchPayload<SuccessData> {
+  onSuccess?: (data: SuccessData) => void;
+  onError?: (error: Error) => void;
+}

@@ -1,3 +1,5 @@
+import { type DispatchPayload } from 'packages/event-bus/types';
+
 import { type BrowserType } from './platform.types';
 
 export namespace PlatformContract {
@@ -10,10 +12,6 @@ export namespace PlatformContract {
   }
 }
 
-interface IsBrowserPayload {
-  onSuccess?: (isBrowser: boolean) => void;
-}
+interface IsBrowserPayload extends DispatchPayload<boolean> {}
 
-interface GetBrowserTypePayload {
-  onSuccess?: (browserType: BrowserType) => void;
-}
+interface GetBrowserTypePayload extends DispatchPayload<BrowserType> {}
