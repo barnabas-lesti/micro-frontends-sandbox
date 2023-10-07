@@ -11,8 +11,8 @@
     "start:prod": "turbo start:prod",
     "test": "turbo test",
     "graph": "node ./scripts/graph.cli.js",
-    "lint": "prettier . --check && eslint .",
-    "lint:fix": "prettier . --write && eslint . --fix"
+    "lint": "prettier . --check && eslint . --cache",
+    "lint:fix": "prettier . --write && eslint . --cache --fix"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",

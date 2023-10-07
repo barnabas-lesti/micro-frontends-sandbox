@@ -1,6 +1,7 @@
 # Files
 .DS_Store
 pnpm-lock.yaml
+.eslintcache
 
 # Folders
 dist/
