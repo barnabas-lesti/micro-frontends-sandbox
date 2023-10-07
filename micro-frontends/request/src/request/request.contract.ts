@@ -1,9 +1,22 @@
-import { type MakeAPIRequestPayload, type MakeAPIRequestResponse } from './request.types';
-
 export const enum RequestCommand {
-  MakeAPIRequest = 'request:makeAPIRequest',
+  GetAPI = 'request:getAPI',
+  PostAPI = 'request:postAPI',
 }
 
 export type RequestContract<RequestData, ResponseData> = {
-  [RequestCommand.MakeAPIRequest]: [MakeAPIRequestPayload<RequestData>, MakeAPIRequestResponse<ResponseData>];
+  [RequestCommand.GetAPI]: GetAPIRequestPayload<ResponseData>;
+  [RequestCommand.PostAPI]: PostAPIRequestPayload<RequestData, ResponseData>;
 };
+
+export interface GetAPIRequestPayload<ResponseData> {
+  path: string;
+  onSuccess?: (data: ResponseData) => void;
+  onError?: (error: Error) => void;
+}
+
+export interface PostAPIRequestPayload<RequestData, ResponseData> {
+  path: string;
+  data?: RequestData;
+  onSuccess?: (data: ResponseData) => void;
+  onError?: (error: Error) => void;
+}

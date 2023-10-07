@@ -1,83 +1,34 @@
 import { Logger } from '@wrs-packages/utility';
-import { AsyncSubject, lastValueFrom, type Observable, ReplaySubject, take } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 import { REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';
-import {
-  type Command,
-  type ContractBase,
-  type DispatchCallback,
-  type DispatchCommandSubject,
-  type DispatchCommandSubjectEntry,
-  type DispatchCommandSubjectMap,
-  type DispatchHandler,
-} from './event-bus.types';
+import { type DispatchSubject, type DispatchSubjectMap, type Listener } from './event-bus.types';
 
 export class EventBus {
   private logger = new Logger('EventBus');
-  private dispatchSubjectMap: DispatchCommandSubjectMap = {};
+  private dispatchSubjectMap: DispatchSubjectMap = {};
 
   constructor() {
     this.logger.info('constructor');
   }
 
-  dispatch<Contract extends ContractBase>(
-    command: keyof Contract & Command,
-    payload: Contract[typeof command][0],
-    callback: DispatchCallback<Contract[typeof command][0]>,
-  ): void {
-    this.dispatch$(command, payload).subscribe(callback);
-  }
-
-  async dispatchAsync<Contract extends ContractBase>(
-    command: keyof Contract & Command,
-    payload: Contract[typeof command][0],
-  ): Promise<Contract[typeof command][1]> {
-    return lastValueFrom(this.dispatch$(command, payload));
-  }
-
-  dispatch$<Contract extends ContractBase>(
-    command: keyof Contract & Command,
-    payload: Contract[typeof command][0],
-  ): Observable<Contract[typeof command][1]> {
+  dispatch<Payload>(command: string, payload: Payload) {
     this.logger.info('dispatch', command, payload);
-
-    const dispatchEntrySubject = new AsyncSubject<Contract[typeof command][1]>();
-    this.ensureDispatchCommandSubject<Contract>(command).next({
-      payload,
-      subject: dispatchEntrySubject,
-    });
-
-    return dispatchEntrySubject.asObservable().pipe(take(1));
+    this.ensureDispatchSubject(command).next(payload);
   }
 
-  handle<Contract extends ContractBase>(
-    command: keyof Contract & Command,
-    handler: DispatchHandler<Contract[typeof command][0], Contract[typeof command][1]>,
-  ): void {
-    this.ensureDispatchCommandSubject<Contract>(command)
-      .asObservable()
-      .subscribe(({ payload, subject }) => {
-        handler((result: Contract[typeof command][1]) => {
-          this.logger.info('handle', command, result);
-          subject.next(result);
-          subject.complete();
-        }, payload);
-      });
+  listen<Payload>(command: string, listener: Listener<Payload>): () => void {
+    const { unsubscribe } = this.ensureDispatchSubject<Payload>(command).asObservable().subscribe(listener);
 
-    this.logger.info('handle', `Registered handler for "${command}"`);
+    this.logger.info('listen', `Registered listener for "${command}"`);
+
+    return unsubscribe;
   }
 
-  private ensureDispatchCommandSubject<Contract extends ContractBase>(
-    command: keyof Contract & Command,
-  ): DispatchCommandSubject<Contract[typeof command][0], Contract[typeof command][1]> {
+  private ensureDispatchSubject<Payload>(command: string): DispatchSubject<Payload> {
     if (!this.dispatchSubjectMap[command]) {
-      this.dispatchSubjectMap[command] = new ReplaySubject<
-        DispatchCommandSubjectEntry<Contract[typeof command][0], Contract[typeof command][1]>
-      >(undefined, REPLAY_BUFFER_WINDOW_TIME);
+      this.dispatchSubjectMap[command] = new ReplaySubject<unknown>(undefined, REPLAY_BUFFER_WINDOW_TIME);
     }
-    return this.dispatchSubjectMap[command] as DispatchCommandSubject<
-      Contract[typeof command][0],
-      Contract[typeof command][1]
-    >;
+    return this.dispatchSubjectMap[command] as DispatchSubject<Payload>;
   }
 }

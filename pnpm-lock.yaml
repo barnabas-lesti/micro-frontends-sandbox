@@ -95,6 +95,9 @@ importers:
 
   micro-frontends/config:
     dependencies:
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
@@ -104,9 +107,15 @@ importers:
       '@wrs-micro-frontends/config':
         specifier: '*'
         version: link:../config
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
+      rxjs:
+        specifier: ^7.8.1
+        version: 7.8.1
 
   packages/event-bus:
     dependencies:

@@ -1,10 +1,10 @@
 import { delay, Logger } from '@wrs-packages/utility';
 
 import { RemoteConfigCommand, type RemoteConfigContract } from './remote-config.contract';
-import { remoteConfigMock } from './remote-config.mock';
+import { remoteConfigMock } from './remote-config.mocks';
 
 export class RemoteConfigService {
-  private static _instance: RemoteConfigService;
+  private static _instance: RemoteConfigService | undefined;
 
   static create(): RemoteConfigService {
     return this._instance || (this._instance = new this());
@@ -19,9 +19,9 @@ export class RemoteConfigService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus.handle<RemoteConfigContract>(RemoteConfigCommand.Get, (resolve) => {
+    window.wrsEventBus?.listen<RemoteConfigContract[RemoteConfigCommand.Get]>(RemoteConfigCommand.Get, (payload) => {
       // TODO: Implement logic
-      delay(() => resolve(remoteConfigMock));
+      delay(() => payload.onSuccess?.(remoteConfigMock));
     });
   }
 }

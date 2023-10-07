@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": ["**/*.ts", "./global.d.ts"],
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/",
@@ -11,6 +10,7 @@
     "target": "es6",
     "allowJs": true,
     "lib": ["es2017", "dom"],
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "strict": true
   }
 }

@@ -5,5 +5,9 @@ export const enum RemoteConfigCommand {
 }
 
 export type RemoteConfigContract = {
-  [RemoteConfigCommand.Get]: [null, RemoteConfig];
+  [RemoteConfigCommand.Get]: GetRemoteConfigPayload;
 };
+
+interface GetRemoteConfigPayload {
+  onSuccess?: (remoteConfig: RemoteConfig) => void;
+}

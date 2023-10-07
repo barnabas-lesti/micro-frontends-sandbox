@@ -12,7 +12,6 @@ export async function bootstrap(): Promise<void> {
 
   logInfo('Loading micro frontends...');
   await Promise.all(MICRO_FRONTENDS);
-  // await Promise.all(loaders.map((loader) => delay(() => loader.default())));
   logInfo('Micro frontends loaded.');
 }
 

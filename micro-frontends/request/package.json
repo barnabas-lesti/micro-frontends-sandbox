@@ -5,6 +5,8 @@
   "scripts": {},
   "dependencies": {
     "@wrs-micro-frontends/config": "*",
-    "@wrs-packages/utility": "*"
+    "@wrs-packages/event-bus": "*",
+    "@wrs-packages/utility": "*",
+    "rxjs": "^7.8.1"
   }
 }

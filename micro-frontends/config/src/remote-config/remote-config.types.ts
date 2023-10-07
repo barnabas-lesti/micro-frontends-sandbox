@@ -1,3 +1,1 @@
-export interface RemoteConfig {
-  baseURL: string;
-}
+export interface RemoteConfig {}
