@@ -1,6 +1,6 @@
 import { Logger } from '@wrs-packages/utility';
 
-import { type GetAPIRequestPayload, RequestCommand, type RequestContract } from './request.contract';
+import { type GetAPIRequestPayload, type RequestContract } from './request.contract';
 import { apiBaseURLRequiredError } from './request.errors';
 
 export class RequestService {
@@ -21,9 +21,8 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<RequestContract<unknown>[RequestCommand.GetAPI]>(
-      RequestCommand.GetAPI,
-      async (payload) => this.getAPI(payload),
+    window.wrsEventBus?.listen<RequestContract.GetAPI<unknown>>('request:getAPI', async (payload) =>
+      this.getAPI(payload),
     );
   }
 

@@ -1,8 +1,8 @@
-import { RequestCommand, type RequestContract } from '@wrs-micro-frontends/request/types';
+import { type RequestContract } from '@wrs-micro-frontends/request/types';
 import { Logger } from '@wrs-packages/utility';
 
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
-import { RemoteConfigCommand, type RemoteConfigContract } from './remote-config.contract';
+import { type RemoteConfigContract } from './remote-config.contract';
 import { type RemoteConfig } from './remote-config.types';
 
 export class RemoteConfigService {
@@ -22,8 +22,8 @@ export class RemoteConfigService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<RemoteConfigContract[RemoteConfigCommand.Get]>(
-      RemoteConfigCommand.Get,
+    window.wrsEventBus?.listen<RemoteConfigContract.Get>(
+      'remoteConfig:get',
       async (payload) => payload.onSuccess?.(await this.get()),
     );
   }
@@ -31,7 +31,7 @@ export class RemoteConfigService {
   async get(): Promise<RemoteConfig> {
     if (!this._remoteConfigPromise) {
       this._remoteConfigPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<RequestContract<RemoteConfig>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
+        window.wrsEventBus?.dispatch<RequestContract.GetAPI<RemoteConfig>>('request:getAPI', {
           path: REMOTE_CONFIG_API_PATH,
           onSuccess: resolve,
         });

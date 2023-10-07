@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
+    "@wrs-packages/utility": "*"
+  },
+  "devDependencies": {
     "@wrs-packages/event-bus": "*",
-    "@wrs-packages/startup-config": "*",
-    "@wrs-packages/utility": "*",
-    "rxjs": "^7.8.1"
+    "@wrs-packages/startup-config": "*"
   }
 }

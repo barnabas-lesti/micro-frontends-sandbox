@@ -1,15 +1,7 @@
-// V1
-export const enum RequestCommand {
-  GetAPI = 'request:getAPI',
-}
-
-export type RequestContract<ResponseData> = {
-  [RequestCommand.GetAPI]: GetAPIRequestPayload<ResponseData>;
-};
-
-// V2
-export interface RequestContractV2<ResponseData> {
-  'request:getAPI': GetAPIRequestPayload<ResponseData>;
+export namespace RequestContract {
+  export interface GetAPI<ResponseData> {
+    'request:getAPI': GetAPIRequestPayload<ResponseData>;
+  }
 }
 
 export interface GetAPIRequestPayload<ResponseData> {

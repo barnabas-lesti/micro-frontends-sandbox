@@ -1,12 +1,6 @@
 import { Logger } from '@wrs-packages/utility';
 
-import {
-  type IsBrowserPlatformContractV2,
-  PlatformCommand,
-  type PlatformContract,
-  type PlatformContractV2,
-  type PlatformContractV3,
-} from './platform.contract';
+import { type PlatformContract } from './platform.contract';
 import { type BrowserType } from './platform.types';
 
 export class PlatformService {
@@ -27,32 +21,15 @@ export class PlatformService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<PlatformContract[PlatformCommand.IsBrowser]>(
-      PlatformCommand.IsBrowser,
+    window.wrsEventBus?.listen<PlatformContract.IsBrowser>(
+      'platform:isBrowser',
       (payload) => payload.onSuccess?.(this.isBrowser()),
     );
 
-    window.wrsEventBus?.listen<PlatformContract[PlatformCommand.GetBrowserType]>(
-      PlatformCommand.GetBrowserType,
+    window.wrsEventBus?.listen<PlatformContract.GetBrowserType>(
+      'platform:getBrowserType',
       (payload) => payload.onSuccess?.(this.getBrowserType()),
     );
-
-    window.wrsEventBusV2?.listen<PlatformContractV2>('platform:isBrowser', (payload) => {
-      void payload;
-      // Not good: "payload: IsBrowserPayload | GetBrowserTypePayload".
-      // The same issue would happen if the EventBus itself would be generic and we would like to add contracts with
-      // & or | in the custom.d.ts file.
-    });
-
-    window.wrsEventBusV2?.listen<IsBrowserPlatformContractV2>('platform:isBrowser', (payload) => {
-      void payload;
-      // This is ok: "payload: IsBrowserPayload".
-    });
-
-    window.wrsEventBusV2?.listen<PlatformContractV3.IsBrowser>('platform:isBrowser', (payload) => {
-      void payload;
-      // This is ok: "payload: IsBrowserPayload".
-    });
   }
 
   isBrowser(): boolean {

@@ -95,45 +95,42 @@ importers:
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
-      rxjs:
-        specifier: ^7.8.1
-        version: 7.8.1
 
   micro-frontends/platform:
     dependencies:
-      '@wrs-packages/event-bus':
-        specifier: '*'
-        version: link:../../packages/event-bus
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
+    devDependencies:
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
 
   micro-frontends/remote-config:
     dependencies:
+      '@wrs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
+    devDependencies:
       '@wrs-micro-frontends/request':
         specifier: '*'
         version: link:../request
       '@wrs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@wrs-packages/utility':
-        specifier: '*'
-        version: link:../../packages/utility
 
   micro-frontends/request:
     dependencies:
+      '@wrs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
+    devDependencies:
       '@wrs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
       '@wrs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
-      '@wrs-packages/utility':
-        specifier: '*'
-        version: link:../../packages/utility
-      rxjs:
-        specifier: ^7.8.1
-        version: 7.8.1
 
   packages/event-bus:
     dependencies:
@@ -151,9 +148,6 @@ importers:
       moment:
         specifier: ^2.29.4
         version: 2.29.4
-      rxjs:
-        specifier: ^7.8.1
-        version: 7.8.1
 
 packages:
 
