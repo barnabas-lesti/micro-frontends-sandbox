@@ -1,3 +1,3 @@
-import { RequestService } from './src/request/request.service';
+import { RequestService } from './src/request.service';
 
 void RequestService.create();

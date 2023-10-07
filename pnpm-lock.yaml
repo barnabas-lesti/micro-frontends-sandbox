@@ -77,9 +77,9 @@ importers:
 
   apps/web3:
     dependencies:
-      '@wrs-micro-frontends/config':
+      '@wrs-micro-frontends/remote-config':
         specifier: '*'
-        version: link:../../micro-frontends/config
+        version: link:../../micro-frontends/remote-config
       '@wrs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
@@ -96,7 +96,7 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1
 
-  micro-frontends/config:
+  micro-frontends/remote-config:
     dependencies:
       '@wrs-micro-frontends/request':
         specifier: '*'

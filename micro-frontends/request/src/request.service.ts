@@ -1,11 +1,7 @@
-import { delay, Logger } from '@wrs-packages/utility';
+import { Logger } from '@wrs-packages/utility';
 
-import {
-  type GetAPIRequestPayload,
-  type PostAPIRequestPayload,
-  RequestCommand,
-  type RequestContract,
-} from './request.contract';
+import { type GetAPIRequestPayload, RequestCommand, type RequestContract } from './request.contract';
+import { apiBaseURLRequiredError } from './request.errors';
 
 export class RequestService {
   private static _instance: RequestService | undefined;
@@ -19,7 +15,7 @@ export class RequestService {
   }
 
   private logger = new Logger('RequestService');
-  private apiBaseURL = 'https://run.mocky.io';
+  private apiBaseURL = window.wrsStartupConfig?.apiBaseURL;
 
   private constructor() {
     this.logger.info('constructor');
@@ -28,31 +24,15 @@ export class RequestService {
       RequestCommand.GetAPI,
       async (payload) => this.getAPI(payload),
     );
-
-    window.wrsEventBus?.listen<RequestContract<unknown, unknown>[RequestCommand.PostAPI]>(
-      RequestCommand.PostAPI,
-      async (payload) => this.postAPI(payload),
-    );
   }
 
   async getAPI<ResponseData>(payload: GetAPIRequestPayload<ResponseData>): Promise<ResponseData> {
+    if (!this.apiBaseURL) throw apiBaseURLRequiredError();
+
     const url = this.apiBaseURL + payload.path;
     const response = await fetch(url);
     const data = (await response.json()) as ResponseData;
     payload.onSuccess?.(data);
     return data;
-  }
-
-  async postAPI<RequestData, ResponseData>(
-    payload: PostAPIRequestPayload<RequestData, ResponseData>,
-  ): Promise<ResponseData> {
-    const url = this.apiBaseURL + payload.path;
-
-    // TODO: implement logic
-    return delay(() => {
-      const response = { method: 'POST', data: payload.data, url } as ResponseData;
-      payload.onSuccess?.(response);
-      return response;
-    });
   }
 }

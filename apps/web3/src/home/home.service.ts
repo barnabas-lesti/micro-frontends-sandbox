@@ -1,12 +1,9 @@
+import { RemoteConfigCommand, type RemoteConfigContract } from '@wrs-micro-frontends/remote-config/types';
 import { Logger } from '@wrs-packages/utility';
-import {
-  RemoteConfigCommand,
-  type RemoteConfigContract,
-} from 'micro-frontends/config/src/remote-config/remote-config.contract';
+import { RequestCommand, type RequestContract } from 'micro-frontends/request/types';
 
-// interface BannerData {
-//   imageURL?: string;
-// }
+import { PAGE_DATA_API_PATH } from './home.const';
+import { type PageData } from './home.types';
 
 export class HomeService {
   private static _instance: HomeService | undefined;
@@ -20,46 +17,37 @@ export class HomeService {
   }
 
   private logger = new Logger('HomeService');
+  private _isBannerEnabled: Promise<boolean> | undefined;
+  private _pageData: Promise<PageData> | undefined;
 
   private constructor() {
     this.logger.info('constructor');
 
-    this.isBannerEnabled().then((isEnabled) => this.logger.info('constructor', `isBannerEnabled: "${isEnabled}"`));
-    this.isBannerEnabled().then((isEnabled) => this.logger.info('constructor', `isBannerEnabled: "${isEnabled}"`));
-    this.isBannerEnabled().then((isEnabled) => this.logger.info('constructor', `isBannerEnabled: "${isEnabled}"`));
+    this.isBannerEnabled().then((isEnabled) => this.logger.info('constructor', 'isBannerEnabled:', isEnabled));
 
-    // window.wrsEventBus?.dispatch<StartupConfigContract[StartupConfigCommand.Get]>(StartupConfigCommand.Get, {
-    //   onSuccess: (startupConfig) => {
-    //     console.log(startupConfig);
-    //   },
-    // });
-
-    // window.wrsEventBus?.dispatch<RequestContract<null, null>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
-    //   path: '/test-get-api',
-    //   onSuccess: (response) => {
-    //     console.log(response);
-    //   },
-    // });
-
-    // window.wrsEventBus?.dispatch<RequestContract<{ param1: number }, null>[RequestCommand.PostAPI]>(
-    //   RequestCommand.PostAPI,
-    //   {
-    //     path: '/test-post-api',
-    //     data: { param1: 10 },
-    //     onSuccess: (response) => {
-    //       console.log(response);
-    //     },
-    //   },
-    // );
+    this.getPageData().then((pageData) => this.logger.info('constructor', 'pageData:', pageData));
   }
 
   async isBannerEnabled(): Promise<boolean> {
-    return new Promise((resolve) => {
-      window.wrsEventBus?.dispatch<RemoteConfigContract[RemoteConfigCommand.Get]>(RemoteConfigCommand.Get, {
-        onSuccess: (startupConfig) => resolve(!!startupConfig.features?.isHomePageBannerEnabled),
+    if (!this._isBannerEnabled) {
+      this._isBannerEnabled = new Promise((resolve) => {
+        window.wrsEventBus?.dispatch<RemoteConfigContract[RemoteConfigCommand.Get]>(RemoteConfigCommand.Get, {
+          onSuccess: (startupConfig) => resolve(!!startupConfig.features?.isHomePageBannerEnabled),
+        });
       });
-    });
+    }
+    return this._isBannerEnabled;
   }
 
-  // async fetchBannerData(): Promise<BannerData> {}
+  async getPageData(): Promise<PageData> {
+    if (!this._pageData) {
+      this._pageData = new Promise((resolve) => {
+        window.wrsEventBus?.dispatch<RequestContract<null, PageData>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
+          path: PAGE_DATA_API_PATH,
+          onSuccess: resolve,
+        });
+      });
+    }
+    return this._pageData;
+  }
 }

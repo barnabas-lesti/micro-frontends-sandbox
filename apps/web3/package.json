@@ -7,7 +7,7 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@wrs-micro-frontends/config": "*",
+    "@wrs-micro-frontends/remote-config": "*",
     "@wrs-micro-frontends/request": "*",
     "@wrs-packages/event-bus": "*",
     "@wrs-packages/startup-config": "*",

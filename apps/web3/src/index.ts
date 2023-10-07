@@ -1,6 +1,6 @@
 import { Logger } from '@wrs-packages/utility';
 
-import { HomeService } from './home/home.service';
+import { HomeService } from './home';
 import { bootstrap } from './index.functions';
 
 const logger = new Logger('index');
