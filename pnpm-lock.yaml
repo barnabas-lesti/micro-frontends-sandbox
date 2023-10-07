@@ -77,36 +77,60 @@ importers:
 
   apps/web3:
     dependencies:
-      '@wrs-micro-frontends/config':
+      '@wrs-micro-frontends/platform':
         specifier: '*'
-        version: link:../../micro-frontends/config
+        version: link:../../micro-frontends/platform
+      '@wrs-micro-frontends/remote-config':
+        specifier: '*'
+        version: link:../../micro-frontends/remote-config
       '@wrs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
       '@wrs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
+      '@wrs-packages/startup-config':
+        specifier: '*'
+        version: link:../../packages/startup-config
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
-      rxjs:
-        specifier: ^7.8.1
-        version: 7.8.1
 
-  micro-frontends/config:
+  micro-frontends/platform:
     dependencies:
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
+    devDependencies:
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
+
+  micro-frontends/remote-config:
+    dependencies:
+      '@wrs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
+    devDependencies:
+      '@wrs-micro-frontends/request':
+        specifier: '*'
+        version: link:../request
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
 
   micro-frontends/request:
     dependencies:
-      '@wrs-micro-frontends/config':
-        specifier: '*'
-        version: link:../config
       '@wrs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
+    devDependencies:
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
+      '@wrs-packages/startup-config':
+        specifier: '*'
+        version: link:../../packages/startup-config
 
   packages/event-bus:
     dependencies:
@@ -117,14 +141,13 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1
 
+  packages/startup-config: {}
+
   packages/utility:
     dependencies:
       moment:
         specifier: ^2.29.4
         version: 2.29.4
-      rxjs:
-        specifier: ^7.8.1
-        version: 7.8.1
 
 packages:
 

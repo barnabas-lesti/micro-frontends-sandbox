@@ -49,4 +49,12 @@ module.exports = {
 
     '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
   },
+  overrides: [
+    {
+      files: '**/*.contract.ts',
+      rules: {
+        '@typescript-eslint/no-namespace': 'off',
+      },
+    },
+  ],
 };

@@ -1,9 +1,12 @@
 {
-  "name": "@wrs-micro-frontends/config",
+  "name": "@wrs-micro-frontends/platform",
   "type": "module",
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
     "@wrs-packages/utility": "*"
+  },
+  "devDependencies": {
+    "@wrs-packages/event-bus": "*"
   }
 }

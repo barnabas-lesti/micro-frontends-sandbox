@@ -1,5 +1,5 @@
 {
-  "name": "@wrs-micro-frontends/request",
+  "name": "@wrs-micro-frontends/remote-config",
   "type": "module",
   "version": "1.0.0",
   "scripts": {},
@@ -7,7 +7,7 @@
     "@wrs-packages/utility": "*"
   },
   "devDependencies": {
-    "@wrs-packages/event-bus": "*",
-    "@wrs-packages/startup-config": "*"
+    "@wrs-micro-frontends/request": "*",
+    "@wrs-packages/event-bus": "*"
   }
 }
