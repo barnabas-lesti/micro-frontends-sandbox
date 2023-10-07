@@ -13,7 +13,7 @@ export class EventBus {
   }
 
   dispatch<Contract>(command: keyof Contract & string, payload: Contract[typeof command]) {
-    this.logger.info('dispatchV2', command, payload);
+    this.logger.info('dispatch', command, payload);
     this.ensureDispatchSubject(command).next(payload);
   }
 
