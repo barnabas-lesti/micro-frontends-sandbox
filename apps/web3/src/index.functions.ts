@@ -1,5 +1,5 @@
-import { EventBus } from '@wrs-packages/event-bus';
-import { Logger } from '@wrs-packages/utility';
+import { EventBus } from '@mfs-packages/event-bus';
+import { Logger } from '@mfs-packages/utility';
 
 import { MICRO_FRONTENDS, STARTUP_CONFIG } from './index.const';
 
@@ -17,9 +17,9 @@ export async function bootstrap(): Promise<void> {
 }
 
 function createEventBus(): void {
-  window.wrsEventBus = new EventBus();
+  window.mfsEventBus = new EventBus();
 }
 
 function createStartupConfig(): void {
-  window.wrsStartupConfig = STARTUP_CONFIG;
+  window.mfsStartupConfig = STARTUP_CONFIG;
 }

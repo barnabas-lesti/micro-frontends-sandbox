@@ -1,4 +1,4 @@
-import { Logger } from '@wrs-packages/utility';
+import { Logger } from '@mfs-packages/utility';
 import { ReplaySubject } from 'rxjs';
 
 import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';

@@ -1,4 +1,4 @@
-import { Logger } from '@wrs-packages/utility';
+import { Logger } from '@mfs-packages/utility';
 
 import { HomeService } from './home';
 import { bootstrap } from './index.functions';

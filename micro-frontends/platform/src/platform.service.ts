@@ -1,4 +1,4 @@
-import { Logger } from '@wrs-packages/utility';
+import { Logger } from '@mfs-packages/utility';
 
 import { type PlatformContract } from './platform.contract';
 import { type BrowserType } from './platform.types';
@@ -21,12 +21,12 @@ export class PlatformService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<PlatformContract.IsBrowser>(
+    window.mfsEventBus?.listen<PlatformContract.IsBrowser>(
       'platform:isBrowser',
       (payload) => payload.onSuccess?.(this.isBrowser()),
     );
 
-    window.wrsEventBus?.listen<PlatformContract.GetBrowserType>(
+    window.mfsEventBus?.listen<PlatformContract.GetBrowserType>(
       'platform:getBrowserType',
       (payload) => payload.onSuccess?.(this.getBrowserType()),
     );

@@ -1,6 +1,6 @@
-import { type BrowserType, type PlatformContract } from '@wrs-micro-frontends/platform/types';
-import { type RemoteConfigContract } from '@wrs-micro-frontends/remote-config/types';
-import { Logger } from '@wrs-packages/utility';
+import { type BrowserType, type PlatformContract } from '@mfs-micro-frontends/platform/types';
+import { type RemoteConfigContract } from '@mfs-micro-frontends/remote-config/types';
+import { Logger } from '@mfs-packages/utility';
 import { type RequestContract } from 'micro-frontends/request/types';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -51,7 +51,7 @@ export class HomeService {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<RemoteConfigContract.Get>('remoteConfig:get', {
+        window.mfsEventBus?.dispatch<RemoteConfigContract.Get>('remoteConfig:get', {
           onSuccess: (startupConfig) => resolve(!!startupConfig.features?.isHomePageBannerEnabled),
         });
       });
@@ -62,7 +62,7 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<RequestContract.GetToAPI<PageData>>('request:getToAPI', {
+        window.mfsEventBus?.dispatch<RequestContract.GetToAPI<PageData>>('request:getToAPI', {
           path: PAGE_DATA_API_PATH,
           onSuccess: resolve,
         });
@@ -74,7 +74,7 @@ export class HomeService {
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
       this._isBrowserPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<PlatformContract.IsBrowser>('platform:isBrowser', {
+        window.mfsEventBus?.dispatch<PlatformContract.IsBrowser>('platform:isBrowser', {
           onSuccess: resolve,
         });
       });
@@ -85,7 +85,7 @@ export class HomeService {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<PlatformContract.GetBrowserType>('platform:getBrowserType', {
+        window.mfsEventBus?.dispatch<PlatformContract.GetBrowserType>('platform:getBrowserType', {
           onSuccess: resolve,
         });
       });

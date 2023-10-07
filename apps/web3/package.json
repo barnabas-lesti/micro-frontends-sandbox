@@ -1,5 +1,5 @@
 {
-  "name": "@wrs-apps/web3",
+  "name": "@mfs-apps/web3",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -7,11 +7,11 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@wrs-micro-frontends/remote-config": "*",
-    "@wrs-micro-frontends/request": "*",
-    "@wrs-micro-frontends/platform": "*",
-    "@wrs-packages/event-bus": "*",
-    "@wrs-packages/startup-config": "*",
-    "@wrs-packages/utility": "*"
+    "@mfs-micro-frontends/remote-config": "*",
+    "@mfs-micro-frontends/request": "*",
+    "@mfs-micro-frontends/platform": "*",
+    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/startup-config": "*",
+    "@mfs-packages/utility": "*"
   }
 }

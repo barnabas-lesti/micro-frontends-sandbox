@@ -1,3 +1,3 @@
-# web3-rxjs-sandbox
+# Micro Frontends sandbox
 
-Sandbox project to test out Web3 with RxJs stuff.
+Sandbox project to test out Micro Frontends.

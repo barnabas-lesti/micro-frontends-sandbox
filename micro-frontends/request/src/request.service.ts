@@ -1,4 +1,4 @@
-import { Logger } from '@wrs-packages/utility';
+import { Logger } from '@mfs-packages/utility';
 
 import { type GetAPIRequestPayload, type RequestContract } from './request.contract';
 import { apiBaseURLRequiredError } from './request.errors';
@@ -16,12 +16,12 @@ export class RequestService {
 
   private logger = new Logger('RequestService');
 
-  readonly apiBaseURL = window.wrsStartupConfig?.apiBaseURL;
+  readonly apiBaseURL = window.mfsStartupConfig?.apiBaseURL;
 
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<RequestContract.GetToAPI<unknown>>('request:getToAPI', async (payload) => {
+    window.mfsEventBus?.listen<RequestContract.GetToAPI<unknown>>('request:getToAPI', async (payload) => {
       try {
         const data = await this.getToAPI(payload);
         payload.onSuccess?.(data);

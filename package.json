@@ -1,9 +1,9 @@
 {
-  "name": "@wrs/root",
+  "name": "@mfs/root",
   "version": "1.0.0",
   "author": "Barnabas Lesti <barnabas.lesti@gmail.com>",
   "license": "ISC",
-  "description": "",
+  "description": "Micro Frontend sandbox.",
   "packageManager": "pnpm@8.6.0",
   "scripts": {
     "clean": "node ./scripts/clean.cli",

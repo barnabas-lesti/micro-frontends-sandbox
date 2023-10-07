@@ -77,64 +77,64 @@ importers:
 
   apps/web3:
     dependencies:
-      '@wrs-micro-frontends/platform':
+      '@mfs-micro-frontends/platform':
         specifier: '*'
         version: link:../../micro-frontends/platform
-      '@wrs-micro-frontends/remote-config':
+      '@mfs-micro-frontends/remote-config':
         specifier: '*'
         version: link:../../micro-frontends/remote-config
-      '@wrs-micro-frontends/request':
+      '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
-      '@wrs-packages/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@wrs-packages/startup-config':
+      '@mfs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
-      '@wrs-packages/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
 
   micro-frontends/platform:
     dependencies:
-      '@wrs-packages/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@wrs-packages/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
 
   micro-frontends/remote-config:
     dependencies:
-      '@wrs-packages/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@wrs-micro-frontends/request':
+      '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../request
-      '@wrs-packages/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
 
   micro-frontends/request:
     dependencies:
-      '@wrs-packages/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@wrs-packages/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@wrs-packages/startup-config':
+      '@mfs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
 
   packages/event-bus:
     dependencies:
-      '@wrs-packages/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../utility
       rxjs:
