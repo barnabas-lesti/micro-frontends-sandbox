@@ -1,1 +1,1 @@
-export { RequestCommand, type RequestContract } from './src/request.contract';
+export { type GetAPIRequestCommand, RequestCommand, type RequestContract } from './src/request.contract';

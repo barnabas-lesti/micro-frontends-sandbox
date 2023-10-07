@@ -62,7 +62,7 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<RequestContract<null, PageData>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
+        window.wrsEventBus?.dispatch<RequestContract<PageData>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
           path: PAGE_DATA_API_PATH,
           onSuccess: resolve,
         });

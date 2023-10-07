@@ -21,7 +21,7 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<RequestContract<unknown, unknown>[RequestCommand.GetAPI]>(
+    window.wrsEventBus?.listen<RequestContract<unknown>[RequestCommand.GetAPI]>(
       RequestCommand.GetAPI,
       async (payload) => this.getAPI(payload),
     );

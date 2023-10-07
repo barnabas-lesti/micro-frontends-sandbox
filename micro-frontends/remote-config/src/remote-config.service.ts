@@ -31,13 +31,10 @@ export class RemoteConfigService {
   async get(): Promise<RemoteConfig> {
     if (!this._remoteConfigPromise) {
       this._remoteConfigPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<RequestContract<null, RemoteConfig>[RequestCommand.GetAPI]>(
-          RequestCommand.GetAPI,
-          {
-            path: REMOTE_CONFIG_API_PATH,
-            onSuccess: resolve,
-          },
-        );
+        window.wrsEventBus?.dispatch<RequestContract<RemoteConfig>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
+          path: REMOTE_CONFIG_API_PATH,
+          onSuccess: resolve,
+        });
       });
     }
     return this._remoteConfigPromise;
