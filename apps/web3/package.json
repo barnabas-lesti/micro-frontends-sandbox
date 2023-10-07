@@ -9,6 +9,7 @@
   "dependencies": {
     "@wrs-micro-frontends/remote-config": "*",
     "@wrs-micro-frontends/request": "*",
+    "@wrs-micro-frontends/platform": "*",
     "@wrs-packages/event-bus": "*",
     "@wrs-packages/startup-config": "*",
     "@wrs-packages/utility": "*",

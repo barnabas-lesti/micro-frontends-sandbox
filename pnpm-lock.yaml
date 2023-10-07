@@ -77,6 +77,9 @@ importers:
 
   apps/web3:
     dependencies:
+      '@wrs-micro-frontends/platform':
+        specifier: '*'
+        version: link:../../micro-frontends/platform
       '@wrs-micro-frontends/remote-config':
         specifier: '*'
         version: link:../../micro-frontends/remote-config
@@ -95,6 +98,15 @@ importers:
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
+
+  micro-frontends/platform:
+    dependencies:
+      '@wrs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
+      '@wrs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
 
   micro-frontends/remote-config:
     dependencies:

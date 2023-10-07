@@ -10,5 +10,18 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "cSpell.words": ["archi", "devkit", "frontends", "Lesti", "mfes", "microapp", "obgs", "unlisten"]
+  "cSpell.words": [
+    "archi",
+    "crios",
+    "devkit",
+    "frontends",
+    "fxios",
+    "Lesti",
+    "mfes",
+    "microapp",
+    "obgs",
+    "samsungbrowser",
+    "ucbrowser",
+    "unlisten"
+  ]
 }
