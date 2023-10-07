@@ -8,7 +8,7 @@ export type RequestContract<ResponseData> = {
 };
 
 // V2
-export interface GetAPIRequestCommand<ResponseData> {
+export interface RequestContractV2<ResponseData> {
   'request:getAPI': GetAPIRequestPayload<ResponseData>;
 }
 

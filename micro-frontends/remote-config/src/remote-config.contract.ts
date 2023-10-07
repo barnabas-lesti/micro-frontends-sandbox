@@ -10,7 +10,7 @@ export type RemoteConfigContract = {
 };
 
 // V2
-export interface GetRemoteConfigCommand {
+export interface RemoteConfigContractV2 {
   'config:remoteConfig:get': GetRemoteConfigPayload;
 }
 

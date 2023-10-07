@@ -12,13 +12,18 @@ export type PlatformContract = {
 };
 
 // V2
-export interface IsBrowserPlatformCommand {
+export interface IsBrowserPlatformContractV2 {
   'platform:isBrowser': IsBrowserPayload;
 }
 
-export interface GetBrowserTypePlatformCommand {
+export interface GetBrowserTypePlatformContractV2 {
   'platform:getBrowserType': GetBrowserTypePayload;
 }
+
+export type PlatformContractV2 = {
+  'platform:isBrowser': IsBrowserPayload;
+  'platform:getBrowserType': GetBrowserTypePayload;
+};
 
 interface IsBrowserPayload {
   onSuccess?: (isBrowser: boolean) => void;
