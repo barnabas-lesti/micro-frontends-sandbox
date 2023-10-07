@@ -21,12 +21,12 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.wrsEventBus?.listen<RequestContract.GetAPI<unknown>>('request:getAPI', async (payload) =>
-      this.getAPI(payload),
+    window.wrsEventBus?.listen<RequestContract.GetToAPI<unknown>>('request:getToAPI', async (payload) =>
+      this.getToAPI(payload),
     );
   }
 
-  async getAPI<ResponseData>(payload: GetAPIRequestPayload<ResponseData>): Promise<ResponseData> {
+  async getToAPI<ResponseData>(payload: GetAPIRequestPayload<ResponseData>): Promise<ResponseData> {
     if (!this.apiBaseURL) throw apiBaseURLRequiredError();
 
     const url = this.apiBaseURL + payload.path;

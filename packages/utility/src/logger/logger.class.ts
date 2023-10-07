@@ -25,6 +25,6 @@ export class Logger {
   }
 
   private formatMessage(method: string, message?: string): string {
-    return `[${moment().format('hh:mm:ss')}][${this.sourceID}][${method}]${message ? ' ' + message : ''}`;
+    return `[${moment().format('HH:mm:ss')}][${this.sourceID}][${method}]${message ? ' ' + message : ''}`;
   }
 }

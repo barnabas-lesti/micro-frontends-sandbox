@@ -1,6 +1,6 @@
 export namespace RequestContract {
-  export interface GetAPI<ResponseData> {
-    'request:getAPI': GetAPIRequestPayload<ResponseData>;
+  export interface GetToAPI<ResponseData> {
+    'request:getToAPI': GetAPIRequestPayload<ResponseData>;
   }
 }
 

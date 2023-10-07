@@ -31,7 +31,7 @@ export class RemoteConfigService {
   async get(): Promise<RemoteConfig> {
     if (!this._remoteConfigPromise) {
       this._remoteConfigPromise = new Promise((resolve) => {
-        window.wrsEventBus?.dispatch<RequestContract.GetAPI<RemoteConfig>>('request:getAPI', {
+        window.wrsEventBus?.dispatch<RequestContract.GetToAPI<RemoteConfig>>('request:getToAPI', {
           path: REMOTE_CONFIG_API_PATH,
           onSuccess: resolve,
         });
