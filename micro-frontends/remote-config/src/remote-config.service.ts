@@ -17,7 +17,7 @@ export class RemoteConfigService {
   }
 
   private logger = new Logger('RemoteConfigService');
-  private _config: Promise<RemoteConfig> | undefined;
+  private _remoteConfigPromise: Promise<RemoteConfig> | undefined;
 
   private constructor() {
     this.logger.info('constructor');
@@ -29,8 +29,8 @@ export class RemoteConfigService {
   }
 
   async get(): Promise<RemoteConfig> {
-    if (!this._config) {
-      this._config = new Promise((resolve) => {
+    if (!this._remoteConfigPromise) {
+      this._remoteConfigPromise = new Promise((resolve) => {
         window.wrsEventBus?.dispatch<RequestContract<null, RemoteConfig>[RequestCommand.GetAPI]>(
           RequestCommand.GetAPI,
           {
@@ -40,6 +40,6 @@ export class RemoteConfigService {
         );
       });
     }
-    return this._config;
+    return this._remoteConfigPromise;
   }
 }

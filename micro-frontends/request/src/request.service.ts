@@ -15,7 +15,8 @@ export class RequestService {
   }
 
   private logger = new Logger('RequestService');
-  private apiBaseURL = window.wrsStartupConfig?.apiBaseURL;
+
+  readonly apiBaseURL = window.wrsStartupConfig?.apiBaseURL;
 
   private constructor() {
     this.logger.info('constructor');

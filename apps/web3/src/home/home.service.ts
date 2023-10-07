@@ -17,11 +17,11 @@ export class HomeService {
     this._instance = undefined;
   }
 
+  private _isBannerEnabledPromise: Promise<boolean> | undefined;
+  private _pageDataPromise: Promise<PageData> | undefined;
+  private _isBrowserPromise: Promise<boolean> | undefined;
+  private _browserTypePromise: Promise<BrowserType> | undefined;
   private logger = new Logger('HomeService');
-  private _isBannerEnabled: Promise<boolean> | undefined;
-  private _pageData: Promise<PageData> | undefined;
-  private _isBrowser: Promise<boolean> | undefined;
-  private _browserType: Promise<BrowserType> | undefined;
 
   private constructor() {
     this.logger.info('constructor');
@@ -49,47 +49,47 @@ export class HomeService {
   }
 
   async isBannerEnabled(): Promise<boolean> {
-    if (this._isBannerEnabled === undefined) {
-      this._isBannerEnabled = new Promise((resolve) => {
+    if (!this._isBannerEnabledPromise) {
+      this._isBannerEnabledPromise = new Promise((resolve) => {
         window.wrsEventBus?.dispatch<RemoteConfigContract[RemoteConfigCommand.Get]>(RemoteConfigCommand.Get, {
           onSuccess: (startupConfig) => resolve(!!startupConfig.features?.isHomePageBannerEnabled),
         });
       });
     }
-    return this._isBannerEnabled;
+    return this._isBannerEnabledPromise;
   }
 
   async getPageData(): Promise<PageData> {
-    if (!this._pageData) {
-      this._pageData = new Promise((resolve) => {
+    if (!this._pageDataPromise) {
+      this._pageDataPromise = new Promise((resolve) => {
         window.wrsEventBus?.dispatch<RequestContract<null, PageData>[RequestCommand.GetAPI]>(RequestCommand.GetAPI, {
           path: PAGE_DATA_API_PATH,
           onSuccess: resolve,
         });
       });
     }
-    return this._pageData;
+    return this._pageDataPromise;
   }
 
   async isBrowser(): Promise<boolean> {
-    if (this._isBrowser === undefined) {
-      this._isBrowser = new Promise((resolve) => {
+    if (!this._isBrowserPromise) {
+      this._isBrowserPromise = new Promise((resolve) => {
         window.wrsEventBus?.dispatch<PlatformContract[PlatformCommand.IsBrowser]>(PlatformCommand.IsBrowser, {
           onSuccess: resolve,
         });
       });
     }
-    return this._isBrowser;
+    return this._isBrowserPromise;
   }
 
   async getBrowserType(): Promise<BrowserType> {
-    if (this._browserType === undefined) {
-      this._browserType = new Promise((resolve) => {
+    if (!this._browserTypePromise) {
+      this._browserTypePromise = new Promise((resolve) => {
         window.wrsEventBus?.dispatch<PlatformContract[PlatformCommand.GetBrowserType]>(PlatformCommand.GetBrowserType, {
           onSuccess: resolve,
         });
       });
     }
-    return this._browserType;
+    return this._browserTypePromise;
   }
 }
