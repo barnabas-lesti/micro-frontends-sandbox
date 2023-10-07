@@ -5,6 +5,7 @@ import {
   PlatformCommand,
   type PlatformContract,
   type PlatformContractV2,
+  type PlatformContractV3,
 } from './platform.contract';
 import { type BrowserType } from './platform.types';
 
@@ -44,6 +45,11 @@ export class PlatformService {
     });
 
     window.wrsEventBusV2?.listen<IsBrowserPlatformContractV2>('platform:isBrowser', (payload) => {
+      void payload;
+      // This is ok: "payload: IsBrowserPayload".
+    });
+
+    window.wrsEventBusV2?.listen<PlatformContractV3.IsBrowser>('platform:isBrowser', (payload) => {
       void payload;
       // This is ok: "payload: IsBrowserPayload".
     });

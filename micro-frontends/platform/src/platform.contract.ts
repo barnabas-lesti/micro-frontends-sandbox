@@ -25,6 +25,17 @@ export type PlatformContractV2 = {
   'platform:getBrowserType': GetBrowserTypePayload;
 };
 
+// V3
+// eslint-disable-next-line @typescript-eslint/no-namespace
+export namespace PlatformContractV3 {
+  export interface IsBrowser {
+    'platform:isBrowser': IsBrowserPayload;
+  }
+  export interface GetBrowserType {
+    'platform:getBrowserType': GetBrowserTypePayload;
+  }
+}
+
 interface IsBrowserPayload {
   onSuccess?: (isBrowser: boolean) => void;
 }
