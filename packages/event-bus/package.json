@@ -1,5 +1,5 @@
 {
-  "name": "@wrs-packages/shell",
+  "name": "@wrs-packages/event-bus",
   "type": "module",
   "version": "1.0.0",
   "scripts": {},

@@ -9,7 +9,7 @@
   "dependencies": {
     "@wrs-micro-frontends/config": "*",
     "@wrs-micro-frontends/request": "*",
-    "@wrs-packages/shell": "*",
+    "@wrs-packages/event-bus": "*",
     "@wrs-packages/utility": "*",
     "rxjs": "^7.8.1"
   }

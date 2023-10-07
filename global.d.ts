@@ -1,4 +1,4 @@
-import { type EventBus } from './packages/shell/contract';
+import { type EventBus } from './packages/event-bus';
 
 export {};
 

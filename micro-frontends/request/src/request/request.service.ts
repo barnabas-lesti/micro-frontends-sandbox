@@ -1,14 +1,18 @@
-import { RemoteConfigCommand, type RemoteConfigContract } from '@wrs-micro-frontends/config/contract';
 import { getRandomInteger, Logger } from '@wrs-packages/utility';
+import { RemoteConfigCommand, type RemoteConfigContract } from 'micro-frontends/config/types';
 
-import { RequestCommand, type RequestContract } from './request.types';
+import { RequestCommand, type RequestContract } from './request.contract';
 import { type MakeAPIRequestPayload, type MakeAPIRequestResponse } from './request.types';
 
 export class RequestService {
   private static _instance: RequestService;
 
-  static getInstance() {
+  static create(): RequestService {
     return this._instance || (this._instance = new this());
+  }
+
+  static destroy(): void {
+    this._instance = undefined;
   }
 
   private logger = new Logger('RequestService');

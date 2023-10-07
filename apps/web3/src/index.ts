@@ -1,4 +1,4 @@
-import { RequestCommand, type RequestContract } from '@wrs-micro-frontends/request/contract';
+import { RequestCommand, type RequestContract } from '@wrs-micro-frontends/request/types';
 import { Logger } from '@wrs-packages/utility';
 
 import { bootstrap } from './index.functions';
@@ -21,5 +21,3 @@ const logger = new Logger('index');
 
   logInfo('Application started.');
 })();
-
-

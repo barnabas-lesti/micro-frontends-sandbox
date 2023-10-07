@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "scripts": {},
   "dependencies": {
-    "@wrs-packages/utility": "*",
-    "@wrs-packages/shell": "*"
+    "@wrs-packages/utility": "*"
   }
 }
