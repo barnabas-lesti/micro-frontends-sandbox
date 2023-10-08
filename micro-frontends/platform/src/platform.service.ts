@@ -1,6 +1,5 @@
 import { Logger } from '@mfs-packages/utility';
 
-import { type PlatformContract } from './platform.contract';
 import { type BrowserType } from './platform.types';
 
 export class PlatformService {
@@ -21,15 +20,8 @@ export class PlatformService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus?.listen<PlatformContract.IsBrowser>(
-      'platform:isBrowser',
-      (payload) => payload.onSuccess?.(this.isBrowser()),
-    );
-
-    window.mfsEventBus?.listen<PlatformContract.GetBrowserType>(
-      'platform:getBrowserType',
-      (payload) => payload.onSuccess?.(this.getBrowserType()),
-    );
+    window.mfsEventBus?.listen('platform:isBrowser', (payload) => payload.onSuccess?.(this.isBrowser()));
+    window.mfsEventBus?.listen('platform:getBrowserType', (payload) => payload.onSuccess?.(this.getBrowserType()));
   }
 
   isBrowser(): boolean {

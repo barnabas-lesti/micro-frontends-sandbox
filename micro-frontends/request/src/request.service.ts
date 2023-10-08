@@ -1,6 +1,6 @@
 import { Logger } from '@mfs-packages/utility';
 
-import { type GetAPIRequestPayload, type RequestContract } from './request.contract';
+import { type GetAPIRequestPayload } from './request.contract';
 import { apiBaseURLRequiredError } from './request.errors';
 
 export class RequestService {
@@ -21,7 +21,7 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus?.listen<RequestContract.GetToAPI<unknown>>('request:getToAPI', async (payload) => {
+    window.mfsEventBus?.listen('request:getToAPI', async (payload) => {
       try {
         const data = await this.getToAPI(payload);
         payload.onSuccess?.(data);
@@ -31,7 +31,7 @@ export class RequestService {
     });
   }
 
-  async getToAPI<ResponseData>(payload: GetAPIRequestPayload<ResponseData>): Promise<ResponseData> {
+  async getToAPI<ResponseData>(payload: GetAPIRequestPayload): Promise<ResponseData> {
     if (!this.apiBaseURL) throw apiBaseURLRequiredError();
 
     const url = this.apiBaseURL + payload.path;

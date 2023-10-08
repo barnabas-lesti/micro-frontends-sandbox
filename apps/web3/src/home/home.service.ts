@@ -1,6 +1,4 @@
-import { type BrowserType, type PlatformContract } from '@mfs-micro-frontends/platform';
-import { type RemoteConfigContract } from '@mfs-micro-frontends/remote-config';
-import { type RequestContract } from '@mfs-micro-frontends/request';
+import { type BrowserType } from '@mfs-micro-frontends/platform';
 import { Logger } from '@mfs-packages/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -51,8 +49,8 @@ export class HomeService {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch<RemoteConfigContract.Get>('remoteConfig:get', {
-          onSuccess: (startupConfig) => resolve(!!startupConfig.features?.isHomePageBannerEnabled),
+        window.mfsEventBus?.dispatch('remoteConfig:get', {
+          onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
         });
       });
     }
@@ -62,9 +60,9 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch<RequestContract.GetToAPI<PageData>>('request:getToAPI', {
+        window.mfsEventBus?.dispatch('request:getToAPI', {
           path: PAGE_DATA_API_PATH,
-          onSuccess: resolve,
+          onSuccess: (data) => resolve(data as PageData),
         });
       });
     }
@@ -74,7 +72,7 @@ export class HomeService {
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
       this._isBrowserPromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch<PlatformContract.IsBrowser>('platform:isBrowser', {
+        window.mfsEventBus?.dispatch('platform:isBrowser', {
           onSuccess: resolve,
         });
       });
@@ -85,7 +83,7 @@ export class HomeService {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch<PlatformContract.GetBrowserType>('platform:getBrowserType', {
+        window.mfsEventBus?.dispatch('platform:getBrowserType', {
           onSuccess: resolve,
         });
       });

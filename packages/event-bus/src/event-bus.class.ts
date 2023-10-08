@@ -4,7 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';
 import { type DispatchSubject, type DispatchSubjectMap, type Listener } from './event-bus.types';
 
-export class EventBus {
+export class EventBus<Contracts> {
   private logger = new Logger('EventBus');
   private dispatchSubjectMap: DispatchSubjectMap = {};
 
@@ -12,15 +12,16 @@ export class EventBus {
     this.logger.info('constructor');
   }
 
-  dispatch<Contract>(command: keyof Contract & string, payload: Contract[typeof command]) {
+  dispatch<Command extends keyof Contracts & string>(command: Command, payload: Contracts[Command]) {
     this.logger.info('dispatch', command, payload);
     this.ensureDispatchSubject(command).next(payload);
   }
 
-  listen<Contract>(command: keyof Contract & string, listener: Listener<Contract[typeof command]>): () => void {
-    const { unsubscribe } = this.ensureDispatchSubject<Contract[typeof command]>(command)
-      .asObservable()
-      .subscribe(listener);
+  listen<Command extends keyof Contracts & string>(
+    command: Command,
+    listener: Listener<Contracts[Command]>,
+  ): () => void {
+    const { unsubscribe } = this.ensureDispatchSubject<Contracts[Command]>(command).asObservable().subscribe(listener);
 
     this.logger.info('listen', `Registered listener for "${command}"`);
 

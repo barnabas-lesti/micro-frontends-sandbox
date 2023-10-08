@@ -1,11 +1,9 @@
 import { type DispatchPayload } from '@mfs-packages/event-bus';
 
-export namespace RequestContract {
-  export interface GetToAPI<ResponseData> {
-    'request:getToAPI': GetAPIRequestPayload<ResponseData>;
-  }
+export interface RequestContract {
+  'request:getToAPI': GetAPIRequestPayload;
 }
 
-export interface GetAPIRequestPayload<ResponseData> extends DispatchPayload<ResponseData> {
+export interface GetAPIRequestPayload extends DispatchPayload<unknown> {
   path: string;
 }
