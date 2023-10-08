@@ -1,4 +1,4 @@
-import { type DispatchPayload } from 'packages/event-bus/types';
+import { type DispatchPayload } from '@mfs-packages/event-bus';
 
 import { type RemoteConfig } from './remote-config.types';
 

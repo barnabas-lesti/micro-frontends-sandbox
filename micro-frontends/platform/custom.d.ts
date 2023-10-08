@@ -1,4 +1,4 @@
-import { type EventBus } from '@mfs-packages/event-bus/types';
+import { type EventBus } from '@mfs-packages/event-bus';
 
 declare global {
   interface Window {
