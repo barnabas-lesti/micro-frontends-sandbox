@@ -1,5 +1,5 @@
-import { type EventBus } from '@mfs-packages/event-bus/types';
-import { type StartupConfig } from '@mfs-packages/startup-config/types';
+import { type EventBus } from '@mfs-packages/event-bus';
+import { type StartupConfig } from '@mfs-packages/startup-config';
 
 declare global {
   interface Window {

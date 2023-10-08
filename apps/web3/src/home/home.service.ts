@@ -1,7 +1,7 @@
-import { type BrowserType, type PlatformContract } from '@mfs-micro-frontends/platform/types';
-import { type RemoteConfigContract } from '@mfs-micro-frontends/remote-config/types';
+import { type BrowserType, type PlatformContract } from '@mfs-micro-frontends/platform';
+import { type RemoteConfigContract } from '@mfs-micro-frontends/remote-config';
+import { type RequestContract } from '@mfs-micro-frontends/request';
 import { Logger } from '@mfs-packages/utility';
-import { type RequestContract } from 'micro-frontends/request/types';
 
 import { PAGE_DATA_API_PATH } from './home.const';
 import { type PageData } from './home.types';

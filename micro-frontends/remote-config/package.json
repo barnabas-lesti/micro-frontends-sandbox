@@ -2,7 +2,12 @@
   "name": "@mfs-micro-frontends/remote-config",
   "type": "module",
   "version": "1.0.0",
-  "scripts": {},
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
   "dependencies": {
     "@mfs-packages/utility": "*"
   },

@@ -1,5 +1,5 @@
+import { type StartupConfig } from '@mfs-packages/startup-config';
 import { delay } from '@mfs-packages/utility';
-import { type StartupConfig } from 'packages/startup-config/types';
 
 export const MICRO_FRONTENDS = [
   delay(() => import('@mfs-micro-frontends/request')),

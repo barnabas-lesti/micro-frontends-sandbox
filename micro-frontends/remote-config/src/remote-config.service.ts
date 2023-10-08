@@ -1,4 +1,4 @@
-import { type RequestContract } from '@mfs-micro-frontends/request/types';
+import { type RequestContract } from '@mfs-micro-frontends/request';
 import { Logger } from '@mfs-packages/utility';
 
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
