@@ -1,0 +1,9 @@
+{
+  "name": "eslint-plugin-custom",
+  "description": "Custom ESLint plugin for the project.",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "devDependencies": {
+    "@typescript-eslint/utils": "^6.7.5"
+  }
+}

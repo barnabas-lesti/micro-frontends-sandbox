@@ -1,5 +1,5 @@
 const path = require('path');
-const { getTypescriptPathAliases } = require('./scripts');
+const { getTypescriptPathAliases } = require('./webpack.functions');
 
 function webpackConfigFactory({ entry }) {
   return {

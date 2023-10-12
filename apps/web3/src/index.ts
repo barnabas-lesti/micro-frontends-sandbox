@@ -11,7 +11,7 @@ const logger = new Logger('index');
   logInfo('Starting the application...');
   await bootstrap();
 
-  void HomeService.create();
+  void HomeService.getInstance();
 
   logInfo('Application started.');
 })();

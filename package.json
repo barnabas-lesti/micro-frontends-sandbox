@@ -12,8 +12,8 @@
     "start:prod": "turbo start:prod",
     "lint": "prettier . --check && eslint . --cache",
     "lint:fix": "prettier . --write && eslint . --cache --fix",
-    "graph": "node ./scripts/graph.cli.js",
-    "clean": "node ./scripts/clean.cli",
+    "graph": "node ./tools/cli/graph.cli.js",
+    "clean": "node ./tools/cli/clean.cli",
     "prepare": "pnpm build"
   },
   "devDependencies": {
@@ -26,13 +26,10 @@
     "eslint-config-turbo": "^1.10.14",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-custom": "*",
     "prettier": "^3.0.3",
     "ts-loader": "^9.4.4",
-    "tsconfig-paths": "^4.2.0",
     "turbo": "^1.10.14",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "typescript": "^5.2.2"
   }
 }
