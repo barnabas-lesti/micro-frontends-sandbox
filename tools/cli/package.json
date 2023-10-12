@@ -3,7 +3,8 @@
   "description": "CLI tools for the project.",
   "version": "1.0.0",
   "bin": {
-    "mfs-clean": "./dist/clean/index.js"
+    "mfs-clean": "./dist/clean/index.js",
+    "mfs-graph": "./dist/graph/index.js"
   },
   "scripts": {
     "build": "tsc && pnpm i --ignore-scripts",
