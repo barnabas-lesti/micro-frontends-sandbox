@@ -1,3 +1,3 @@
-import { RemoteConfigService } from './remote-config/remote-config.service';
+import { RemoteConfigService } from './services/remote-config';
 
 void RemoteConfigService.create();

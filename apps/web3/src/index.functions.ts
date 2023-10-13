@@ -1,25 +1,14 @@
-import { EventBus } from '@mfs/shell';
+import { createShell } from '@mfs/shell';
 import { Logger } from '@mfs/utility';
 
-import { MICRO_FRONTENDS, STARTUP_CONFIG } from './index.const';
+import { MICRO_FRONTENDS } from './index.const';
 
 export async function bootstrap(): Promise<void> {
   const logInfo = (message: string) => new Logger('index').info('bootstrap', message);
 
-  logInfo('Loading the application shell...');
-  createStartupConfig();
-  createEventBus();
-  logInfo('Application shell loaded.');
+  await createShell();
 
   logInfo('Loading micro frontends...');
   await Promise.all(MICRO_FRONTENDS);
   logInfo('Micro frontends loaded.');
-}
-
-function createEventBus(): void {
-  window.mfsEventBus = new EventBus();
-}
-
-function createStartupConfig(): void {
-  window.mfsStartupConfig = STARTUP_CONFIG;
 }

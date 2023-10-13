@@ -1,3 +1,3 @@
-import { PlatformService } from './platform/platform.service';
+import { PlatformService } from './services/platform';
 
 void PlatformService.create();

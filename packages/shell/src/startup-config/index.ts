@@ -1,1 +1,2 @@
-export { type StartupConfig } from './startup-config.types';
+export * from './startup-config.mock';
+export * from './startup-config.types';

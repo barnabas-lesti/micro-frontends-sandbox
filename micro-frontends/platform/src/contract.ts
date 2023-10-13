@@ -1,2 +1,1 @@
-export { PlatformCommand, type PlatformContract } from './platform/platform.contract';
-export { BrowserType } from './platform/platform.types';
+export { BrowserType, PlatformCommand, type PlatformContract } from './services/platform';
