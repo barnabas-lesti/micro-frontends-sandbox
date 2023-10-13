@@ -12,8 +12,8 @@
     "start:prod": "turbo start:prod",
     "lint": "prettier . --check && eslint . --cache",
     "lint:fix": "prettier . --write && eslint . --cache --fix",
-    "graph": "node ./tools/cli/graph.cli.js",
-    "clean": "mfs-clean",
+    "graph": "node ./tools/cli/graph/index.cjs",
+    "clean": "node ./tools/cli/clean/index.cjs",
     "prepare": "pnpm build"
   },
   "devDependencies": {
@@ -27,7 +27,6 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-custom": "*",
     "prettier": "^3.0.3",
-    "turbo": "^1.10.14",
-    "@mfs-tools/cli": "*"
+    "turbo": "^1.10.14"
   }
 }

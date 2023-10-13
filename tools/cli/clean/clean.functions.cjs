@@ -1,12 +1,12 @@
-import { execSync } from 'child_process';
-import * as fs from 'fs';
+const { execSync } = require('child_process');
+const fs = require('fs');
 
-import { CONFIG_FILE_PATH, REMOTE_RUNNER_COMMAND } from './clean.const';
+const { CONFIG_FILE_PATH, REMOTE_RUNNER_COMMAND } = require('./clean.const.cjs');
 
-export function runClean(): void {
+function runClean() {
   try {
-    const files: string[] = [];
-    const globs: string[] = [];
+    const files = [];
+    const globs = [];
 
     fs.readFileSync(CONFIG_FILE_PATH, 'utf8')
       .split('\n')
@@ -30,3 +30,7 @@ export function runClean(): void {
     console.log(`"${CONFIG_FILE_PATH}" file missing, exiting command.`);
   }
 }
+
+module.exports = {
+  runClean,
+};

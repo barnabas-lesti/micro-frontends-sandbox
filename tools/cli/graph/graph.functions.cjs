@@ -1,8 +1,8 @@
-import { exec } from 'child_process';
+const { exec } = require('child_process');
 
-import { CONFIG_FILE_PATH, DEFAULT_GRAPH_NAME, GRAPH_NAME, GRAPHS_FOLDER } from './graph.const';
+const { CONFIG_FILE_PATH, DEFAULT_GRAPH_NAME, GRAPH_NAME, GRAPHS_FOLDER } = require('./graph.const.cjs');
 
-export function runGraph() {
+function runGraph() {
   const args = process.argv.slice(2).map((argument) => argument.trim());
 
   const graphNameArgIndex = args.indexOf(GRAPH_NAME);
@@ -30,3 +30,7 @@ export function runGraph() {
     },
   );
 }
+
+module.exports = {
+  runGraph,
+};

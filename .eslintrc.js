@@ -3,7 +3,7 @@ module.exports = {
   root: true,
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'simple-import-sort', 'custom'],
+  plugins: ['@typescript-eslint', 'simple-import-sort'],
   env: {
     browser: true,
     node: true,
@@ -48,16 +48,6 @@ module.exports = {
     'simple-import-sort/exports': 'error',
 
     '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
-
-    'custom/enforce-foo-bar': [
-      'error',
-      {
-        classNamePattern: 'Service',
-        getInstanceMethodName: 'getInstance',
-        destroyInstanceMethodName: 'destroyInstance',
-        instancePropertyName: '_instance',
-      },
-    ],
   },
   overrides: [
     {

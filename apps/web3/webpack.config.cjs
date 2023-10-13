@@ -1,4 +1,4 @@
-const { webpackConfigFactory } = require('@mfs-tools/webpack');
+const { webpackConfigFactory } = require('../../tools/webpack');
 
 module.exports = webpackConfigFactory({
   entry: './src/index.ts',
