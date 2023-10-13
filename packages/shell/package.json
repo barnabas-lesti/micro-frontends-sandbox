@@ -1,5 +1,5 @@
 {
-  "name": "@mfs-packages/startup-config",
+  "name": "@mfs-packages/shell",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -8,7 +8,10 @@
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@mfs-packages/utility": "*",
+    "rxjs": "^7.8.1"
+  },
   "devDependencies": {
     "typescript": "^5.2.2"
   }

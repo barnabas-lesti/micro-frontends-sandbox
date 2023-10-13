@@ -1,4 +1,4 @@
-import { type StartupConfig } from '@mfs-packages/startup-config';
+import { type StartupConfig } from '@mfs-packages/shell';
 import { delay } from '@mfs-packages/utility';
 
 export const MICRO_FRONTENDS = [

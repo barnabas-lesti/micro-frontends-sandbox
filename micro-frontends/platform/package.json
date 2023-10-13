@@ -25,7 +25,7 @@
     "@mfs-packages/utility": "*"
   },
   "devDependencies": {
-    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/shell": "*",
     "typescript": "^5.2.2"
   }
 }

@@ -10,8 +10,7 @@
     "@mfs-micro-frontends/config": "*",
     "@mfs-micro-frontends/request": "*",
     "@mfs-micro-frontends/platform": "*",
-    "@mfs-packages/event-bus": "*",
-    "@mfs-packages/startup-config": "*",
+    "@mfs-packages/shell": "*",
     "@mfs-packages/utility": "*"
   },
   "devDependencies": {

@@ -53,12 +53,9 @@ importers:
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs-packages/startup-config':
-        specifier: '*'
-        version: link:../../packages/startup-config
+        version: link:../../packages/shell
       '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
@@ -88,9 +85,9 @@ importers:
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../request
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
+        version: link:../../packages/shell
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -101,9 +98,9 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
+        version: link:../../packages/shell
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -114,17 +111,14 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs-packages/startup-config':
-        specifier: '*'
-        version: link:../../packages/startup-config
+        version: link:../../packages/shell
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/event-bus:
+  packages/shell:
     dependencies:
       '@mfs-packages/utility':
         specifier: '*'
@@ -132,12 +126,6 @@ importers:
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
-    devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  packages/startup-config:
     devDependencies:
       typescript:
         specifier: ^5.2.2

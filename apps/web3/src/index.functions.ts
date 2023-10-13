@@ -1,4 +1,4 @@
-import { EventBus } from '@mfs-packages/event-bus';
+import { EventBus } from '@mfs-packages/shell';
 import { Logger } from '@mfs-packages/utility';
 
 import { MICRO_FRONTENDS, STARTUP_CONFIG } from './index.const';
