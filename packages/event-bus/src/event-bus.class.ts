@@ -5,8 +5,8 @@ import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const
 import { type DispatchSubject, type DispatchSubjectMap, type Listener } from './event-bus.types';
 
 export class EventBus<Contracts> {
-  private logger = new Logger('EventBus');
-  private dispatchSubjectMap: DispatchSubjectMap = {};
+  private readonly logger = new Logger('EventBus');
+  private readonly dispatchSubjectMap: DispatchSubjectMap = {};
 
   constructor() {
     this.logger.info('constructor');

@@ -1,4 +1,6 @@
-import { type BrowserType } from '@mfs-micro-frontends/platform';
+import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform/contract';
+import { RemoteConfigCommand } from '@mfs-micro-frontends/remote-config/contract';
+import { RequestCommand } from '@mfs-micro-frontends/request/contract';
 import { Logger } from '@mfs-packages/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -29,7 +31,7 @@ export class HomeEventBus {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch('remoteConfig:get', {
+        window.mfsEventBus?.dispatch(RemoteConfigCommand.Get, {
           onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
         });
       });
@@ -40,7 +42,7 @@ export class HomeEventBus {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch('request:getToAPI', {
+        window.mfsEventBus?.dispatch(RequestCommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
           onSuccess: (data) => resolve(data as PageData),
         });
@@ -52,7 +54,7 @@ export class HomeEventBus {
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
       this._isBrowserPromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch('platform:isBrowser', {
+        window.mfsEventBus?.dispatch(PlatformCommand.IsBrowser, {
           onSuccess: resolve,
         });
       });
@@ -63,7 +65,7 @@ export class HomeEventBus {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) => {
-        window.mfsEventBus?.dispatch('platform:getBrowserType', {
+        window.mfsEventBus?.dispatch(PlatformCommand.GetBrowserType, {
           onSuccess: resolve,
         });
       });

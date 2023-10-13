@@ -1,5 +1,3 @@
-export { type RequestContract } from './request.contract';
-
-import { RequestService } from './request.service';
+import { RequestService } from './request/request.service';
 
 void RequestService.create();

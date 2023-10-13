@@ -1,6 +1,7 @@
 import { Logger } from '@mfs-packages/utility';
 
-import { type BrowserType } from './platform.types';
+import { PlatformCommand } from './platform.contract';
+import { BrowserType } from './platform.types';
 
 export class PlatformService {
   private static _instance: PlatformService | undefined;
@@ -13,15 +14,15 @@ export class PlatformService {
     this._instance = undefined;
   }
 
-  private logger = new Logger('PlatformService');
+  private readonly logger = new Logger('PlatformService');
   private _isBrowser: boolean | undefined;
   private _browserType: BrowserType | undefined;
 
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus?.listen('platform:isBrowser', (payload) => payload.onSuccess?.(this.isBrowser()));
-    window.mfsEventBus?.listen('platform:getBrowserType', (payload) => payload.onSuccess?.(this.getBrowserType()));
+    window.mfsEventBus.listen(PlatformCommand.IsBrowser, (payload) => payload.onSuccess?.(this.isBrowser()));
+    window.mfsEventBus.listen(PlatformCommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
   }
 
   isBrowser(): boolean {
@@ -40,7 +41,7 @@ export class PlatformService {
 
   private determineBrowserType(): BrowserType {
     if (!this.isBrowser()) {
-      return null;
+      return BrowserType.Unknown;
     }
 
     const test = (regExp: RegExp) => {
@@ -48,23 +49,23 @@ export class PlatformService {
     };
 
     if (test(/opr\//i)) {
-      return 'Opera';
+      return BrowserType.Opera;
     } else if (test(/edg/i)) {
-      return 'MicrosoftEdge';
+      return BrowserType.MicrosoftEdge;
     } else if (test(/chrome|chromium|crios/i)) {
-      return 'GoogleChrome';
+      return BrowserType.GoogleChrome;
     } else if (test(/firefox|fxios/i)) {
-      return 'MozillaFirefox';
+      return BrowserType.MozillaFirefox;
     } else if (test(/safari/i)) {
-      return 'AppleSafari';
+      return BrowserType.AppleSafari;
     } else if (test(/trident/i)) {
-      return 'MicrosoftInternetExplorer';
+      return BrowserType.MicrosoftInternetExplorer;
     } else if (test(/ucbrowser/i)) {
-      return 'UCBrowser';
+      return BrowserType.UCBrowser;
     } else if (test(/samsungbrowser/i)) {
-      return 'SamsungBrowser';
+      return BrowserType.SamsungBrowser;
     } else {
-      return 'Unknown';
+      return BrowserType.Unknown;
     }
   }
 }

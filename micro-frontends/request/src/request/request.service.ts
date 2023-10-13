@@ -1,6 +1,6 @@
 import { Logger } from '@mfs-packages/utility';
 
-import { type GetAPIRequestPayload } from './request.contract';
+import { type MakeAPIRequestPayload, RequestCommand } from './request.contract';
 import { apiBaseURLRequiredError } from './request.errors';
 
 export class RequestService {
@@ -14,16 +14,15 @@ export class RequestService {
     this._instance = undefined;
   }
 
-  private logger = new Logger('RequestService');
-
-  readonly apiBaseURL = window.mfsStartupConfig?.apiBaseURL;
+  private readonly logger = new Logger('RequestService');
+  private readonly apiBaseURL = window.mfsStartupConfig.apiBaseURL;
 
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus?.listen('request:getToAPI', async (payload) => {
+    window.mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
       try {
-        const data = await this.getToAPI(payload);
+        const data = await this.makeAPIRequest(payload);
         payload.onSuccess?.(data);
       } catch (error) {
         payload.onError?.(error as Error);
@@ -31,7 +30,7 @@ export class RequestService {
     });
   }
 
-  async getToAPI<ResponseData>(payload: GetAPIRequestPayload): Promise<ResponseData> {
+  async makeAPIRequest<ResponseData>(payload: MakeAPIRequestPayload): Promise<ResponseData> {
     if (!this.apiBaseURL) throw apiBaseURLRequiredError();
 
     const url = this.apiBaseURL + payload.path;
