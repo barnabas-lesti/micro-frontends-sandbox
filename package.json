@@ -5,6 +5,7 @@
   "license": "ISC",
   "description": "Micro Frontends sandbox.",
   "packageManager": "pnpm@8.6.0",
+  "type": "commonjs",
   "scripts": {
     "build": "turbo build",
     "build:watch": "turbo build:watch",
@@ -12,27 +13,21 @@
     "start:prod": "turbo start:prod",
     "lint": "prettier . --check && eslint . --cache",
     "lint:fix": "prettier . --write && eslint . --cache --fix",
-    "graph": "node ./scripts/graph.cli.js",
-    "clean": "node ./scripts/clean.cli",
+    "graph": "node ./tools/cli/graph",
+    "clean": "node ./tools/cli/clean",
     "prepare": "pnpm build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
-    "dependency-cruiser": "^14.0.0",
     "eslint": "^8.50.0",
     "eslint-config-next": "^13.5.3",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-turbo": "^1.10.14",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-custom": "*",
     "prettier": "^3.0.3",
-    "ts-loader": "^9.4.4",
-    "tsconfig-paths": "^4.2.0",
-    "turbo": "^1.10.14",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "turbo": "^1.10.14"
   }
 }

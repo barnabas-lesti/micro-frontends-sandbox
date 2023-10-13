@@ -8,5 +8,8 @@
     "build": "tsc",
     "build:watch": "tsc --watch"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
 }

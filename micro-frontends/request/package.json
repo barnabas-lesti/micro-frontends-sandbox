@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@mfs-packages/event-bus": "*",
-    "@mfs-packages/startup-config": "*"
+    "@mfs-packages/startup-config": "*",
+    "typescript": "^5.2.2"
   }
 }

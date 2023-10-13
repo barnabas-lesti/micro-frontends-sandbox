@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tools/tsconfig/base.json",
   "include": ["**/*.ts", "custom.d.ts"],
   "compilerOptions": {
     "baseUrl": "./",

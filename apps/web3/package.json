@@ -13,5 +13,12 @@
     "@mfs-packages/event-bus": "*",
     "@mfs-packages/startup-config": "*",
     "@mfs-packages/utility": "*"
+  },
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2"
   }
 }
