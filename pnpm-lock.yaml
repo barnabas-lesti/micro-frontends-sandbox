@@ -44,12 +44,12 @@ importers:
 
   apps/web3:
     dependencies:
+      '@mfs-micro-frontends/config':
+        specifier: '*'
+        version: link:../../micro-frontends/config
       '@mfs-micro-frontends/platform':
         specifier: '*'
         version: link:../../micro-frontends/platform
-      '@mfs-micro-frontends/remote-config':
-        specifier: '*'
-        version: link:../../micro-frontends/remote-config
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
@@ -79,20 +79,7 @@ importers:
         specifier: ^4.15.1
         version: 4.15.1(webpack-cli@5.1.4)(webpack@5.88.2)
 
-  micro-frontends/platform:
-    dependencies:
-      '@mfs-packages/utility':
-        specifier: '*'
-        version: link:../../packages/utility
-    devDependencies:
-      '@mfs-packages/event-bus':
-        specifier: '*'
-        version: link:../../packages/event-bus
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  micro-frontends/remote-config:
+  micro-frontends/config:
     dependencies:
       '@mfs-packages/utility':
         specifier: '*'
@@ -101,6 +88,19 @@ importers:
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../request
+      '@mfs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  micro-frontends/platform:
+    dependencies:
+      '@mfs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
+    devDependencies:
       '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus

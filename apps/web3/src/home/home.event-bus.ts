@@ -1,5 +1,5 @@
+import { RemoteConfigCommand } from '@mfs-micro-frontends/config/contract';
 import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform/contract';
-import { RemoteConfigCommand } from '@mfs-micro-frontends/remote-config/contract';
 import { RequestCommand } from '@mfs-micro-frontends/request/contract';
 import { Logger } from '@mfs-packages/utility';
 

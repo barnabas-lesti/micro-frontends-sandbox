@@ -7,7 +7,7 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@mfs-micro-frontends/remote-config": "*",
+    "@mfs-micro-frontends/config": "*",
     "@mfs-micro-frontends/request": "*",
     "@mfs-micro-frontends/platform": "*",
     "@mfs-packages/event-bus": "*",

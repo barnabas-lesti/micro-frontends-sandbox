@@ -3,7 +3,7 @@ import { delay } from '@mfs-packages/utility';
 
 export const MICRO_FRONTENDS = [
   delay(() => import('@mfs-micro-frontends/request')),
-  delay(() => import('@mfs-micro-frontends/remote-config')),
+  delay(() => import('@mfs-micro-frontends/config')),
   delay(() => import('@mfs-micro-frontends/platform')),
 ];
 
