@@ -5,6 +5,7 @@
   "license": "ISC",
   "description": "Micro Frontends sandbox.",
   "packageManager": "pnpm@8.6.0",
+  "type": "commonjs",
   "scripts": {
     "build": "turbo build",
     "build:watch": "turbo build:watch",
@@ -12,8 +13,8 @@
     "start:prod": "turbo start:prod",
     "lint": "prettier . --check && eslint . --cache",
     "lint:fix": "prettier . --write && eslint . --cache --fix",
-    "graph": "node ./tools/cli/graph/index.cjs",
-    "clean": "node ./tools/cli/clean/index.cjs",
+    "graph": "node ./tools/cli/graph",
+    "clean": "node ./tools/cli/clean",
     "prepare": "pnpm build"
   },
   "devDependencies": {

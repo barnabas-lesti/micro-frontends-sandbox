@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 
-const { CONFIG_FILE_PATH, REMOTE_RUNNER_COMMAND } = require('./clean.const.cjs');
+const { CONFIG_FILE_PATH, REMOTE_RUNNER_COMMAND } = require('./clean.const');
 
 function runClean() {
   try {

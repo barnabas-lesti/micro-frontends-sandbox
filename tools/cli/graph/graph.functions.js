@@ -1,6 +1,6 @@
 const { exec } = require('child_process');
 
-const { CONFIG_FILE_PATH, DEFAULT_GRAPH_NAME, GRAPH_NAME, GRAPHS_FOLDER } = require('./graph.const.cjs');
+const { CONFIG_FILE_PATH, DEFAULT_GRAPH_NAME, GRAPH_NAME, GRAPHS_FOLDER } = require('./graph.const');
 
 function runGraph() {
   const args = process.argv.slice(2).map((argument) => argument.trim());
