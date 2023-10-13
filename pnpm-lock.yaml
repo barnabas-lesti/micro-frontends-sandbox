@@ -44,19 +44,19 @@ importers:
 
   apps/web3:
     dependencies:
-      '@mfs-micro-frontends/config':
+      '@mfs/config-mfe':
         specifier: '*'
         version: link:../../micro-frontends/config
-      '@mfs-micro-frontends/platform':
+      '@mfs/platform-mfe':
         specifier: '*'
         version: link:../../micro-frontends/platform
-      '@mfs-micro-frontends/request':
+      '@mfs/request-mfe':
         specifier: '*'
         version: link:../../micro-frontends/request
-      '@mfs-packages/shell':
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
@@ -78,14 +78,14 @@ importers:
 
   micro-frontends/config:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-micro-frontends/request':
+      '@mfs/request-mfe':
         specifier: '*'
         version: link:../request
-      '@mfs-packages/shell':
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
       typescript:
@@ -94,11 +94,11 @@ importers:
 
   micro-frontends/platform:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/shell':
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
       typescript:
@@ -107,11 +107,11 @@ importers:
 
   micro-frontends/request:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/shell':
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
       typescript:
@@ -120,7 +120,7 @@ importers:
 
   packages/shell:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../utility
       rxjs:

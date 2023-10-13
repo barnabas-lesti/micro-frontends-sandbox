@@ -1,7 +1,7 @@
-import { type RemoteConfigContract } from '@mfs-micro-frontends/config/contract';
-import { type PlatformContract } from '@mfs-micro-frontends/platform/contract';
-import { type RequestContract } from '@mfs-micro-frontends/request/contract';
-import { type EventBus, type StartupConfig } from '@mfs-packages/shell';
+import { type RemoteConfigContract } from '@mfs/config-mfe/contract';
+import { type PlatformContract } from '@mfs/platform-mfe/contract';
+import { type RequestContract } from '@mfs/request-mfe/contract';
+import { type EventBus, type StartupConfig } from '@mfs/shell';
 
 declare global {
   interface Window {

@@ -1,4 +1,4 @@
-import { type EventBus, type StartupConfig } from '@mfs-packages/shell';
+import { type EventBus, type StartupConfig } from '@mfs/shell';
 
 import { type RequestContract } from './src/contract';
 

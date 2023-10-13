@@ -1,4 +1,4 @@
-import { type DispatchPayload } from '@mfs-packages/shell';
+import { type DispatchPayload } from '@mfs/shell';
 
 import { type BrowserType } from './platform.types';
 

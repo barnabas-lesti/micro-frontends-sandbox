@@ -1,5 +1,5 @@
-import { EventBus } from '@mfs-packages/shell';
-import { Logger } from '@mfs-packages/utility';
+import { EventBus } from '@mfs/shell';
+import { Logger } from '@mfs/utility';
 
 import { MICRO_FRONTENDS, STARTUP_CONFIG } from './index.const';
 

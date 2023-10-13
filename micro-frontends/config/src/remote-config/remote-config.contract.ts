@@ -1,4 +1,4 @@
-import { type DispatchPayload } from '@mfs-packages/shell';
+import { type DispatchPayload } from '@mfs/shell';
 
 import { type RemoteConfig } from './remote-config.types';
 

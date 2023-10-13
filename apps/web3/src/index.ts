@@ -1,4 +1,4 @@
-import { Logger } from '@mfs-packages/utility';
+import { Logger } from '@mfs/utility';
 
 import { HomeService } from './home';
 import { bootstrap } from './index.functions';

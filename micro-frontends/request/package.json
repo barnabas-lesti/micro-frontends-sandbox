@@ -1,5 +1,5 @@
 {
-  "name": "@mfs-micro-frontends/request",
+  "name": "@mfs/request-mfe",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -22,10 +22,10 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@mfs-packages/utility": "*"
+    "@mfs/utility": "*"
   },
   "devDependencies": {
-    "@mfs-packages/shell": "*",
+    "@mfs/shell": "*",
     "typescript": "^5.2.2"
   }
 }

@@ -1,7 +1,7 @@
-import { RemoteConfigCommand } from '@mfs-micro-frontends/config/contract';
-import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform/contract';
-import { RequestCommand } from '@mfs-micro-frontends/request/contract';
-import { Logger } from '@mfs-packages/utility';
+import { RemoteConfigCommand } from '@mfs/config-mfe/contract';
+import { type BrowserType, PlatformCommand } from '@mfs/platform-mfe/contract';
+import { RequestCommand } from '@mfs/request-mfe/contract';
+import { Logger } from '@mfs/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
 import { type PageData } from './home.types';

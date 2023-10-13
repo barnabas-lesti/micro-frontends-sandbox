@@ -1,5 +1,5 @@
-import { type RequestContract } from '@mfs-micro-frontends/request/contract';
-import { type EventBus } from '@mfs-packages/shell';
+import { type RequestContract } from '@mfs/request-mfe/contract';
+import { type EventBus } from '@mfs/shell';
 
 import { type RemoteConfigContract } from './src/contract';
 

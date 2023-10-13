@@ -1,4 +1,4 @@
-import { Logger } from '@mfs-packages/utility';
+import { Logger } from '@mfs/utility';
 
 import { PlatformCommand } from './platform.contract';
 import { BrowserType } from './platform.types';
