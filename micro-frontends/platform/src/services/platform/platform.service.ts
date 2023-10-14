@@ -1,5 +1,3 @@
-import { createLogger } from '@mfs/utility';
-
 import { PlatformCommand } from './platform.contract';
 import { BrowserType } from './platform.types';
 
@@ -14,7 +12,7 @@ export class PlatformService {
     this._instance = undefined;
   }
 
-  private readonly logger = createLogger('PlatformService');
+  private readonly logger = window.mfsUtilities.createLogger('PlatformService');
   private _isBrowser: boolean | undefined;
   private _browserType: BrowserType | undefined;
 

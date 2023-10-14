@@ -1,4 +1,4 @@
-import { type DispatchPayload } from '@mfs/shell';
+import { type DispatchPayload } from '@mfs/event-bus';
 
 /**
  * Enum representing the available request commands.

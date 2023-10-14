@@ -1,5 +1,4 @@
 import { RequestCommand } from '@mfs/request-mfe';
-import { createLogger } from '@mfs/utility';
 
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
 import { RemoteConfigCommand } from './remote-config.contract';
@@ -19,7 +18,7 @@ export class RemoteConfigService {
     this._instance = undefined;
   }
 
-  private readonly logger = createLogger('RemoteConfigService');
+  private readonly logger = window.mfsUtilities.createLogger('RemoteConfigService');
   private _remoteConfigPromise: Promise<RemoteConfig> | undefined;
 
   private constructor() {

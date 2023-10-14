@@ -25,10 +25,11 @@ function createWebpackAppConfig() {
 function getStaticMicroFrontendFolders() {
   const cwd = process.cwd();
   const packageJSON = require(path.resolve(cwd, './package.json'));
+  const allDependencies = { ...packageJSON.dependencies, ...packageJSON.devDependencies };
   const nodeModulesPath = path.resolve(cwd, './node_modules');
   const staticFolders = [];
 
-  for (const dependency in packageJSON.dependencies) {
+  for (const dependency in allDependencies) {
     if (dependency.startsWith('@mfs') && dependency.includes('-mfe')) {
       const mfeName = dependency.replace('@mfs/', '');
       const mfePath = path.resolve(nodeModulesPath, dependency);

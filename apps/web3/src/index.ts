@@ -1,17 +1,11 @@
-import { createShell } from '@mfs/shell';
-import { createLogger } from '@mfs/utility';
+import { attachEventBus } from '@mfs/event-bus';
+import { attachStartupConfig } from '@mfs/startup-config';
+import { attachUtilities } from '@mfs/utility';
 
 import { HomeService } from './home';
 
-const logger = createLogger('index');
+attachUtilities();
+attachStartupConfig();
+attachEventBus();
 
-(async () => {
-  const log = logger.createMethodLogger('root');
-
-  log('Starting the application...');
-  await createShell();
-
-  void HomeService.getInstance();
-
-  log('Application started.');
-})();
+void HomeService.getInstance();

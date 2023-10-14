@@ -1,13 +1,14 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { createShell } from '@mfs/shell';
+import { attachEventBus } from '@mfs/event-bus';
+import { attachStartupConfig } from '@mfs/startup-config';
+import { attachUtilities } from '@mfs/utility';
 
 import { AppModule } from './app/app.module';
 
-(async () => {
-  try {
-    await createShell();
-    await platformBrowserDynamic().bootstrapModule(AppModule);
-  } catch (error) {
-    console.error(error);
-  }
-})();
+attachUtilities();
+attachStartupConfig();
+attachEventBus();
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
