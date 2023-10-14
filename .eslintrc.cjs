@@ -36,8 +36,16 @@ module.exports = {
     'no-trailing-spaces': ['error'],
     'arrow-spacing': ['error'],
     'prefer-const': ['error'],
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'TSEnumDeclaration:not([const=true])',
+        message: 'Only const enums are allowed',
+      },
+    ],
 
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
 
     'simple-import-sort/imports': [
       'error',
@@ -46,8 +54,6 @@ module.exports = {
       },
     ],
     'simple-import-sort/exports': 'error',
-
-    '@typescript-eslint/consistent-type-imports': ['error', { fixStyle: 'inline-type-imports' }],
   },
   overrides: [
     {
