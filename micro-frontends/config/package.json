@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc && webpack",
-    "build:watch": "tsc --watch"
+    "build": "concurrently \"tsc\" \"webpack\"",
+    "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
   },
   "dependencies": {
     "@mfs/utility": "*"
@@ -14,9 +14,10 @@
   "devDependencies": {
     "@mfs/request-mfe": "*",
     "@mfs/shell": "*",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
+    "concurrently": "^8.2.1",
     "ts-loader": "^9.4.4",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }
