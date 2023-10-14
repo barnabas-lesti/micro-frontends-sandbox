@@ -13,6 +13,33 @@ export async function createShell(): Promise<void> {
   logInfo('StartupConfig created');
 }
 
+export function loadMicroFrontends(microFrontends: string[]): void {
+  const logInfo = (message: string, data?: unknown) => new Logger('shell').info('loadMicroFrontends', message, data);
+  logInfo('Loading micro frontends...', microFrontends);
+  for (const mfeName of microFrontends) {
+    appendMicroFrontendScript(mfeName);
+  }
+  logInfo('Micro frontends loaded.');
+}
+
+function appendMicroFrontendScript(mfeName: string): void {
+  const mfeSource = createMicroFrontendSource(mfeName);
+  if (!isMicroFrontendLoaded(mfeSource)) {
+    const script = document.createElement('script');
+    script.setAttribute('src', mfeSource);
+    script.setAttribute('defer', '');
+    document.head.appendChild(script);
+  }
+}
+
+function createMicroFrontendSource(mfeName: string): string {
+  return `micro-frontends/${mfeName}/dist/loader.js`;
+}
+
+function isMicroFrontendLoaded(mfeSource: string): boolean {
+  return !!document.querySelector(`script[src="${mfeSource}"]`);
+}
+
 async function createEventBus(): Promise<void> {
   window.mfsEventBus = new EventBus();
 }
