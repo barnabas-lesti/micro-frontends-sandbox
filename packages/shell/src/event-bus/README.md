@@ -1,4 +1,7 @@
-# EventBus
+# EventBus (Plan)
+
+> **Warning**
+> This is a planned interface, it's implemented partially or not at all.
 
 - Global object with function to enable communication between different MFE-s.
 - Function that can be used for communication:
