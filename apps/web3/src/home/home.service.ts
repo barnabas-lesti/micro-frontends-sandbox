@@ -17,7 +17,7 @@ export class HomeService {
     this._instance = undefined;
   }
 
-  private logger = window.mfsUtilities.createLogger('HomeService');
+  private logger = mfsUtilities.createLogger('HomeService');
   private _isBannerEnabledPromise?: Promise<boolean>;
   private _pageDataPromise?: Promise<PageData>;
   private _isBrowserPromise?: Promise<boolean>;
@@ -57,7 +57,7 @@ export class HomeService {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve) => {
-        window.mfsEventBus.dispatch(RemoteConfigCommand.Get, {
+        mfsEventBus.dispatch(RemoteConfigCommand.Get, {
           onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
         });
       });
@@ -68,7 +68,7 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve) => {
-        window.mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
           onSuccess: (data) => resolve(data as PageData),
         });
@@ -80,7 +80,7 @@ export class HomeService {
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
       this._isBrowserPromise = new Promise((resolve) => {
-        window.mfsEventBus.dispatch(PlatformCommand.IsBrowser, {
+        mfsEventBus.dispatch(PlatformCommand.IsBrowser, {
           onSuccess: resolve,
         });
       });
@@ -91,7 +91,7 @@ export class HomeService {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) => {
-        window.mfsEventBus.dispatch(PlatformCommand.GetBrowserType, {
+        mfsEventBus.dispatch(PlatformCommand.GetBrowserType, {
           onSuccess: resolve,
         });
       });

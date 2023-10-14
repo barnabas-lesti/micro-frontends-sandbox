@@ -3,7 +3,7 @@
  * @param microFrontends An array of micro frontend names to load.
  */
 export function ensureMicroFrontends(microFrontends: string[]): void {
-  const logInfo = window.mfsUtilities.createLogger('MicroFrontendLoader').createMethodLogger('ensureMicroFrontends');
+  const logInfo = mfsUtilities.createLogger('MicroFrontendLoader').createMethodLogger('ensureMicroFrontends');
   logInfo('Loading micro frontends...', microFrontends);
   for (const mfeName of microFrontends) {
     if (!isMicroFrontendLoaded(createMicroFrontendSource(mfeName))) {

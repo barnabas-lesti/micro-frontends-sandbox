@@ -5,8 +5,6 @@ import { type Utilities } from '@mfs/utility';
 import { type RemoteConfigContract } from './src';
 
 declare global {
-  interface Window {
-    mfsEventBus: EventBus<RemoteConfigContract & RequestContract>;
-    mfsUtilities: Utilities;
-  }
+  const mfsEventBus: EventBus<RemoteConfigContract & RequestContract>;
+  const mfsUtilities: Utilities;
 }

@@ -18,13 +18,13 @@ export class RemoteConfigService {
     this._instance = undefined;
   }
 
-  private readonly logger = window.mfsUtilities.createLogger('RemoteConfigService');
+  private readonly logger = mfsUtilities.createLogger('RemoteConfigService');
   private _remoteConfigPromise: Promise<RemoteConfig> | undefined;
 
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus.listen(RemoteConfigCommand.Get, async (payload) => payload.onSuccess?.(await this.get()));
+    mfsEventBus.listen(RemoteConfigCommand.Get, async (payload) => payload.onSuccess?.(await this.get()));
   }
 
   /**
@@ -36,7 +36,7 @@ export class RemoteConfigService {
   async get(): Promise<RemoteConfig> {
     if (!this._remoteConfigPromise) {
       this._remoteConfigPromise = new Promise((resolve) => {
-        window.mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: REMOTE_CONFIG_API_PATH,
           onSuccess: (data) => resolve(data as RemoteConfig),
         });

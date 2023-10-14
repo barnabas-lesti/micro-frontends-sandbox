@@ -12,15 +12,15 @@ export class PlatformService {
     this._instance = undefined;
   }
 
-  private readonly logger = window.mfsUtilities.createLogger('PlatformService');
+  private readonly logger = mfsUtilities.createLogger('PlatformService');
   private _isBrowser: boolean | undefined;
   private _browserType: BrowserType | undefined;
 
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus.listen(PlatformCommand.IsBrowser, (payload) => payload.onSuccess?.(this.isBrowser()));
-    window.mfsEventBus.listen(PlatformCommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
+    mfsEventBus.listen(PlatformCommand.IsBrowser, (payload) => payload.onSuccess?.(this.isBrowser()));
+    mfsEventBus.listen(PlatformCommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
   }
 
   /**

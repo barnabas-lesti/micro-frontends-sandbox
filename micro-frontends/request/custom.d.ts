@@ -5,9 +5,7 @@ import { type Utilities } from '@mfs/utility';
 import { type RequestContract } from './src';
 
 declare global {
-  interface Window {
-    mfsEventBus: EventBus<RequestContract>;
-    mfsStartupConfig: StartupConfig;
-    mfsUtilities: Utilities;
-  }
+  const mfsEventBus: EventBus<RequestContract>;
+  const mfsStartupConfig: StartupConfig;
+  const mfsUtilities: Utilities;
 }

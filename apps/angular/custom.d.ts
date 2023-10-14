@@ -3,9 +3,7 @@ import { type StartupConfig } from '@mfs/startup-config';
 import { type Utilities } from '@mfs/utility';
 
 declare global {
-  interface Window {
-    mfsEventBus: EventBus<unknown>;
-    mfsStartupConfig: StartupConfig;
-    mfsUtilities: Utilities;
-  }
+  const mfsEventBus: EventBus<unknown>;
+  const mfsStartupConfig: StartupConfig;
+  const mfsUtilities: Utilities;
 }

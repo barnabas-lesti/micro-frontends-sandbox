@@ -4,8 +4,6 @@ import { type Utilities } from '@mfs/utility';
 import { type PlatformContract } from './src';
 
 declare global {
-  interface Window {
-    mfsEventBus: EventBus<PlatformContract>;
-    mfsUtilities: Utilities;
-  }
+  const mfsEventBus: EventBus<PlatformContract>;
+  const mfsUtilities: Utilities;
 }

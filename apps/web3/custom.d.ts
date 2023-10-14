@@ -6,9 +6,7 @@ import { type StartupConfig } from '@mfs/startup-config';
 import { type Utilities } from '@mfs/utility';
 
 declare global {
-  interface Window {
-    mfsEventBus: EventBus<RemoteConfigContract & RequestContract & PlatformContract>;
-    mfsStartupConfig: StartupConfig;
-    mfsUtilities: Utilities;
-  }
+  const mfsEventBus: EventBus<RemoteConfigContract & RequestContract & PlatformContract>;
+  const mfsStartupConfig: StartupConfig;
+  const mfsUtilities: Utilities;
 }

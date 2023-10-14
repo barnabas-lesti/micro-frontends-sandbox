@@ -12,13 +12,13 @@ export class RequestService {
     this._instance = undefined;
   }
 
-  private readonly logger = window.mfsUtilities.createLogger('RequestService');
-  private readonly apiBaseURL = window.mfsStartupConfig.apiBaseURL;
+  private readonly logger = mfsUtilities.createLogger('RequestService');
+  private readonly apiBaseURL = mfsStartupConfig.apiBaseURL;
 
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
+    mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
       try {
         const data = await this.makeAPIRequest(payload);
         payload.onSuccess?.(data);

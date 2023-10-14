@@ -9,7 +9,7 @@ export function delay<CallbackResult>(
   options?: { delay?: number },
 ): Promise<CallbackResult> {
   return new Promise((resolve) => {
-    window.setTimeout(() => resolve(callback()), options?.delay || getRandomInteger(100, 1000));
+    setTimeout(() => resolve(callback()), options?.delay || getRandomInteger(100, 1000));
   });
 }
 
