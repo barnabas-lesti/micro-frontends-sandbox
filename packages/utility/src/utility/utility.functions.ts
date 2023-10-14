@@ -25,6 +25,11 @@ export function getRandomInteger(min: number, max: number): number {
   return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
 }
 
+/**
+ * Delays the execution of a callback function until the next tick of the event loop.
+ * This can be used to unblock the thread and allow other tasks to execute.
+ * @param callback - The function to be executed.
+ */
 export function unblockThread(callback: () => void): void {
   setTimeout(callback, 0);
 }

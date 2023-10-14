@@ -16,9 +16,11 @@ export class EventBus<Contracts> {
   }
 
   /**
-   * Dispatches an event with the given command and payload.
-   * @param command - The command to dispatch.
-   * @param payload - The payload to include with the command.
+   * Dispatches a command with the given payload.
+   * Also checks if the micro frontend for the command has been loaded yet and loads it if not.
+   * @template Command - The type of command to dispatch.
+   * @param {Command} command - The command to dispatch.
+   * @param {Contracts[Command]} payload - The payload to send with the command.
    */
   dispatch<Command extends keyof Contracts & string>(command: Command, payload: Contracts[Command]) {
     this.logger.info('dispatch', command, payload);
@@ -27,11 +29,12 @@ export class EventBus<Contracts> {
   }
 
   /**
-   * Registers a listener for the specified command.
-   * @template Command - The command to listen for.
-   * @param command - The command to listen for.
-   * @param listener - The listener function to be called when the command is dispatched.
-   * @returns A function that can be called to unsubscribe the listener.
+   * Registers a listener function for a given command.
+   * Also checks if the micro frontend for the command has been loaded yet and loads it if not.
+   * @template Command - The type of command to listen for.
+   * @param {Command} command - The command to listen for.
+   * @param {Listener<Contracts[Command]>} listener - The listener function to register.
+   * @returns {() => void} - A function that can be called to unsubscribe the listener.
    */
   listen<Command extends keyof Contracts & string>(
     command: Command,
