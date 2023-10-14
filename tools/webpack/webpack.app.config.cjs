@@ -15,32 +15,17 @@ function createWebpackAppConfig() {
       filename: '[name].js',
     },
     devServer: {
-      static: ['public', ...getStaticMicroFrontendFolders()],
+      static: [
+        'public',
+        {
+          directory: path.resolve(cwd, './node_modules/@mfs'),
+          publicPath: '/micro-frontends',
+        },
+      ],
     },
   };
 
   return webpackMFEConfig;
-}
-
-function getStaticMicroFrontendFolders() {
-  const cwd = process.cwd();
-  const packageJSON = require(path.resolve(cwd, './package.json'));
-  const allDependencies = { ...packageJSON.dependencies, ...packageJSON.devDependencies };
-  const nodeModulesPath = path.resolve(cwd, './node_modules');
-  const staticFolders = [];
-
-  for (const dependency in allDependencies) {
-    if (dependency.startsWith('@mfs') && dependency.includes('-mfe')) {
-      const mfeName = dependency.replace('@mfs/', '');
-      const mfePath = path.resolve(nodeModulesPath, dependency);
-      staticFolders.push({
-        directory: mfePath,
-        publicPath: `/micro-frontends/${mfeName}`,
-      });
-    }
-  }
-
-  return staticFolders;
 }
 
 module.exports = {
