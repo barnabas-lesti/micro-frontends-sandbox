@@ -1,4 +1,4 @@
-import { Logger } from '@mfs/utility';
+import { createLogger } from '@mfs/utility';
 
 import { EventBus } from '../event-bus';
 import { STARTUP_CONFIG_MOCK } from '../startup-config';
@@ -8,7 +8,7 @@ import { STARTUP_CONFIG_MOCK } from '../startup-config';
  * @returns A Promise that resolves when the shell is created.
  */
 export async function createShell(): Promise<void> {
-  const logInfo = (message: string) => new Logger('shell').info('createShell', message);
+  const logInfo = createLogger('shell').createMethodLogger('createShell');
   logInfo('Creating EventBus...');
   await createEventBus();
   logInfo('EventBus created');
@@ -22,7 +22,7 @@ export async function createShell(): Promise<void> {
  * @param microFrontends An array of micro frontend names to load.
  */
 export function ensureMicroFrontends(microFrontends: string[]): void {
-  const logInfo = (message: string, data?: unknown) => new Logger('shell').info('ensureMicroFrontends', message, data);
+  const logInfo = createLogger('shell').createMethodLogger('ensureMicroFrontends');
   logInfo('Loading micro frontends...', microFrontends);
   for (const mfeName of microFrontends) {
     if (!isMicroFrontendLoaded(createMicroFrontendSource(mfeName))) {

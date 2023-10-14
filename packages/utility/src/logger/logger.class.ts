@@ -1,5 +1,5 @@
-import { LOGGER_TYPE_TO_FUNCTION_MAP } from './logger.const';
-import { type LoggerType } from './logger.types';
+import { log } from './logger.functions';
+import { type LoggerType, type MethodLogger } from './logger.types';
 
 /**
  * A class for logging messages with optional data.
@@ -11,27 +11,25 @@ export class Logger {
     this.sourceID = sourceID;
   }
 
-  /**
-   * Logs an informational message with optional data.
-   * @param method - The method or function name that is logging the message.
-   * @param message - The message to log.
-   * @param data - Optional data to include in the log.
-   */
-  info(method: string, message?: string, data?: unknown) {
-    this.log('info', method, message, data);
+  createMethodLogger(method: string, loggerType?: LoggerType): MethodLogger {
+    return (message?: string, data?: unknown) => {
+      log({ sourceID: this.sourceID, method, message, data, loggerType });
+    };
   }
 
-  private log(loggerType: LoggerType, method: string, message?: string, data?: unknown): void {
-    const loggerFunction = LOGGER_TYPE_TO_FUNCTION_MAP[loggerType];
-    const formattedMessage = this.formatMessage(method, message);
-    if (data) {
-      loggerFunction(formattedMessage, data);
-    } else {
-      loggerFunction(formattedMessage);
-    }
+  warn(method: string, message?: string, data?: unknown): void {
+    log({ sourceID: this.sourceID, method, message, data, loggerType: 'warn' });
   }
 
-  private formatMessage(method: string, message?: string): string {
-    return `[${this.sourceID}][${method}]${message ? ' ' + message : ''}`;
+  error(method: string, message?: string, data?: unknown): void {
+    log({ sourceID: this.sourceID, method, message, data, loggerType: 'error' });
+  }
+
+  debug(method: string, message?: string, data?: unknown): void {
+    log({ sourceID: this.sourceID, method, message, data, loggerType: 'debug' });
+  }
+
+  info(method: string, message?: string, data?: unknown): void {
+    log({ sourceID: this.sourceID, method, message, data });
   }
 }

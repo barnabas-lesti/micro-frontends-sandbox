@@ -1,1 +1,3 @@
-export { Logger } from './logger.class';
+export { createLogger } from './logger.factories';
+export { log } from './logger.functions';
+export { type LogPayload } from './logger.types';

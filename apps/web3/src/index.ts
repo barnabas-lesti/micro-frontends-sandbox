@@ -1,17 +1,17 @@
 import { createShell } from '@mfs/shell';
-import { Logger } from '@mfs/utility';
+import { createLogger } from '@mfs/utility';
 
 import { HomeService } from './home';
 
-const logger = new Logger('index');
+const logger = createLogger('index');
 
 (async () => {
-  const logInfo = (message: string) => logger.info('root', message);
+  const log = logger.createMethodLogger('root');
 
-  logInfo('Starting the application...');
+  log('Starting the application...');
   await createShell();
 
   void HomeService.getInstance();
 
-  logInfo('Application started.');
+  log('Application started.');
 })();
