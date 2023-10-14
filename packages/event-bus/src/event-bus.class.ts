@@ -1,10 +1,11 @@
+import { createLogger } from '@mfs/utility';
 import { ReplaySubject } from 'rxjs';
 
 import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';
 import { type DispatchSubject, type DispatchSubjectMap, type Listener } from './event-bus.types';
 
 export class EventBus<Contracts> {
-  private readonly logger = mfsUtilities.createLogger('EventBus');
+  private readonly logger = createLogger('EventBus');
   private readonly dispatchSubjectMap: DispatchSubjectMap = {};
 
   constructor() {

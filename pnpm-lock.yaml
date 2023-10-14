@@ -148,6 +148,9 @@ importers:
       '@mfs/micro-frontend-loader':
         specifier: '*'
         version: link:../../packages/micro-frontend-loader
+      '@mfs/utility':
+        specifier: '*'
+        version: link:../../packages/utility
     devDependencies:
       '@mfs/event-bus':
         specifier: '*'
@@ -155,9 +158,6 @@ importers:
       '@mfs/request-mfe':
         specifier: '*'
         version: link:../request
-      '@mfs/utility':
-        specifier: '*'
-        version: link:../../packages/utility
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -199,6 +199,10 @@ importers:
         version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
 
   micro-frontends/request:
+    dependencies:
+      '@mfs/utility':
+        specifier: '*'
+        version: link:../../packages/utility
     devDependencies:
       '@mfs/event-bus':
         specifier: '*'
@@ -206,9 +210,6 @@ importers:
       '@mfs/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
-      '@mfs/utility':
-        specifier: '*'
-        version: link:../../packages/utility
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -239,10 +240,11 @@ importers:
         version: 5.2.2
 
   packages/micro-frontend-loader:
-    devDependencies:
+    dependencies:
       '@mfs/utility':
         specifier: '*'
         version: link:../utility
+    devDependencies:
       typescript:
         specifier: ^5.2.2
         version: 5.2.2

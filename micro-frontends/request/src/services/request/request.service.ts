@@ -1,3 +1,5 @@
+import { createLogger } from '@mfs/utility';
+
 import { type MakeAPIRequestPayload, RequestCommand } from './request.contract';
 import { apiBaseURLRequiredError } from './request.errors';
 
@@ -12,7 +14,7 @@ export class RequestService {
     this._instance = undefined;
   }
 
-  private readonly logger = mfsUtilities.createLogger('RequestService');
+  private readonly logger = createLogger('RequestService');
   private readonly apiBaseURL = mfsStartupConfig.apiBaseURL;
 
   private constructor() {

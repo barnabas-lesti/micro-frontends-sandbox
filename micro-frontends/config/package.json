@@ -9,12 +9,12 @@
     "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
   },
   "dependencies": {
-    "@mfs/micro-frontend-loader": "*"
+    "@mfs/micro-frontend-loader": "*",
+    "@mfs/utility": "*"
   },
   "devDependencies": {
     "@mfs/request-mfe": "*",
     "@mfs/event-bus": "*",
-    "@mfs/utility": "*",
     "concurrently": "^8.2.1",
     "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",

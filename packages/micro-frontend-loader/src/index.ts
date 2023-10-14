@@ -1,3 +1,5 @@
+import { createLogger } from '@mfs/utility';
+
 interface MicroFrontendOptions {
   name: string;
   version?: string;
@@ -8,7 +10,7 @@ interface MicroFrontendOptions {
  * @param microFrontends An array of micro frontend names or options.
  */
 export function requireMicroFrontends(microFrontends: (string | MicroFrontendOptions)[]): void {
-  const logInfo = mfsUtilities.createLogger('MicroFrontendLoader').createMethodLogger('requireMicroFrontends');
+  const logInfo = createLogger('MicroFrontendLoader').createMethodLogger('requireMicroFrontends');
   for (const microFrontend of microFrontends) {
     const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
     if (!isMicroFrontendLoaded(createMicroFrontendSource(name))) {
