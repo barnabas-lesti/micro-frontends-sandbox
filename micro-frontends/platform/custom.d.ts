@@ -1,6 +1,6 @@
 import { type EventBus } from '@mfs/shell';
 
-import { type PlatformContract } from './src/contract';
+import { type PlatformContract } from './src';
 
 declare global {
   interface Window {

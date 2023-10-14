@@ -1,3 +1,3 @@
-import { PlatformService } from './services/platform';
+export { BrowserType, PlatformCommand, type PlatformContract } from './services/platform';
 
-void PlatformService.create();
+export const PLATFORM_MICRO_FRONTEND_NAME = 'platform-mfe';

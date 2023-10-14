@@ -1,3 +1,3 @@
-import { RemoteConfigService } from './services/remote-config';
+export { type RemoteConfig, RemoteConfigCommand, type RemoteConfigContract } from './services/remote-config';
 
-void RemoteConfigService.create();
+export const CONFIG_MICRO_FRONTEND_NAME = 'config-mfe';

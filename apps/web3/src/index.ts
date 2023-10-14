@@ -1,7 +1,7 @@
+import { createShell } from '@mfs/shell';
 import { Logger } from '@mfs/utility';
 
 import { HomeService } from './home';
-import { bootstrap } from './index.functions';
 
 const logger = new Logger('index');
 
@@ -9,7 +9,7 @@ const logger = new Logger('index');
   const logInfo = (message: string) => logger.info('root', message);
 
   logInfo('Starting the application...');
-  await bootstrap();
+  await createShell();
 
   void HomeService.getInstance();
 

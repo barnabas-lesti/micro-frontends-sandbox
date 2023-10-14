@@ -3,7 +3,6 @@
   "extends": "../../tools/tsconfig/base.json",
   "include": ["**/*.ts"],
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "dist"
+    "outDir": "./dist"
   }
 }

@@ -1,3 +1,3 @@
-import { RequestService } from './services/request';
+export { RequestCommand, type RequestContract } from './services/request';
 
-void RequestService.create();
+export const REQUEST_MICRO_FRONTEND_NAME = 'request-mfe';

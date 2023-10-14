@@ -1,2 +1,2 @@
-export { Logger } from './logger/logger.class';
-export * from './utility.functions';
+export { Logger } from './logger';
+export * from './utility';
