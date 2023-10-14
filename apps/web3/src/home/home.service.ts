@@ -1,5 +1,5 @@
 import { CONFIG_MICRO_FRONTEND_NAME, RemoteConfigCommand } from '@mfs/config-mfe';
-import { ensureMicroFrontends } from '@mfs/micro-frontend-loader';
+import { requireMicroFrontends } from '@mfs/micro-frontend-loader';
 import { type BrowserType, PLATFORM_MICRO_FRONTEND_NAME, PlatformCommand } from '@mfs/platform-mfe';
 import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs/request-mfe';
 
@@ -26,11 +26,7 @@ export class HomeService {
   private constructor() {
     this.logger.info('constructor');
 
-    ensureMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
-
-    // Testing if MFe-s are loaded only once
-    ensureMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
-    ensureMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
+    requireMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>

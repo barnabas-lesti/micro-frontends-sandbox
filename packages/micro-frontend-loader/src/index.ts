@@ -1,16 +1,21 @@
+interface MicroFrontendOptions {
+  name: string;
+  version?: string;
+}
+
 /**
- * Ensures that the specified micro frontends are loaded into the application.
- * @param microFrontends An array of micro frontend names to load.
+ * Loads the specified micro frontends by appending their scripts to the document head.
+ * @param microFrontends An array of micro frontend names or options.
  */
-export function ensureMicroFrontends(microFrontends: string[]): void {
-  const logInfo = mfsUtilities.createLogger('MicroFrontendLoader').createMethodLogger('ensureMicroFrontends');
-  logInfo('Loading micro frontends...', microFrontends);
-  for (const mfeName of microFrontends) {
-    if (!isMicroFrontendLoaded(createMicroFrontendSource(mfeName))) {
-      appendMicroFrontendScript(mfeName);
+export function requireMicroFrontends(microFrontends: (string | MicroFrontendOptions)[]): void {
+  const logInfo = mfsUtilities.createLogger('MicroFrontendLoader').createMethodLogger('requireMicroFrontends');
+  for (const microFrontend of microFrontends) {
+    const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
+    if (!isMicroFrontendLoaded(createMicroFrontendSource(name))) {
+      appendMicroFrontendScript(name);
+      logInfo(`Loaded micro frontend: "${name}"`);
     }
   }
-  logInfo('Micro frontends loaded.');
 }
 
 function appendMicroFrontendScript(mfeName: string): void {
