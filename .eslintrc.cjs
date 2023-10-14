@@ -50,7 +50,7 @@ module.exports = {
     'simple-import-sort/imports': [
       'error',
       {
-        groups: [['^@?\\w'], ['^[^.]']],
+        groups: [['^@?\\w'], ['^@mfs?\\w'], ['^[^.]']],
       },
     ],
     'simple-import-sort/exports': 'error',

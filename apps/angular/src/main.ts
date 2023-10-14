@@ -1,4 +1,5 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
 import { attachEventBus } from '@mfs-packages/event-bus';
 import { attachStartupConfig } from '@mfs-packages/startup-config';
 
