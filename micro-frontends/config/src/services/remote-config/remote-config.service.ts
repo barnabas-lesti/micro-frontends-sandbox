@@ -8,11 +8,11 @@ import { type RemoteConfig } from './remote-config.types';
 export class RemoteConfigService {
   private static _instance: RemoteConfigService | undefined;
 
-  static create(): RemoteConfigService {
+  static getInstance(): RemoteConfigService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroy(): void {
+  static destroyInstance(): void {
     this._instance = undefined;
   }
 

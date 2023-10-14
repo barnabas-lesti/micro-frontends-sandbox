@@ -1,3 +1,3 @@
 import { PlatformService } from './services/platform';
 
-void PlatformService.create();
+void PlatformService.getInstance();

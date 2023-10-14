@@ -1,3 +1,3 @@
 import { RequestService } from './services/request';
 
-void RequestService.create();
+void RequestService.getInstance();

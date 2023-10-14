@@ -6,11 +6,11 @@ import { BrowserType } from './platform.types';
 export class PlatformService {
   private static _instance: PlatformService | undefined;
 
-  static create(): PlatformService {
+  static getInstance(): PlatformService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroy(): void {
+  static destroyInstance(): void {
     this._instance = undefined;
   }
 

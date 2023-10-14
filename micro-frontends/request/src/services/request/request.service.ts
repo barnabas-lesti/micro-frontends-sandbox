@@ -6,11 +6,11 @@ import { apiBaseURLRequiredError } from './request.errors';
 export class RequestService {
   private static _instance: RequestService | undefined;
 
-  static create(): RequestService {
+  static getInstance(): RequestService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroy(): void {
+  static destroyInstance(): void {
     this._instance = undefined;
   }
 
