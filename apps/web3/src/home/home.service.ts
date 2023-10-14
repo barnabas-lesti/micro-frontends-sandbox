@@ -1,8 +1,8 @@
-import { CONFIG_MICRO_FRONTEND_NAME, RemoteConfigCommand } from '@mfs/config-mfe';
-import { requireMicroFrontends } from '@mfs/micro-frontend-loader';
-import { type BrowserType, PLATFORM_MICRO_FRONTEND_NAME, PlatformCommand } from '@mfs/platform-mfe';
-import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs/request-mfe';
-import { createLogger } from '@mfs/utility';
+import { CONFIG_MICRO_FRONTEND_NAME, RemoteConfigCommand } from '@mfs-micro-frontends/config';
+import { type BrowserType, PLATFORM_MICRO_FRONTEND_NAME, PlatformCommand } from '@mfs-micro-frontends/platform';
+import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs-micro-frontends/request';
+import { requireMicroFrontends } from '@mfs-packages/micro-frontend-loader';
+import { createLogger } from '@mfs-packages/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
 import { type PageData } from './home.types';

@@ -68,16 +68,16 @@ importers:
       '@angular/router':
         specifier: ^16.2.0
         version: 16.2.0(@angular/common@16.2.0)(@angular/core@16.2.0)(@angular/platform-browser@16.2.0)(rxjs@7.8.1)
-      '@mfs/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@mfs/micro-frontend-loader':
+      '@mfs-packages/micro-frontend-loader':
         specifier: '*'
         version: link:../../packages/micro-frontend-loader
-      '@mfs/startup-config':
+      '@mfs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
       rxjs:
@@ -105,26 +105,26 @@ importers:
 
   apps/web3:
     dependencies:
-      '@mfs/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@mfs/micro-frontend-loader':
+      '@mfs-packages/micro-frontend-loader':
         specifier: '*'
         version: link:../../packages/micro-frontend-loader
-      '@mfs/startup-config':
+      '@mfs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs/config-mfe':
+      '@mfs-micro-frontends/config':
         specifier: '*'
         version: link:../../micro-frontends/config
-      '@mfs/platform-mfe':
+      '@mfs-micro-frontends/platform':
         specifier: '*'
         version: link:../../micro-frontends/platform
-      '@mfs/request-mfe':
+      '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
       ts-loader:
@@ -145,19 +145,19 @@ importers:
 
   micro-frontends/config:
     dependencies:
-      '@mfs/micro-frontend-loader':
+      '@mfs-packages/micro-frontend-loader':
         specifier: '*'
         version: link:../../packages/micro-frontend-loader
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs/event-bus':
-        specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs/request-mfe':
+      '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../request
+      '@mfs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -176,10 +176,10 @@ importers:
 
   micro-frontends/platform:
     devDependencies:
-      '@mfs/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
       concurrently:
@@ -200,14 +200,14 @@ importers:
 
   micro-frontends/request:
     dependencies:
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs/event-bus':
+      '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@mfs/startup-config':
+      '@mfs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
       concurrently:
@@ -232,7 +232,7 @@ importers:
         specifier: ^7.8.1
         version: 7.8.1
     devDependencies:
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../utility
       typescript:
@@ -241,7 +241,7 @@ importers:
 
   packages/micro-frontend-loader:
     dependencies:
-      '@mfs/utility':
+      '@mfs-packages/utility':
         specifier: '*'
         version: link:../utility
     devDependencies:

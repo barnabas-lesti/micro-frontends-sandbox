@@ -1,4 +1,4 @@
-import { createLogger } from '@mfs/utility';
+import { createLogger } from '@mfs-packages/utility';
 
 interface MicroFrontendOptions {
   name: string;

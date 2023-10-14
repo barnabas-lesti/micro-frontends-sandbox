@@ -3,4 +3,4 @@ export { type RemoteConfig, RemoteConfigCommand, type RemoteConfigContract } fro
 /**
  * The name of the configuration micro frontend.
  */
-export const CONFIG_MICRO_FRONTEND_NAME = 'config-mfe';
+export const CONFIG_MICRO_FRONTEND_NAME = 'config';

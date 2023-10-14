@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/platform-mfe",
+  "name": "@mfs-micro-frontends/platform",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -10,8 +10,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@mfs/event-bus": "*",
-    "@mfs/utility": "*",
+    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/utility": "*",
     "concurrently": "^8.2.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",

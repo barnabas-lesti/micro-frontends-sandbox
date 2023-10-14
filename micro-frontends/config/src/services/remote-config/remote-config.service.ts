@@ -1,6 +1,6 @@
-import { requireMicroFrontends } from '@mfs/micro-frontend-loader';
-import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs/request-mfe';
-import { createLogger } from '@mfs/utility';
+import { requireMicroFrontends } from '@mfs-packages/micro-frontend-loader';
+import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs-micro-frontends/request';
+import { createLogger } from '@mfs-packages/utility';
 
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
 import { RemoteConfigCommand } from './remote-config.contract';

@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/web3-app",
+  "name": "@mfs-apps/web3",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -7,15 +7,15 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@mfs/event-bus": "*",
-    "@mfs/startup-config": "*",
-    "@mfs/utility": "*",
-    "@mfs/micro-frontend-loader": "*"
+    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/startup-config": "*",
+    "@mfs-packages/utility": "*",
+    "@mfs-packages/micro-frontend-loader": "*"
   },
   "devDependencies": {
-    "@mfs/config-mfe": "*",
-    "@mfs/request-mfe": "*",
-    "@mfs/platform-mfe": "*",
+    "@mfs-micro-frontends/config": "*",
+    "@mfs-micro-frontends/request": "*",
+    "@mfs-micro-frontends/platform": "*",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",

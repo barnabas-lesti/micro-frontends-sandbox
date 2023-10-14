@@ -1,4 +1,4 @@
-import { createLogger } from '@mfs/utility';
+import { createLogger } from '@mfs-packages/utility';
 
 import { type MakeAPIRequestPayload, RequestCommand } from './request.contract';
 import { apiBaseURLRequiredError } from './request.errors';

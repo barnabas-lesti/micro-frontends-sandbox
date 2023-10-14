@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/micro-frontend-loader",
+  "name": "@mfs-packages/micro-frontend-loader",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -9,7 +9,7 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "@mfs/utility": "*"
+    "@mfs-packages/utility": "*"
   },
   "devDependencies": {
     "typescript": "^5.2.2"

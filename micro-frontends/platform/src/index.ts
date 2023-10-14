@@ -3,4 +3,4 @@ export { BrowserType, PlatformCommand, type PlatformContract } from './services/
 /**
  * The name of the platform micro frontend.
  */
-export const PLATFORM_MICRO_FRONTEND_NAME = 'platform-mfe';
+export const PLATFORM_MICRO_FRONTEND_NAME = 'platform';

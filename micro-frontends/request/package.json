@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/request-mfe",
+  "name": "@mfs-micro-frontends/request",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -9,11 +9,11 @@
     "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
   },
   "dependencies": {
-    "@mfs/utility": "*"
+    "@mfs-packages/utility": "*"
   },
   "devDependencies": {
-    "@mfs/event-bus": "*",
-    "@mfs/startup-config": "*",
+    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/startup-config": "*",
     "concurrently": "^8.2.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",

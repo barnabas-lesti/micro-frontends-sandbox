@@ -1,4 +1,4 @@
-import { type EventBus } from '@mfs/event-bus';
+import { type EventBus } from '@mfs-packages/event-bus';
 
 import { type PlatformContract } from './src';
 

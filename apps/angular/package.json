@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/angular-app",
+  "name": "@mfs-apps/angular",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,10 +19,10 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0",
-    "@mfs/event-bus": "*",
-    "@mfs/startup-config": "*",
-    "@mfs/utility": "*",
-    "@mfs/micro-frontend-loader": "*"
+    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/startup-config": "*",
+    "@mfs-packages/utility": "*",
+    "@mfs-packages/micro-frontend-loader": "*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.6",

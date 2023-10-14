@@ -1,5 +1,5 @@
-import { attachEventBus } from '@mfs/event-bus';
-import { attachStartupConfig } from '@mfs/startup-config';
+import { attachEventBus } from '@mfs-packages/event-bus';
+import { attachStartupConfig } from '@mfs-packages/startup-config';
 
 import { HomeService } from './home';
 
