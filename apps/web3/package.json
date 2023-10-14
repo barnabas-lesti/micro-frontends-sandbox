@@ -10,12 +10,11 @@
     "@mfs-packages/event-bus": "*",
     "@mfs-packages/startup-config": "*",
     "@mfs-packages/utility": "*",
-    "@mfs-packages/micro-frontend-loader": "*"
-  },
-  "devDependencies": {
     "@mfs-micro-frontends/config": "*",
     "@mfs-micro-frontends/request": "*",
-    "@mfs-micro-frontends/platform": "*",
+    "@mfs-micro-frontends/platform": "*"
+  },
+  "devDependencies": {
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",

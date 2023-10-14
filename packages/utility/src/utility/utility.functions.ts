@@ -24,3 +24,7 @@ export function getRandomInteger(min: number, max: number): number {
   const maxFloor = Math.floor(max);
   return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
 }
+
+export function unblockThread(callback: () => void): void {
+  setTimeout(callback, 0);
+}

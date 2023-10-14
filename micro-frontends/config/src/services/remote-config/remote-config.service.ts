@@ -1,5 +1,4 @@
-import { requireMicroFrontends } from '@mfs-packages/micro-frontend-loader';
-import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs-micro-frontends/request';
+import { RequestCommand } from '@mfs-micro-frontends/request';
 import { createLogger } from '@mfs-packages/utility';
 
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
@@ -25,8 +24,6 @@ export class RemoteConfigService {
 
   private constructor() {
     this.logger.info('constructor');
-
-    requireMicroFrontends([REQUEST_MICRO_FRONTEND_NAME]);
 
     mfsEventBus.listen(RemoteConfigCommand.Get, async (payload) => payload.onSuccess?.(await this.get()));
   }

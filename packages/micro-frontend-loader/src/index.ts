@@ -9,14 +9,12 @@ interface MicroFrontendOptions {
  * Loads the specified micro frontends by appending their scripts to the document head.
  * @param microFrontends An array of micro frontend names or options.
  */
-export function requireMicroFrontends(microFrontends: (string | MicroFrontendOptions)[]): void {
+export function loadMicroFrontend(microFrontend: string | MicroFrontendOptions): void {
   const logInfo = createLogger('MicroFrontendLoader').createMethodLogger('requireMicroFrontends');
-  for (const microFrontend of microFrontends) {
-    const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
-    if (!isMicroFrontendLoaded(createMicroFrontendSource(name))) {
-      appendMicroFrontendScript(name);
-      logInfo(`Loaded micro frontend: "${name}"`);
-    }
+  const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
+  if (!isMicroFrontendLoaded(createMicroFrontendSource(name))) {
+    appendMicroFrontendScript(name);
+    logInfo(`Loaded micro frontend: "${name}"`);
   }
 }
 

@@ -9,10 +9,11 @@
     "build:watch": "tsc --watch"
   },
   "dependencies": {
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "@mfs-packages/utility": "*",
+    "@mfs-packages/micro-frontend-loader": "*"
   },
   "devDependencies": {
-    "@mfs-packages/utility": "*",
     "typescript": "^5.2.2"
   }
 }

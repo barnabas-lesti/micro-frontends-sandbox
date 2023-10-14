@@ -21,8 +21,7 @@
     "zone.js": "~0.13.0",
     "@mfs-packages/event-bus": "*",
     "@mfs-packages/startup-config": "*",
-    "@mfs-packages/utility": "*",
-    "@mfs-packages/micro-frontend-loader": "*"
+    "@mfs-packages/utility": "*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.6",

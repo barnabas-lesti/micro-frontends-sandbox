@@ -9,7 +9,6 @@
     "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
   },
   "dependencies": {
-    "@mfs-packages/micro-frontend-loader": "*",
     "@mfs-packages/utility": "*"
   },
   "devDependencies": {

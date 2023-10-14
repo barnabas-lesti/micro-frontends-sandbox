@@ -1,7 +1,6 @@
-import { CONFIG_MICRO_FRONTEND_NAME, RemoteConfigCommand } from '@mfs-micro-frontends/config';
-import { type BrowserType, PLATFORM_MICRO_FRONTEND_NAME, PlatformCommand } from '@mfs-micro-frontends/platform';
-import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs-micro-frontends/request';
-import { requireMicroFrontends } from '@mfs-packages/micro-frontend-loader';
+import { RemoteConfigCommand } from '@mfs-micro-frontends/config';
+import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform';
+import { RequestCommand } from '@mfs-micro-frontends/request';
 import { createLogger } from '@mfs-packages/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -26,8 +25,6 @@ export class HomeService {
 
   private constructor() {
     this.logger.info('constructor');
-
-    requireMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>

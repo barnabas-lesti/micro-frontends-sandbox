@@ -9,7 +9,7 @@ export const enum RemoteConfigCommand {
   /**
    * Command to retrieve the remote configuration.
    */
-  Get = 'remoteConfig:get',
+  Get = 'config:remoteConfig:get',
 }
 
 /**

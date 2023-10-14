@@ -71,9 +71,6 @@ importers:
       '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@mfs-packages/micro-frontend-loader':
-        specifier: '*'
-        version: link:../../packages/micro-frontend-loader
       '@mfs-packages/startup-config':
         specifier: '*'
         version: link:../../packages/startup-config
@@ -105,19 +102,6 @@ importers:
 
   apps/web3:
     dependencies:
-      '@mfs-packages/event-bus':
-        specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs-packages/micro-frontend-loader':
-        specifier: '*'
-        version: link:../../packages/micro-frontend-loader
-      '@mfs-packages/startup-config':
-        specifier: '*'
-        version: link:../../packages/startup-config
-      '@mfs-packages/utility':
-        specifier: '*'
-        version: link:../../packages/utility
-    devDependencies:
       '@mfs-micro-frontends/config':
         specifier: '*'
         version: link:../../micro-frontends/config
@@ -127,6 +111,16 @@ importers:
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
+      '@mfs-packages/event-bus':
+        specifier: '*'
+        version: link:../../packages/event-bus
+      '@mfs-packages/startup-config':
+        specifier: '*'
+        version: link:../../packages/startup-config
+      '@mfs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
+    devDependencies:
       ts-loader:
         specifier: ^9.4.4
         version: 9.4.4(typescript@5.2.2)(webpack@5.88.2)
@@ -145,9 +139,6 @@ importers:
 
   micro-frontends/config:
     dependencies:
-      '@mfs-packages/micro-frontend-loader':
-        specifier: '*'
-        version: link:../../packages/micro-frontend-loader
       '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
@@ -175,13 +166,14 @@ importers:
         version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
 
   micro-frontends/platform:
+    dependencies:
+      '@mfs-packages/utility':
+        specifier: '*'
+        version: link:../../packages/utility
     devDependencies:
       '@mfs-packages/event-bus':
         specifier: '*'
         version: link:../../packages/event-bus
-      '@mfs-packages/utility':
-        specifier: '*'
-        version: link:../../packages/utility
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -228,13 +220,16 @@ importers:
 
   packages/event-bus:
     dependencies:
+      '@mfs-packages/micro-frontend-loader':
+        specifier: '*'
+        version: link:../micro-frontend-loader
+      '@mfs-packages/utility':
+        specifier: '*'
+        version: link:../utility
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
     devDependencies:
-      '@mfs-packages/utility':
-        specifier: '*'
-        version: link:../utility
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
