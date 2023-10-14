@@ -1,6 +1,6 @@
 import { type EventBus, type StartupConfig } from '@mfs/shell';
 
-import { type RequestContract } from './src/contract';
+import { type RequestContract } from './src';
 
 declare global {
   interface Window {

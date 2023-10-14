@@ -1,4 +1,4 @@
-import { RequestCommand } from '@mfs/request-mfe/contract';
+import { RequestCommand } from '@mfs/request-mfe';
 import { Logger } from '@mfs/utility';
 
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';

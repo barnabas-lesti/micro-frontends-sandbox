@@ -1,3 +1,1 @@
-import { RequestService } from './services/request';
-
-void RequestService.create();
+export { RequestCommand, type RequestContract } from './services/request';

@@ -1,5 +1,3 @@
-import { default as moment } from 'moment';
-
 import { LOGGER_TYPE_TO_FUNCTION_MAP } from './logger.const';
 import { type LoggerType } from './logger.types';
 
@@ -25,6 +23,6 @@ export class Logger {
   }
 
   private formatMessage(method: string, message?: string): string {
-    return `[${moment().format('HH:mm:ss')}][${this.sourceID}][${method}]${message ? ' ' + message : ''}`;
+    return `[${this.sourceID}][${method}]${message ? ' ' + message : ''}`;
   }
 }

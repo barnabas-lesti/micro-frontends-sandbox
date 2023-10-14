@@ -4,21 +4,8 @@
   "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./dist/index.js",
-    "./contract": {
-      "import": "./dist/contract.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "contract": [
-        "./dist/contract.d.ts"
-      ]
-    }
-  },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && webpack",
     "build:watch": "tsc --watch"
   },
   "dependencies": {
@@ -26,6 +13,9 @@
   },
   "devDependencies": {
     "@mfs/shell": "*",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "ts-loader": "^9.4.4",
     "typescript": "^5.2.2"
   }
 }

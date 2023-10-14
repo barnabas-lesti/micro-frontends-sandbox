@@ -1,5 +1,5 @@
 import { createShell } from '@mfs/shell';
-import { Logger } from '@mfs/utility';
+import { delay, Logger } from '@mfs/utility';
 
 import { MICRO_FRONTENDS } from './index.const';
 
@@ -9,6 +9,14 @@ export async function bootstrap(): Promise<void> {
   await createShell();
 
   logInfo('Loading micro frontends...');
-  await Promise.all(MICRO_FRONTENDS);
+
+  for (const mfeName of MICRO_FRONTENDS) {
+    const script = document.createElement('script');
+    script.setAttribute('src', `micro-frontends/${mfeName}/dist/loader.js`);
+    script.setAttribute('async', '');
+    // script.setAttribute('type', 'module');
+    delay(() => document.head.appendChild(script));
+  }
+
   logInfo('Micro frontends loaded.');
 }

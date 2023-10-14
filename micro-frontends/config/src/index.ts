@@ -1,3 +1,1 @@
-import { RemoteConfigService } from './services/remote-config';
-
-void RemoteConfigService.create();
+export { type RemoteConfig, RemoteConfigCommand, type RemoteConfigContract } from './services/remote-config';

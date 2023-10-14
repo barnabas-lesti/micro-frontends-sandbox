@@ -1,3 +1,1 @@
-import { PlatformService } from './services/platform';
-
-void PlatformService.create();
+export { BrowserType, PlatformCommand, type PlatformContract } from './services/platform';

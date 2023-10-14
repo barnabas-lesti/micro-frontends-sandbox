@@ -1,5 +1,3 @@
-const { webpackConfigFactory } = require('../../tools/webpack');
+const { createWebpackAppConfig } = require('../../tools/webpack/webpack.app.config.cjs');
 
-module.exports = webpackConfigFactory({
-  entry: './src/index.ts',
-});
+module.exports = createWebpackAppConfig();
