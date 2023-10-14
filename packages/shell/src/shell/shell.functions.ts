@@ -18,26 +18,25 @@ export async function createShell(): Promise<void> {
 }
 
 /**
- * Loads the specified micro frontends by appending their script tags to the document head.
- * @param microFrontends An array of strings representing the names of the micro frontends to load.
+ * Ensures that the specified micro frontends are loaded into the application.
+ * @param microFrontends An array of micro frontend names to load.
  */
-export function loadMicroFrontends(microFrontends: string[]): void {
-  const logInfo = (message: string, data?: unknown) => new Logger('shell').info('loadMicroFrontends', message, data);
+export function ensureMicroFrontends(microFrontends: string[]): void {
+  const logInfo = (message: string, data?: unknown) => new Logger('shell').info('ensureMicroFrontends', message, data);
   logInfo('Loading micro frontends...', microFrontends);
   for (const mfeName of microFrontends) {
-    appendMicroFrontendScript(mfeName);
+    if (!isMicroFrontendLoaded(createMicroFrontendSource(mfeName))) {
+      appendMicroFrontendScript(mfeName);
+    }
   }
   logInfo('Micro frontends loaded.');
 }
 
 function appendMicroFrontendScript(mfeName: string): void {
-  const mfeSource = createMicroFrontendSource(mfeName);
-  if (!isMicroFrontendLoaded(mfeSource)) {
-    const script = document.createElement('script');
-    script.setAttribute('src', mfeSource);
-    script.setAttribute('defer', '');
-    document.head.appendChild(script);
-  }
+  const script = document.createElement('script');
+  script.setAttribute('src', createMicroFrontendSource(mfeName));
+  script.setAttribute('defer', '');
+  document.head.appendChild(script);
 }
 
 function createMicroFrontendSource(mfeName: string): string {

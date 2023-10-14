@@ -1,7 +1,7 @@
 import { CONFIG_MICRO_FRONTEND_NAME, RemoteConfigCommand } from '@mfs/config-mfe';
 import { type BrowserType, PLATFORM_MICRO_FRONTEND_NAME, PlatformCommand } from '@mfs/platform-mfe';
 import { REQUEST_MICRO_FRONTEND_NAME, RequestCommand } from '@mfs/request-mfe';
-import { loadMicroFrontends } from '@mfs/shell';
+import { ensureMicroFrontends } from '@mfs/shell';
 import { Logger } from '@mfs/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -27,9 +27,11 @@ export class HomeService {
   private constructor() {
     this.logger.info('constructor');
 
-    loadMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
-    loadMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
-    loadMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
+    ensureMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
+
+    // Testing if MFe-s are loaded only once
+    ensureMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
+    ensureMicroFrontends([REQUEST_MICRO_FRONTEND_NAME, CONFIG_MICRO_FRONTEND_NAME, PLATFORM_MICRO_FRONTEND_NAME]);
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>
