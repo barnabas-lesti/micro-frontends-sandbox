@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "rxjs": "^7.8.1",
-    "@mfs-packages/utility": "*",
-    "@mfs-packages/micro-frontend-loader": "*"
+    "@mfs-packages/utility": "*"
   },
   "devDependencies": {
     "typescript": "^5.2.2"

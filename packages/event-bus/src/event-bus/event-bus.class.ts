@@ -1,7 +1,7 @@
-import { loadMicroFrontend } from '@mfs-packages/micro-frontend-loader';
 import { createLogger, unblockThread } from '@mfs-packages/utility';
 import { ReplaySubject } from 'rxjs';
 
+import { loadMicroFrontend } from '../micro-frontend-loader';
 import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';
 import { type DispatchSubject, type DispatchSubjectMap, type Listener } from './event-bus.types';
 

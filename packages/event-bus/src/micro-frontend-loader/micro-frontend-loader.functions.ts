@@ -1,9 +1,6 @@
 import { createLogger } from '@mfs-packages/utility';
 
-interface MicroFrontendOptions {
-  name: string;
-  version?: string;
-}
+import { type MicroFrontendOptions } from './micro-frontend-loader.types';
 
 /**
  * Loads the specified micro frontends by appending their scripts to the document head.

@@ -1,7 +1,7 @@
-import { EventBus } from './event-bus.class';
+import { EventBus } from './event-bus';
 
+export { type DispatchPayload } from './event-bus';
 export { type EventBus };
-export { type DispatchPayload } from './event-bus.types';
 
 export function attachEventBus(): void {
   if (!window.mfsEventBus) {
