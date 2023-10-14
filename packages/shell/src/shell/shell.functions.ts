@@ -3,6 +3,10 @@ import { Logger } from '@mfs/utility';
 import { EventBus } from '../event-bus';
 import { STARTUP_CONFIG_MOCK } from '../startup-config';
 
+/**
+ * Creates an application shell by creating the EventBus and StartupConfig.
+ * @returns A Promise that resolves when the shell is created.
+ */
 export async function createShell(): Promise<void> {
   const logInfo = (message: string) => new Logger('shell').info('createShell', message);
   logInfo('Creating EventBus...');
@@ -13,6 +17,10 @@ export async function createShell(): Promise<void> {
   logInfo('StartupConfig created');
 }
 
+/**
+ * Loads the specified micro frontends by appending their script tags to the document head.
+ * @param microFrontends An array of strings representing the names of the micro frontends to load.
+ */
 export function loadMicroFrontends(microFrontends: string[]): void {
   const logInfo = (message: string, data?: unknown) => new Logger('shell').info('loadMicroFrontends', message, data);
   logInfo('Loading micro frontends...', microFrontends);

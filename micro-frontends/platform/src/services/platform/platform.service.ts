@@ -25,6 +25,10 @@ export class PlatformService {
     window.mfsEventBus.listen(PlatformCommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
   }
 
+  /**
+   * Returns a boolean indicating whether the current environment is a browser or not.
+   * @returns - True if the current environment is a browser, false otherwise.
+   */
   isBrowser(): boolean {
     if (this._isBrowser === undefined) {
       this._isBrowser = typeof window !== 'undefined';
@@ -32,6 +36,10 @@ export class PlatformService {
     return this._isBrowser;
   }
 
+  /**
+   * Returns the type of browser being used.
+   * @returns The type of browser being used.
+   */
   getBrowserType(): BrowserType {
     if (this._browserType === undefined) {
       this._browserType = this.determineBrowserType();

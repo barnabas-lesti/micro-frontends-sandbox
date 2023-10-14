@@ -2,6 +2,9 @@ import { type DispatchPayload } from '@mfs/shell';
 
 import { type BrowserType } from './platform.types';
 
+/**
+ * Enum representing the available platform commands.
+ */
 export const enum PlatformCommand {
   /**
    * Command to determine if the app is running in a browser environment or not.
@@ -14,6 +17,9 @@ export const enum PlatformCommand {
   GetBrowserType = 'platform:getBrowserType',
 }
 
+/**
+ * Defines the contract for the platform service.
+ */
 export interface PlatformContract {
   [PlatformCommand.IsBrowser]: IsBrowserPayload;
   [PlatformCommand.GetBrowserType]: GetBrowserTypePayload;

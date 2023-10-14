@@ -30,6 +30,12 @@ export class RequestService {
     });
   }
 
+  /**
+   * Makes an API request using the provided payload.
+   * @param payload - The payload for the API request.
+   * @returns A Promise that resolves with the response data.
+   * @throws An error if the API base URL is not set.
+   */
   async makeAPIRequest<ResponseData>(payload: MakeAPIRequestPayload): Promise<ResponseData> {
     if (!this.apiBaseURL) throw apiBaseURLRequiredError();
 
