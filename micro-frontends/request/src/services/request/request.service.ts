@@ -15,7 +15,7 @@ export class RequestService {
   }
 
   private readonly logger = createLogger('RequestService');
-  private readonly apiBaseURL = mfsStartupConfig.apiBaseURL;
+  private readonly apiBaseURL = mfsStartupConfig?.apiBaseURL;
 
   private constructor() {
     this.logger.info('constructor');

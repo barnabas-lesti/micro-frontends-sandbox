@@ -50,9 +50,10 @@ export class HomeService {
 
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
-      this._isBannerEnabledPromise = new Promise((resolve) => {
+      this._isBannerEnabledPromise = new Promise((resolve, reject) => {
         mfsEventBus.dispatch(RemoteConfigCommand.Get, {
           onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
+          onError: (error) => reject(error),
         });
       });
     }
@@ -61,10 +62,11 @@ export class HomeService {
 
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
-      this._pageDataPromise = new Promise((resolve) => {
+      this._pageDataPromise = new Promise((resolve, reject) => {
         mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
           onSuccess: (data) => resolve(data as PageData),
+          onError: (error) => reject(error),
         });
       });
     }

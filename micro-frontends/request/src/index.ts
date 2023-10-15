@@ -1,1 +1,1 @@
-export { RequestCommand, type RequestContract } from './services/request';
+export { RequestCommand, type RequestContract, type RequestStartupConfig } from './services/request';
