@@ -68,12 +68,9 @@ importers:
       '@angular/router':
         specifier: ^16.2.0
         version: 16.2.0(@angular/common@16.2.0)(@angular/core@16.2.0)(@angular/platform-browser@16.2.0)(rxjs@7.8.1)
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs-packages/startup-config':
-        specifier: '*'
-        version: link:../../packages/startup-config
+        version: link:../../packages/shell
       '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
@@ -111,12 +108,9 @@ importers:
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../../micro-frontends/request
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs-packages/startup-config':
-        specifier: '*'
-        version: link:../../packages/startup-config
+        version: link:../../packages/shell
       '@mfs-packages/utility':
         specifier: '*'
         version: link:../../packages/utility
@@ -146,9 +140,9 @@ importers:
       '@mfs-micro-frontends/request':
         specifier: '*'
         version: link:../request
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
+        version: link:../../packages/shell
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -171,9 +165,9 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
+        version: link:../../packages/shell
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -196,12 +190,9 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/event-bus':
+      '@mfs-packages/shell':
         specifier: '*'
-        version: link:../../packages/event-bus
-      '@mfs-packages/startup-config':
-        specifier: '*'
-        version: link:../../packages/startup-config
+        version: link:../../packages/shell
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -218,33 +209,14 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
 
-  packages/event-bus:
+  packages/shell:
     dependencies:
-      '@mfs-packages/micro-frontend-loader':
-        specifier: '*'
-        version: link:../micro-frontend-loader
       '@mfs-packages/utility':
         specifier: '*'
         version: link:../utility
       rxjs:
         specifier: ^7.8.1
         version: 7.8.1
-    devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  packages/micro-frontend-loader:
-    dependencies:
-      '@mfs-packages/utility':
-        specifier: '*'
-        version: link:../utility
-    devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  packages/startup-config:
     devDependencies:
       typescript:
         specifier: ^5.2.2
@@ -2817,7 +2789,7 @@ packages:
       chalk: 4.1.2
       jsdom: 16.7.0
       object-path: 0.11.8
-      tslib: 2.3.0
+      tslib: 2.6.1
       typescript: 5.1.3
     transitivePeerDependencies:
       - bufferutil
@@ -5836,7 +5808,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.6.1
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11

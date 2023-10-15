@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@mfs-micro-frontends/request": "*",
-    "@mfs-packages/event-bus": "*",
+    "@mfs-packages/shell": "*",
     "concurrently": "^8.2.1",
     "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",

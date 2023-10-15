@@ -1,5 +1,4 @@
-import { type EventBus } from '@mfs-packages/event-bus';
-import { type StartupConfig } from '@mfs-packages/startup-config';
+import { type EventBus, type StartupConfig } from '@mfs-packages/shell';
 
 declare global {
   const mfsEventBus: EventBus<unknown>;

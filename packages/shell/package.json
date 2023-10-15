@@ -1,5 +1,5 @@
 {
-  "name": "@mfs-packages/event-bus",
+  "name": "@mfs-packages/shell",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",

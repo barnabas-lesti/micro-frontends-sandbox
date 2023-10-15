@@ -1,8 +1,0 @@
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "../../tools/tsconfig/base.json",
-  "include": ["**/*.ts", "./custom.d.ts"],
-  "compilerOptions": {
-    "outDir": "./dist"
-  }
-}

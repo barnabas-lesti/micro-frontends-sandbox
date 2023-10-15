@@ -19,8 +19,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0",
-    "@mfs-packages/event-bus": "*",
-    "@mfs-packages/startup-config": "*",
+    "@mfs-packages/shell": "*",
     "@mfs-packages/utility": "*"
   },
   "devDependencies": {

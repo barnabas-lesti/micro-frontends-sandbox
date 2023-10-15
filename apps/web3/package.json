@@ -7,8 +7,7 @@
     "start:prod": "webpack-dev-server --mode production"
   },
   "dependencies": {
-    "@mfs-packages/event-bus": "*",
-    "@mfs-packages/startup-config": "*",
+    "@mfs-packages/shell": "*",
     "@mfs-packages/utility": "*",
     "@mfs-micro-frontends/config": "*",
     "@mfs-micro-frontends/request": "*",

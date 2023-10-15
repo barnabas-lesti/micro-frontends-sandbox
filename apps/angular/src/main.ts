@@ -1,12 +1,10 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { attachEventBus } from '@mfs-packages/event-bus';
-import { attachStartupConfig } from '@mfs-packages/startup-config';
+import { createShell } from '@mfs-packages/shell';
 
 import { AppModule } from './app/app.module';
 
-attachStartupConfig();
-attachEventBus();
+createShell();
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)

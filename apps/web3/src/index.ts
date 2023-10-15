@@ -1,9 +1,7 @@
-import { attachEventBus } from '@mfs-packages/event-bus';
-import { attachStartupConfig } from '@mfs-packages/startup-config';
+import { createShell } from '@mfs-packages/shell';
 
 import { HomeService } from './home';
 
-attachStartupConfig();
-attachEventBus();
+createShell();
 
 void HomeService.getInstance();
