@@ -1,3 +1,3 @@
-const { createWebpackAppConfig } = require('@mfs-tools/webpack');
+const { createWebpackAppConfig } = require('@mfs/builder');
 
 module.exports = createWebpackAppConfig();

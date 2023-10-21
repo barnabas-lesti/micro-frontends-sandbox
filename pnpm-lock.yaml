@@ -105,9 +105,6 @@ importers:
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs/utility':
-        specifier: '*'
-        version: link:../../packages/utility
       '@mfs/svc-config':
         specifier: '*'
         version: link:../../micro-frontends/svc-config
@@ -117,10 +114,13 @@ importers:
       '@mfs/svc-request':
         specifier: '*'
         version: link:../../micro-frontends/svc-request
-    devDependencies:
-      '@mfs-tools/webpack':
+      '@mfs/utility':
         specifier: '*'
-        version: link:../../tools/webpack
+        version: link:../../packages/utility
+    devDependencies:
+      '@mfs/builder':
+        specifier: '*'
+        version: link:../../tools/builder
       ts-loader:
         specifier: ^9.4.4
         version: 9.4.4(typescript@5.2.2)(webpack@5.88.2)
@@ -143,12 +143,12 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
+      '@mfs/builder':
+        specifier: '*'
+        version: link:../../tools/builder
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs-tools/webpack':
-        specifier: '*'
-        version: link:../../tools/webpack
       '@mfs/svc-request':
         specifier: '*'
         version: link:../svc-request
@@ -174,12 +174,12 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
+      '@mfs/builder':
+        specifier: '*'
+        version: link:../../tools/builder
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs-tools/webpack':
-        specifier: '*'
-        version: link:../../tools/webpack
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -205,9 +205,9 @@ importers:
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-tools/webpack':
+      '@mfs/builder':
         specifier: '*'
-        version: link:../../tools/webpack
+        version: link:../../tools/builder
       concurrently:
         specifier: ^8.2.1
         version: 8.2.1
@@ -235,7 +235,7 @@ importers:
 
   packages/utility: {}
 
-  tools/webpack: {}
+  tools/builder: {}
 
 packages:
 
