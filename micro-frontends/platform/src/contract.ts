@@ -5,7 +5,7 @@ export { type BrowserType } from './services/platform';
 /**
  * Enum representing the available platform commands.
  */
-export const enum PlatformMFECommand {
+export const enum PlatformCommand {
   /**
    * Command to determine if the app is running in a browser environment or not.
    */
@@ -20,7 +20,7 @@ export const enum PlatformMFECommand {
 /**
  * Defines the contract for the platform service.
  */
-export interface PlatformMFEContract {
-  [PlatformMFECommand.IsBrowser]: IsBrowserPayload;
-  [PlatformMFECommand.GetBrowserType]: GetBrowserTypePayload;
+export interface PlatformContract {
+  [PlatformCommand.IsBrowser]: IsBrowserPayload;
+  [PlatformCommand.GetBrowserType]: GetBrowserTypePayload;
 }

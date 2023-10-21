@@ -3,7 +3,7 @@ import { type MakeAPIRequestPayload } from './services/request';
 /**
  * Enum representing the available request commands.
  */
-export const enum RequestMFECommand {
+export const enum RequestCommand {
   /**
    * Command to make an API request.
    */
@@ -13,6 +13,6 @@ export const enum RequestMFECommand {
 /**
  * Defines the contract for the request service.
  */
-export interface RequestMFEContract {
-  [RequestMFECommand.MakeAPIRequest]: MakeAPIRequestPayload;
+export interface RequestContract {
+  [RequestCommand.MakeAPIRequest]: MakeAPIRequestPayload;
 }

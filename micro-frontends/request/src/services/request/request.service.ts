@@ -1,6 +1,6 @@
 import { createLogger } from '@mfs-packages/utility';
 
-import { RequestMFECommand } from '../../types';
+import { RequestCommand } from '../../contract';
 import { apiBaseURLRequiredError } from './request.errors';
 import { type MakeAPIRequestPayload } from './request.types';
 
@@ -21,7 +21,7 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(RequestMFECommand.MakeAPIRequest, async (payload) => {
+    mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
       const data = await this.makeAPIRequest(payload);
       payload.onSuccess?.(data);
     });

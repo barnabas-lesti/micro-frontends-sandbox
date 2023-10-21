@@ -1,6 +1,6 @@
-import { ConfigMFECommand } from '@mfs-micro-frontends/config/types';
-import { type BrowserType, PlatformMFECommand } from '@mfs-micro-frontends/platform/types';
-import { RequestMFECommand } from '@mfs-micro-frontends/request/types';
+import { ConfigCommand } from '@mfs-micro-frontends/config/contract';
+import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform/contract';
+import { RequestCommand } from '@mfs-micro-frontends/request/contract';
 import { createLogger } from '@mfs-packages/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -51,7 +51,7 @@ export class HomeService {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve, reject) => {
-        mfsEventBus.dispatch(ConfigMFECommand.GetRemoteConfig, {
+        mfsEventBus.dispatch(ConfigCommand.GetRemoteConfig, {
           onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
           onError: (error) => reject(error),
         });
@@ -63,7 +63,7 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve, reject) => {
-        mfsEventBus.dispatch(RequestMFECommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
           onSuccess: (data) => resolve(data as PageData),
           onError: (error) => reject(error),
@@ -76,7 +76,7 @@ export class HomeService {
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
       this._isBrowserPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(PlatformMFECommand.IsBrowser, {
+        mfsEventBus.dispatch(PlatformCommand.IsBrowser, {
           onSuccess: resolve,
         });
       });
@@ -87,7 +87,7 @@ export class HomeService {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(PlatformMFECommand.GetBrowserType, {
+        mfsEventBus.dispatch(PlatformCommand.GetBrowserType, {
           onSuccess: resolve,
         });
       });

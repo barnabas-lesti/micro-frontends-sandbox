@@ -1,9 +1,9 @@
 import { type EventBus } from '@mfs-packages/shell';
 
+import { type RequestContract } from './contract';
 import { type RequestStartupConfig } from './services/request';
-import { type RequestMFEContract } from './types';
 
 declare global {
-  const mfsEventBus: EventBus<RequestMFEContract>;
+  const mfsEventBus: EventBus<RequestContract>;
   const mfsStartupConfig: RequestStartupConfig | undefined;
 }

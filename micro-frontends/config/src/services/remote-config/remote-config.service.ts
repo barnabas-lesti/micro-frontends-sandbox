@@ -1,7 +1,7 @@
-import { RequestMFECommand } from '@mfs-micro-frontends/request/types';
+import { RequestCommand } from '@mfs-micro-frontends/request/contract';
 import { createLogger } from '@mfs-packages/utility';
 
-import { ConfigMFECommand } from '../../types';
+import { ConfigCommand } from '../../contract';
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
 import { type RemoteConfig } from './remote-config.types';
 
@@ -25,7 +25,7 @@ export class RemoteConfigService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(ConfigMFECommand.GetRemoteConfig, async (payload) => payload.onSuccess?.(await this.get()));
+    mfsEventBus.listen(ConfigCommand.GetRemoteConfig, async (payload) => payload.onSuccess?.(await this.get()));
   }
 
   /**
@@ -37,7 +37,7 @@ export class RemoteConfigService {
   async get(): Promise<RemoteConfig> {
     if (!this._remoteConfigPromise) {
       this._remoteConfigPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(RequestMFECommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: REMOTE_CONFIG_API_PATH,
           onSuccess: (data) => resolve(data as RemoteConfig),
         });

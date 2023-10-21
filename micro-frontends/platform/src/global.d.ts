@@ -1,7 +1,7 @@
 import { type EventBus } from '@mfs-packages/shell';
 
-import { type PlatformMFEContract } from './types';
+import { type PlatformContract } from './contract';
 
 declare global {
-  const mfsEventBus: EventBus<PlatformMFEContract>;
+  const mfsEventBus: EventBus<PlatformContract>;
 }

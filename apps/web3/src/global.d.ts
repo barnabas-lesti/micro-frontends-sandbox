@@ -1,8 +1,8 @@
-import { type ConfigMFEContract } from '@mfs-micro-frontends/config/types';
-import { type PlatformMFEContract } from '@mfs-micro-frontends/platform/types';
-import { type RequestMFEContract } from '@mfs-micro-frontends/request/types';
+import { type ConfigContract } from '@mfs-micro-frontends/config/contract';
+import { type PlatformContract } from '@mfs-micro-frontends/platform/contract';
+import { type RequestContract } from '@mfs-micro-frontends/request/contract';
 import { type EventBus } from '@mfs-packages/shell';
 
 declare global {
-  const mfsEventBus: EventBus<ConfigMFEContract & PlatformMFEContract & RequestMFEContract>;
+  const mfsEventBus: EventBus<ConfigContract & PlatformContract & RequestContract>;
 }
