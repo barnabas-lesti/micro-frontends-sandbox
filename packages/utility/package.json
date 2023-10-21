@@ -5,9 +5,11 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build": "tsup",
+    "build:watch": "tsup --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@mfs/builder": "*"
+  },
   "devDependencies": {}
 }

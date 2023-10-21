@@ -1,8 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "../../tools/tsconfig/base.json",
-  "include": ["**/*.ts"],
-  "compilerOptions": {
-    "outDir": "./dist"
-  }
+  "extends": "@mfs/builder/tsconfig/base.json",
+  "include": ["**/*.ts"]
 }

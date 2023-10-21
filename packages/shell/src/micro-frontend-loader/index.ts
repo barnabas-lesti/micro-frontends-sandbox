@@ -1,1 +1,1 @@
-export { loadMicroFrontend } from './micro-frontend-loader.functions';
+export * from './micro-frontend-loader.functions';

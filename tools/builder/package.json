@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "main": "./src/index.js",
   "types": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./tsconfig/*": "./src/tsconfig/*"
+  },
   "scripts": {},
   "dependencies": {},
   "devDependencies": {}

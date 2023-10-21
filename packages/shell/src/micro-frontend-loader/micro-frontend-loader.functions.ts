@@ -1,18 +1,19 @@
 import { createLogger } from '@mfs/utility';
 
+import { MICRO_FRONTEND_LOADER_FILE_NAME } from './micro-frontend-loader.const';
 import { type MicroFrontendOptions } from './micro-frontend-loader.types';
 
-/**
- * Loads a micro frontend if it hasn't been loaded yet.
- * @param microFrontend - The name of the micro frontend or an object containing its name and options.
- */
 export function loadMicroFrontend(microFrontend: string | MicroFrontendOptions): void {
-  const logInfo = createLogger('MicroFrontendLoader').createMethodLogger('requireMicroFrontends');
+  const logInfo = createLogger('MicroFrontendLoader').createMethodLogger('loadMicroFrontend');
   const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
   if (!isMicroFrontendLoaded(createMicroFrontendSource(name))) {
     appendMicroFrontendScript(name);
     logInfo(`Loaded micro frontend: "${name}"`);
   }
+}
+
+export function loadMicroFrontends(microFrontends: Array<string | MicroFrontendOptions>): void {
+  microFrontends.forEach(loadMicroFrontend);
 }
 
 function appendMicroFrontendScript(mfeName: string): void {
@@ -23,7 +24,7 @@ function appendMicroFrontendScript(mfeName: string): void {
 }
 
 function createMicroFrontendSource(mfeName: string): string {
-  return `micro-frontends/${mfeName}/dist/index.js`;
+  return `micro-frontends/${mfeName}/dist/${MICRO_FRONTEND_LOADER_FILE_NAME}`;
 }
 
 function isMicroFrontendLoaded(mfeSource: string): boolean {

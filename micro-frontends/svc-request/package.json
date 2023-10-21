@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "concurrently \"tsc\" \"webpack\"",
-    "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
+    "build": "tsup",
+    "build:watch": "tsup --watch"
   },
   "dependencies": {
     "@mfs/utility": "*",

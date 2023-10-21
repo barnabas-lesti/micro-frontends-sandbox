@@ -17,11 +17,13 @@
     "eslintcache",
     "frontends",
     "fxios",
+    "iife",
     "Lesti",
     "mfes",
     "microapp",
     "obgs",
     "samsungbrowser",
+    "tsup",
     "ucbrowser",
     "unlisten"
   ]
