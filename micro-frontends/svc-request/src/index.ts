@@ -1,7 +1,5 @@
 import { type MakeAPIRequestPayload } from './request';
 
-export const REQUEST_SERVICE_NAME = 'svc-request';
-
 /**
  * Enum representing the available request commands.
  */

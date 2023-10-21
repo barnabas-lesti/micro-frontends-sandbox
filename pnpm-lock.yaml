@@ -1200,7 +1200,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.9
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/template': 7.22.15
+      '@babel/template': 7.22.5
     dev: true
 
   /@babel/plugin-transform-destructuring@7.23.0(@babel/core@7.22.9):

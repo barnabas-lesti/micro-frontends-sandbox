@@ -2,8 +2,6 @@ import { type GetBrowserTypePayload, type IsBrowserPayload } from './platform';
 
 export { type BrowserType } from './platform';
 
-export const PLATFORM_SERVICE_NAME = 'svc-platform';
-
 /**
  * Enum representing the available platform commands.
  */

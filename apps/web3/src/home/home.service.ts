@@ -1,7 +1,6 @@
-import { loadMicroFrontends } from '@mfs/shell';
-import { CONFIG_SERVICE_NAME, ConfigServiceCommand } from '@mfs/svc-config';
-import { type BrowserType, PLATFORM_SERVICE_NAME, PlatformServiceCommand } from '@mfs/svc-platform';
-import { REQUEST_SERVICE_NAME, RequestServiceCommand } from '@mfs/svc-request';
+import { ConfigServiceCommand } from '@mfs/svc-config';
+import { type BrowserType, PlatformServiceCommand } from '@mfs/svc-platform';
+import { RequestServiceCommand } from '@mfs/svc-request';
 import { createLogger } from '@mfs/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -26,8 +25,6 @@ export class HomeService {
 
   private constructor() {
     this.logger.info('constructor');
-
-    loadMicroFrontends([CONFIG_SERVICE_NAME, PLATFORM_SERVICE_NAME, REQUEST_SERVICE_NAME]);
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>
