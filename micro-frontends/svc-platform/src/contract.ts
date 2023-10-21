@@ -9,12 +9,12 @@ export const enum PlatformCommand {
   /**
    * Command to determine if the app is running in a browser environment or not.
    */
-  IsBrowser = 'platform:isBrowser',
+  IsBrowser = 'svc-platform:is-browser',
 
   /**
    * Command to determine the browser type.
    */
-  GetBrowserType = 'platform:getBrowserType',
+  GetBrowserType = 'svc-platform:get-browser-type',
 }
 
 /**

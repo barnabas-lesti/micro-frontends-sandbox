@@ -1,6 +1,6 @@
 import { ReplaySubject } from 'rxjs';
 
-import { createLogger, unblockThread } from '@mfs-packages/utility';
+import { createLogger, unblockThread } from '@mfs/utility';
 
 import { loadMicroFrontend } from '../micro-frontend-loader';
 import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';

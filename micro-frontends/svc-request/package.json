@@ -1,5 +1,5 @@
 {
-  "name": "@mfs-micro-frontends/platform",
+  "name": "@mfs/svc-request",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -20,10 +20,10 @@
     "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
   },
   "dependencies": {
-    "@mfs-packages/utility": "*"
+    "@mfs/utility": "*",
+    "@mfs/shell": "*"
   },
   "devDependencies": {
-    "@mfs-packages/shell": "*",
     "@mfs-tools/webpack": "*",
     "concurrently": "^8.2.1",
     "webpack": "^5.88.2",

@@ -1,5 +1,5 @@
-import { ShellCommand } from '@mfs-packages/shell/contract';
-import { createLogger } from '@mfs-packages/utility';
+import { ShellCommand } from '@mfs/shell/contract';
+import { createLogger } from '@mfs/utility';
 
 import { RequestCommand } from '../../contract';
 import { apiBaseURLRequiredError } from './request.errors';

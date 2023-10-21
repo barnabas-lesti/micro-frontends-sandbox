@@ -1,5 +1,5 @@
-import { RequestCommand } from '@mfs-micro-frontends/request/contract';
-import { createLogger } from '@mfs-packages/utility';
+import { RequestCommand } from '@mfs/svc-request/contract';
+import { createLogger } from '@mfs/utility';
 
 import { ConfigCommand } from '../../contract';
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';

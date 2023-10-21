@@ -71,10 +71,10 @@ importers:
       '@angular/router':
         specifier: ^16.2.0
         version: 16.2.0(@angular/common@16.2.0)(@angular/core@16.2.0)(@angular/platform-browser@16.2.0)(rxjs@7.8.1)
-      '@mfs-packages/shell':
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
       rxjs:
@@ -102,21 +102,21 @@ importers:
 
   apps/web3:
     dependencies:
-      '@mfs-micro-frontends/config':
-        specifier: '*'
-        version: link:../../micro-frontends/config
-      '@mfs-micro-frontends/platform':
-        specifier: '*'
-        version: link:../../micro-frontends/platform
-      '@mfs-micro-frontends/request':
-        specifier: '*'
-        version: link:../../micro-frontends/request
-      '@mfs-packages/shell':
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
+      '@mfs/svc-config':
+        specifier: '*'
+        version: link:../../micro-frontends/svc-config
+      '@mfs/svc-platform':
+        specifier: '*'
+        version: link:../../micro-frontends/svc-platform
+      '@mfs/svc-request':
+        specifier: '*'
+        version: link:../../micro-frontends/svc-request
     devDependencies:
       '@mfs-tools/webpack':
         specifier: '*'
@@ -137,16 +137,44 @@ importers:
         specifier: ^4.15.1
         version: 4.15.1(webpack-cli@5.1.4)(webpack@5.88.2)
 
-  micro-frontends/config:
+  micro-frontends/svc-config:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-micro-frontends/request':
+      '@mfs/shell':
         specifier: '*'
-        version: link:../request
-      '@mfs-packages/shell':
+        version: link:../../packages/shell
+      '@mfs-tools/webpack':
+        specifier: '*'
+        version: link:../../tools/webpack
+      '@mfs/svc-request':
+        specifier: '*'
+        version: link:../svc-request
+      concurrently:
+        specifier: ^8.2.1
+        version: 8.2.1
+      ts-loader:
+        specifier: ^9.4.4
+        version: 9.4.4(typescript@5.2.2)(webpack@5.88.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      webpack:
+        specifier: ^5.88.2
+        version: 5.88.2(webpack-cli@5.1.4)
+      webpack-cli:
+        specifier: ^5.1.4
+        version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
+
+  micro-frontends/svc-platform:
+    dependencies:
+      '@mfs/utility':
+        specifier: '*'
+        version: link:../../packages/utility
+    devDependencies:
+      '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
       '@mfs-tools/webpack':
@@ -168,43 +196,15 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
 
-  micro-frontends/platform:
+  micro-frontends/svc-request:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/shell':
+        specifier: '*'
+        version: link:../../packages/shell
+      '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
     devDependencies:
-      '@mfs-packages/shell':
-        specifier: '*'
-        version: link:../../packages/shell
-      '@mfs-tools/webpack':
-        specifier: '*'
-        version: link:../../tools/webpack
-      concurrently:
-        specifier: ^8.2.1
-        version: 8.2.1
-      ts-loader:
-        specifier: ^9.4.4
-        version: 9.4.4(typescript@5.2.2)(webpack@5.88.2)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-      webpack:
-        specifier: ^5.88.2
-        version: 5.88.2(webpack-cli@5.1.4)
-      webpack-cli:
-        specifier: ^5.1.4
-        version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.88.2)
-
-  micro-frontends/request:
-    dependencies:
-      '@mfs-packages/utility':
-        specifier: '*'
-        version: link:../../packages/utility
-    devDependencies:
-      '@mfs-packages/shell':
-        specifier: '*'
-        version: link:../../packages/shell
       '@mfs-tools/webpack':
         specifier: '*'
         version: link:../../tools/webpack
@@ -226,7 +226,7 @@ importers:
 
   packages/shell:
     dependencies:
-      '@mfs-packages/utility':
+      '@mfs/utility':
         specifier: '*'
         version: link:../utility
       rxjs:
@@ -7033,7 +7033,7 @@ packages:
   /regenerator-transform@0.15.2:
     resolution: {integrity: sha512-hfMp2BoF0qOk3uc5V20ALGDS2ddjQaLrdl7xrGXvAIow7qeWRM2VA2HuCHkUKk9slq3VwEwLNK3DFBqDfPGYtg==}
     dependencies:
-      '@babel/runtime': 7.22.6
+      '@babel/runtime': 7.23.2
     dev: true
 
   /regex-parser@2.2.11:

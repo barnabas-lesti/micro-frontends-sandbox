@@ -1,7 +1,7 @@
-import { ConfigCommand } from '@mfs-micro-frontends/config/contract';
-import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform/contract';
-import { RequestCommand } from '@mfs-micro-frontends/request/contract';
-import { createLogger } from '@mfs-packages/utility';
+import { ConfigCommand } from '@mfs/svc-config/contract';
+import { type BrowserType, PlatformCommand } from '@mfs/svc-platform/contract';
+import { RequestCommand } from '@mfs/svc-request/contract';
+import { createLogger } from '@mfs/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
 import { type PageData } from './home.types';

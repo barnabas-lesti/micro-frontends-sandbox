@@ -1,7 +1,7 @@
 import { type GetRemoteConfigPayload } from './services/remote-config';
 
 export const enum ConfigCommand {
-  GetRemoteConfig = 'config:remoteConfig:get',
+  GetRemoteConfig = 'svc-config:remote-config:get',
 }
 
 export interface ConfigContract {

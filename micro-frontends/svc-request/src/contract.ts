@@ -7,7 +7,7 @@ export const enum RequestCommand {
   /**
    * Command to make an API request.
    */
-  MakeAPIRequest = 'request:makeAPIRequest',
+  MakeAPIRequest = 'svc-request:make-api-request',
 }
 
 /**

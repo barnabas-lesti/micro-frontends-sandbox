@@ -3,7 +3,7 @@ import { type GetStartupContextPayload } from './startup-context/startup-context
 export { type DispatchPayload, type EventBus } from './event-bus';
 
 export const enum ShellCommand {
-  GetStartupContext = 'shell:startupContext:get',
+  GetStartupContext = 'shell:startup-context:get',
 }
 
 export interface ShellContract {

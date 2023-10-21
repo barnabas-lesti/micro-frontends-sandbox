@@ -1,4 +1,4 @@
-import { CustomError } from '@mfs-packages/utility';
+import { CustomError } from '@mfs/utility';
 
 import { RequestErrorCode } from './request.types';
 

@@ -1,4 +1,4 @@
-import { createLogger } from '@mfs-packages/utility';
+import { createLogger } from '@mfs/utility';
 
 import { type MicroFrontendOptions } from './micro-frontend-loader.types';
 

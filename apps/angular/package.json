@@ -1,5 +1,5 @@
 {
-  "name": "@mfs-apps/angular",
+  "name": "@mfs/angular-app",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,8 +19,8 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0",
-    "@mfs-packages/shell": "*",
-    "@mfs-packages/utility": "*"
+    "@mfs/shell": "*",
+    "@mfs/utility": "*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.6",

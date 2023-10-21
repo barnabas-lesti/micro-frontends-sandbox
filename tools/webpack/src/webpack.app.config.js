@@ -19,7 +19,7 @@ function createWebpackAppConfig() {
       static: [
         'public',
         {
-          directory: path.resolve(cwd, './node_modules/@mfs-micro-frontends'),
+          directory: path.resolve(cwd, './node_modules/@mfs'),
           publicPath: '/micro-frontends',
         },
       ],

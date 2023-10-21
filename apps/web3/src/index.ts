@@ -1,4 +1,4 @@
-import { createShell } from '@mfs-packages/shell';
+import { createShell } from '@mfs/shell';
 
 import { HomeService } from './home';
 
