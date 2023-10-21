@@ -1,8 +1,8 @@
-import { type EventBus } from '@mfs/shell/contract';
-import { type RequestContract } from '@mfs/svc-request/contract';
+import { type EventBus } from '@mfs/shell';
+import { type RequestServiceContract } from '@mfs/svc-request';
 
-import { type ConfigContract } from './contract';
+import { type ConfigServiceContract } from '.';
 
 declare global {
-  const mfsEventBus: EventBus<ConfigContract & RequestContract>;
+  const mfsEventBus: EventBus<ConfigServiceContract & RequestServiceContract>;
 }

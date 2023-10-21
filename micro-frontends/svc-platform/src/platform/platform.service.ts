@@ -1,6 +1,6 @@
 import { createLogger } from '@mfs/utility';
 
-import { PlatformCommand } from '../../contract';
+import { PlatformServiceCommand } from '../.';
 import { BrowserType } from './platform.types';
 
 export class PlatformService {
@@ -21,8 +21,8 @@ export class PlatformService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(PlatformCommand.IsBrowser, (callback) => callback(this.isBrowser()));
-    mfsEventBus.listen(PlatformCommand.GetBrowserType, (callback) => callback(this.getBrowserType()));
+    mfsEventBus.listen(PlatformServiceCommand.IsBrowser, (callback) => callback(this.isBrowser()));
+    mfsEventBus.listen(PlatformServiceCommand.GetBrowserType, (callback) => callback(this.getBrowserType()));
   }
 
   /**

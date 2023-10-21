@@ -1,4 +1,4 @@
-import { type EventBus } from '@mfs/shell/contract';
+import { type EventBus } from '@mfs/shell';
 
 declare global {
   const mfsEventBus: EventBus<unknown>;

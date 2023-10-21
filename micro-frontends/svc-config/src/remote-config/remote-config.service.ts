@@ -1,7 +1,7 @@
-import { RequestCommand } from '@mfs/svc-request/contract';
+import { RequestServiceCommand } from '@mfs/svc-request';
 import { createLogger } from '@mfs/utility';
 
-import { ConfigCommand } from '../../contract';
+import { ConfigServiceCommand } from '../.';
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
 import { type RemoteConfig } from './remote-config.types';
 
@@ -25,7 +25,7 @@ export class RemoteConfigService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(ConfigCommand.GetRemoteConfig, async (callback) => callback(await this.get()));
+    mfsEventBus.listen(ConfigServiceCommand.GetRemoteConfig, async (callback) => callback(await this.get()));
   }
 
   /**
@@ -37,7 +37,7 @@ export class RemoteConfigService {
   async get(): Promise<RemoteConfig> {
     if (!this._remoteConfigPromise) {
       this._remoteConfigPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestServiceCommand.MakeAPIRequest, {
           path: REMOTE_CONFIG_API_PATH,
           callback: (data) => resolve(data as RemoteConfig),
         });

@@ -1,7 +1,7 @@
-import { ShellCommand } from '@mfs/shell/contract';
+import { ShellCommand } from '@mfs/shell';
 import { createLogger } from '@mfs/utility';
 
-import { RequestCommand } from '../../contract';
+import { RequestServiceCommand } from '../.';
 import { apiBaseURLRequiredError } from './request.errors';
 import { type MakeAPIRequestPayload } from './request.types';
 
@@ -22,7 +22,7 @@ export class RequestService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
+    mfsEventBus.listen(RequestServiceCommand.MakeAPIRequest, async (payload) => {
       const data = await this.makeAPIRequest(payload);
       payload.callback(data);
     });

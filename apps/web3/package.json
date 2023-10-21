@@ -11,14 +11,9 @@
     "@mfs/utility": "*",
     "@mfs/svc-config": "*",
     "@mfs/svc-request": "*",
-    "@mfs/svc-platform": "*"
-  },
-  "devDependencies": {
+    "@mfs/svc-platform": "*",
     "@mfs/builder": "*",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.2.2"
-  }
+    "webpack-dev-server": "^4.15.1"
+  },
+  "devDependencies": {}
 }

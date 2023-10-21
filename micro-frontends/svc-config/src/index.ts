@@ -1,3 +1,9 @@
-import { RemoteConfigService } from './services/remote-config';
+import { type GetRemoteConfigPayload } from './remote-config';
 
-void RemoteConfigService.getInstance();
+export const enum ConfigServiceCommand {
+  GetRemoteConfig = 'svc-config:remote-config:get',
+}
+
+export interface ConfigServiceContract {
+  [ConfigServiceCommand.GetRemoteConfig]: GetRemoteConfigPayload;
+}

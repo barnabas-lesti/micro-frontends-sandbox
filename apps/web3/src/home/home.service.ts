@@ -1,6 +1,6 @@
-import { ConfigCommand } from '@mfs/svc-config/contract';
-import { type BrowserType, PlatformCommand } from '@mfs/svc-platform/contract';
-import { RequestCommand } from '@mfs/svc-request/contract';
+import { ConfigServiceCommand } from '@mfs/svc-config';
+import { type BrowserType, PlatformServiceCommand } from '@mfs/svc-platform';
+import { RequestServiceCommand } from '@mfs/svc-request';
 import { createLogger } from '@mfs/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -51,7 +51,7 @@ export class HomeService {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(ConfigCommand.GetRemoteConfig, (config) =>
+        mfsEventBus.dispatch(ConfigServiceCommand.GetRemoteConfig, (config) =>
           resolve(!!config.features?.isHomePageBannerEnabled),
         );
       });
@@ -62,7 +62,7 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestServiceCommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
           callback: (data) => resolve(data as PageData),
         });
@@ -73,7 +73,9 @@ export class HomeService {
 
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
-      this._isBrowserPromise = new Promise((resolve) => mfsEventBus.dispatch(PlatformCommand.IsBrowser, resolve));
+      this._isBrowserPromise = new Promise((resolve) =>
+        mfsEventBus.dispatch(PlatformServiceCommand.IsBrowser, resolve),
+      );
     }
     return this._isBrowserPromise;
   }
@@ -81,7 +83,7 @@ export class HomeService {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) =>
-        mfsEventBus.dispatch(PlatformCommand.GetBrowserType, resolve),
+        mfsEventBus.dispatch(PlatformServiceCommand.GetBrowserType, resolve),
       );
     }
     return this._browserTypePromise;

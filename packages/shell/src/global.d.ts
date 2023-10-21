@@ -1,4 +1,4 @@
-import { type ShellContract } from './contract';
+import { type ShellContract } from '.';
 import { type EventBus } from './event-bus';
 import { type StartupContext } from './startup-context';
 

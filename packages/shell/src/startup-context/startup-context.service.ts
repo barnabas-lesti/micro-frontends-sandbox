@@ -1,6 +1,6 @@
 import { createLogger } from '@mfs/utility';
 
-import { ShellCommand } from '../contract';
+import { ShellCommand } from '../.';
 import { type StartupContext } from './startup-context.types';
 
 export class StartupContextService {
