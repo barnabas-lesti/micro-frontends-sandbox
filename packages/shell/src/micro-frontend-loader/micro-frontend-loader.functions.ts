@@ -23,7 +23,7 @@ function appendMicroFrontendScript(mfeName: string): void {
 }
 
 function createMicroFrontendSource(mfeName: string): string {
-  return `micro-frontends/${mfeName}/dist/loader.js`;
+  return `micro-frontends/${mfeName}/dist/index.js`;
 }
 
 function isMicroFrontendLoaded(mfeSource: string): boolean {

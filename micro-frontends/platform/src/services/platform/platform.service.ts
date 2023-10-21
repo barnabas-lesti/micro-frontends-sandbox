@@ -1,6 +1,6 @@
 import { createLogger } from '@mfs-packages/utility';
 
-import { PlatformCommand } from './platform.contract';
+import { PlatformMFECommand } from '../../types';
 import { BrowserType } from './platform.types';
 
 export class PlatformService {
@@ -21,8 +21,8 @@ export class PlatformService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(PlatformCommand.IsBrowser, (payload) => payload.onSuccess?.(this.isBrowser()));
-    mfsEventBus.listen(PlatformCommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
+    mfsEventBus.listen(PlatformMFECommand.IsBrowser, (payload) => payload.onSuccess?.(this.isBrowser()));
+    mfsEventBus.listen(PlatformMFECommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
   }
 
   /**

@@ -1,5 +1,6 @@
 const path = require('path');
-const { createWebpackBaseConfig } = require('./webpack.base.config.cjs');
+
+const { createWebpackBaseConfig } = require('./webpack.base.config');
 
 function createWebpackAppConfig() {
   const cwd = process.cwd();

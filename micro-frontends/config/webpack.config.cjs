@@ -1,3 +1,3 @@
-const { createWebpackMFEConfig } = require('../../tools/webpack/webpack.mfe.config.cjs');
+const { createWebpackMFEConfig } = require('@mfs-tools/webpack');
 
 module.exports = createWebpackMFEConfig();

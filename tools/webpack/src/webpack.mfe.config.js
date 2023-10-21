@@ -1,5 +1,6 @@
 const path = require('path');
-const { createWebpackBaseConfig } = require('./webpack.base.config.cjs');
+
+const { createWebpackBaseConfig } = require('./webpack.base.config');
 
 function createWebpackMFEConfig() {
   const cwd = process.cwd();
@@ -8,7 +9,7 @@ function createWebpackMFEConfig() {
   const webpackMFEConfig = {
     ...createWebpackBaseConfig(),
     entry: {
-      loader: path.resolve(cwd, './src/loader.ts'),
+      index: path.resolve(cwd, './src/index.ts'),
     },
     output: {
       path: path.resolve(cwd, './dist'),

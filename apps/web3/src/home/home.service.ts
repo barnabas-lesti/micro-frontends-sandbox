@@ -1,6 +1,6 @@
-import { RemoteConfigCommand } from '@mfs-micro-frontends/config';
-import { type BrowserType, PlatformCommand } from '@mfs-micro-frontends/platform';
-import { RequestCommand } from '@mfs-micro-frontends/request';
+import { ConfigMFECommand } from '@mfs-micro-frontends/config/types';
+import { type BrowserType, PlatformMFECommand } from '@mfs-micro-frontends/platform/types';
+import { RequestMFECommand } from '@mfs-micro-frontends/request/types';
 import { createLogger } from '@mfs-packages/utility';
 
 import { PAGE_DATA_API_PATH } from './home.const';
@@ -51,7 +51,7 @@ export class HomeService {
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
       this._isBannerEnabledPromise = new Promise((resolve, reject) => {
-        mfsEventBus.dispatch(RemoteConfigCommand.Get, {
+        mfsEventBus.dispatch(ConfigMFECommand.GetRemoteConfig, {
           onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
           onError: (error) => reject(error),
         });
@@ -63,7 +63,7 @@ export class HomeService {
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
       this._pageDataPromise = new Promise((resolve, reject) => {
-        mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
+        mfsEventBus.dispatch(RequestMFECommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
           onSuccess: (data) => resolve(data as PageData),
           onError: (error) => reject(error),
@@ -76,7 +76,7 @@ export class HomeService {
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
       this._isBrowserPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(PlatformCommand.IsBrowser, {
+        mfsEventBus.dispatch(PlatformMFECommand.IsBrowser, {
           onSuccess: resolve,
         });
       });
@@ -87,7 +87,7 @@ export class HomeService {
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
       this._browserTypePromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(PlatformCommand.GetBrowserType, {
+        mfsEventBus.dispatch(PlatformMFECommand.GetBrowserType, {
           onSuccess: resolve,
         });
       });

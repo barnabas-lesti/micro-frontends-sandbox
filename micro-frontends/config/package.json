@@ -4,6 +4,17 @@
   "version": "1.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./types": "./dist/types.js"
+  },
+  "typesVersions": {
+    "*": {
+      "types": [
+        "./dist/types.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "concurrently \"tsc\" \"webpack\"",
     "build:watch": "concurrently \"tsc --watch\" \"webpack watch\""
@@ -14,6 +25,7 @@
   "devDependencies": {
     "@mfs-micro-frontends/request": "*",
     "@mfs-packages/shell": "*",
+    "@mfs-tools/webpack": "*",
     "concurrently": "^8.2.1",
     "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",

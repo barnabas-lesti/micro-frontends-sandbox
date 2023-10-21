@@ -1,4 +1,4 @@
-import { type EventBus } from './src';
+import { type EventBus } from './event-bus';
 
 declare global {
   interface Window {

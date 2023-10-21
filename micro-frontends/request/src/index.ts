@@ -1,1 +1,3 @@
-export { RequestCommand, type RequestContract, RequestErrorCode, type RequestStartupConfig } from './services/request';
+import { RequestService } from './services/request';
+
+void RequestService.getInstance();

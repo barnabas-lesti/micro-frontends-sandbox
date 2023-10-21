@@ -1,3 +1,3 @@
-const { createWebpackAppConfig } = require('../../tools/webpack/webpack.app.config.cjs');
+const { createWebpackAppConfig } = require('@mfs-tools/webpack');
 
 module.exports = createWebpackAppConfig();
