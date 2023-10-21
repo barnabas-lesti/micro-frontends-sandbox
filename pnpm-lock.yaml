@@ -86,9 +86,6 @@ importers:
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
-      '@mfs/utility':
-        specifier: '*'
-        version: link:../../packages/utility
       rxjs:
         specifier: ~7.8.0
         version: 7.8.1

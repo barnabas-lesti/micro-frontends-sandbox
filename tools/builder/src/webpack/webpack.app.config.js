@@ -15,15 +15,6 @@ function createWebpackAppConfig() {
       path: path.resolve(cwd, './dist'),
       filename: '[name].js',
     },
-    devServer: {
-      static: [
-        'public',
-        {
-          directory: path.resolve(cwd, './node_modules/@mfs'),
-          publicPath: '/micro-frontends',
-        },
-      ],
-    },
   };
 
   return webpackMFEConfig;
