@@ -21,12 +21,8 @@ export class RequestService {
     this.logger.info('constructor');
 
     mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
-      try {
-        const data = await this.makeAPIRequest(payload);
-        payload.onSuccess?.(data);
-      } catch (error) {
-        payload.onError?.(error as Error);
-      }
+      const data = await this.makeAPIRequest(payload);
+      payload.onSuccess?.(data);
     });
   }
 
