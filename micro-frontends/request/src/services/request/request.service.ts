@@ -1,3 +1,4 @@
+import { ShellCommand } from '@mfs-packages/shell/contract';
 import { createLogger } from '@mfs-packages/utility';
 
 import { RequestCommand } from '../../contract';
@@ -16,7 +17,7 @@ export class RequestService {
   }
 
   private readonly logger = createLogger('RequestService');
-  private readonly apiBaseURL = mfsStartupConfig?.apiBaseURL;
+  private _apiBaseURLPromise: Promise<string> | undefined;
 
   private constructor() {
     this.logger.info('constructor');
@@ -34,11 +35,23 @@ export class RequestService {
    * @throws An error if the API base URL is not set.
    */
   async makeAPIRequest<ResponseData>(payload: MakeAPIRequestPayload): Promise<ResponseData> {
-    if (!this.apiBaseURL) throw apiBaseURLRequiredError();
-
-    const url = this.apiBaseURL + payload.path;
+    const url = (await this.getAPIBaseURL()) + payload.path;
     const response = await fetch(url);
     const data = (await response.json()) as ResponseData;
     return data;
+  }
+
+  async getAPIBaseURL(): Promise<string> {
+    if (!this._apiBaseURLPromise) {
+      this._apiBaseURLPromise = new Promise((resolve) => {
+        mfsEventBus.dispatch(ShellCommand.GetStartupContext, {
+          onSuccess: ({ apiBaseURL }) => {
+            if (!apiBaseURL) throw apiBaseURLRequiredError();
+            resolve(apiBaseURL);
+          },
+        });
+      });
+    }
+    return this._apiBaseURLPromise;
   }
 }

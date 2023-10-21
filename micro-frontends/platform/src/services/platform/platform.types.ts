@@ -1,4 +1,4 @@
-import { type DispatchPayload } from '@mfs-packages/shell';
+import { type DispatchPayload } from '@mfs-packages/shell/contract';
 
 /**
  * An enumeration of the different types of web browsers.

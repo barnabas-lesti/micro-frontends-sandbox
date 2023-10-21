@@ -1,4 +1,4 @@
-import { type DispatchPayload } from '@mfs-packages/shell';
+import { type DispatchPayload } from '@mfs-packages/shell/contract';
 
 /**
  * Represents the configuration settings retrieved from a remote source.

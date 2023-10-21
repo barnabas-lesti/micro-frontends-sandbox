@@ -1,7 +1,8 @@
 import { attachEventBusToWindow } from './event-bus';
-
-export { type DispatchPayload, type EventBus } from './event-bus';
+import { StartupContextService } from './startup-context';
 
 export function createShell(): void {
   attachEventBusToWindow();
+
+  void StartupContextService.getInstance();
 }

@@ -4,6 +4,7 @@ function createWebpackBaseConfig() {
   /** @type {import('webpack').Configuration} */
   const baseWebpackConfig = {
     mode: 'production',
+    devtool: 'source-map',
     module: {
       rules: [
         {

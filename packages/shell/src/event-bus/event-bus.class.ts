@@ -56,7 +56,7 @@ export class EventBus<Contracts> {
   private ensureMicroFrontend(command: string): void {
     unblockThread(() => {
       const microFrontendName = this.getMicroFrontendName(command);
-      if (!this.loadedMicroFrontends.includes(microFrontendName)) {
+      if (microFrontendName !== 'shell' && !this.loadedMicroFrontends.includes(microFrontendName)) {
         this.loadedMicroFrontends.push(microFrontendName);
         loadMicroFrontend(microFrontendName);
       }
