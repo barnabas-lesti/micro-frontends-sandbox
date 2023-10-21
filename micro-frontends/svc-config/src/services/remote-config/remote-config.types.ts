@@ -1,5 +1,3 @@
-import { type DispatchPayload } from '@mfs/shell/contract';
-
 /**
  * Represents the configuration settings retrieved from a remote source.
  */
@@ -9,4 +7,4 @@ export interface RemoteConfig {
   };
 }
 
-export interface GetRemoteConfigPayload extends DispatchPayload<RemoteConfig> {}
+export type GetRemoteConfigPayload = (remoteConfig: RemoteConfig) => void;

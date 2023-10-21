@@ -24,7 +24,7 @@ export class RequestService {
 
     mfsEventBus.listen(RequestCommand.MakeAPIRequest, async (payload) => {
       const data = await this.makeAPIRequest(payload);
-      payload.onSuccess?.(data);
+      payload.callback(data);
     });
   }
 
@@ -44,11 +44,9 @@ export class RequestService {
   async getAPIBaseURL(): Promise<string> {
     if (!this._apiBaseURLPromise) {
       this._apiBaseURLPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(ShellCommand.GetStartupContext, {
-          onSuccess: ({ apiBaseURL }) => {
-            if (!apiBaseURL) throw apiBaseURLRequiredError();
-            resolve(apiBaseURL);
-          },
+        mfsEventBus.dispatch(ShellCommand.GetStartupContext, ({ apiBaseURL }) => {
+          if (!apiBaseURL) throw apiBaseURLRequiredError();
+          resolve(apiBaseURL);
         });
       });
     }

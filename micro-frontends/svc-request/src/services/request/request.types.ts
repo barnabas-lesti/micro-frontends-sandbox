@@ -1,9 +1,8 @@
-import { type DispatchPayload } from '@mfs/shell/contract';
-
 export const enum RequestErrorCode {
   API_BASE_URL_REQUIRED = 'API_BASE_URL_REQUIRED',
 }
 
-export interface MakeAPIRequestPayload extends DispatchPayload<unknown> {
+export interface MakeAPIRequestPayload {
   path: string;
+  callback: (data: unknown) => void;
 }

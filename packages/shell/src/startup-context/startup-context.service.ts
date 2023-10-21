@@ -19,9 +19,7 @@ export class StartupContextService {
   private constructor() {
     this.logger.info('constructor');
 
-    window.mfsEventBus.listen(ShellCommand.GetStartupContext, (payload) => {
-      payload.onSuccess?.(this.getStartupContext());
-    });
+    window.mfsEventBus.listen(ShellCommand.GetStartupContext, (callback) => callback(this.getStartupContext()));
   }
 
   /**

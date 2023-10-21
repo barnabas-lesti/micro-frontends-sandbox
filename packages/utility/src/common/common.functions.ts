@@ -33,3 +33,8 @@ export function getRandomInteger(min: number, max: number): number {
 export function unblockThread(callback: () => void): void {
   setTimeout(callback, 0);
 }
+
+export function sanitizeData<Data>(data: Data): Partial<Data> | undefined {
+  if (data && typeof data !== 'function') return JSON.parse(JSON.stringify(data));
+  return undefined;
+}

@@ -1,5 +1,3 @@
-import { type DispatchPayload } from '@mfs/shell/contract';
-
 /**
  * An enumeration of the different types of web browsers.
  */
@@ -15,6 +13,6 @@ export const enum BrowserType {
   Unknown = 'Unknown',
 }
 
-export interface IsBrowserPayload extends DispatchPayload<boolean> {}
+export type IsBrowserPayload = (isBrowser: boolean) => void;
 
-export interface GetBrowserTypePayload extends DispatchPayload<BrowserType> {}
+export type GetBrowserTypePayload = (browserType: BrowserType) => void;

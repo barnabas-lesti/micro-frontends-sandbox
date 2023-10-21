@@ -50,11 +50,10 @@ export class HomeService {
 
   async isBannerEnabled(): Promise<boolean> {
     if (!this._isBannerEnabledPromise) {
-      this._isBannerEnabledPromise = new Promise((resolve, reject) => {
-        mfsEventBus.dispatch(ConfigCommand.GetRemoteConfig, {
-          onSuccess: (config) => resolve(!!config.features?.isHomePageBannerEnabled),
-          onError: (error) => reject(error),
-        });
+      this._isBannerEnabledPromise = new Promise((resolve) => {
+        mfsEventBus.dispatch(ConfigCommand.GetRemoteConfig, (config) =>
+          resolve(!!config.features?.isHomePageBannerEnabled),
+        );
       });
     }
     return this._isBannerEnabledPromise;
@@ -62,11 +61,10 @@ export class HomeService {
 
   async getPageData(): Promise<PageData> {
     if (!this._pageDataPromise) {
-      this._pageDataPromise = new Promise((resolve, reject) => {
+      this._pageDataPromise = new Promise((resolve) => {
         mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: PAGE_DATA_API_PATH,
-          onSuccess: (data) => resolve(data as PageData),
-          onError: (error) => reject(error),
+          callback: (data) => resolve(data as PageData),
         });
       });
     }
@@ -75,22 +73,16 @@ export class HomeService {
 
   async isBrowser(): Promise<boolean> {
     if (!this._isBrowserPromise) {
-      this._isBrowserPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(PlatformCommand.IsBrowser, {
-          onSuccess: resolve,
-        });
-      });
+      this._isBrowserPromise = new Promise((resolve) => mfsEventBus.dispatch(PlatformCommand.IsBrowser, resolve));
     }
     return this._isBrowserPromise;
   }
 
   async getBrowserType(): Promise<BrowserType> {
     if (!this._browserTypePromise) {
-      this._browserTypePromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(PlatformCommand.GetBrowserType, {
-          onSuccess: resolve,
-        });
-      });
+      this._browserTypePromise = new Promise((resolve) =>
+        mfsEventBus.dispatch(PlatformCommand.GetBrowserType, resolve),
+      );
     }
     return this._browserTypePromise;
   }

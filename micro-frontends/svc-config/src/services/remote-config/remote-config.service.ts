@@ -25,7 +25,7 @@ export class RemoteConfigService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(ConfigCommand.GetRemoteConfig, async (payload) => payload.onSuccess?.(await this.get()));
+    mfsEventBus.listen(ConfigCommand.GetRemoteConfig, async (callback) => callback(await this.get()));
   }
 
   /**
@@ -39,7 +39,7 @@ export class RemoteConfigService {
       this._remoteConfigPromise = new Promise((resolve) => {
         mfsEventBus.dispatch(RequestCommand.MakeAPIRequest, {
           path: REMOTE_CONFIG_API_PATH,
-          onSuccess: (data) => resolve(data as RemoteConfig),
+          callback: (data) => resolve(data as RemoteConfig),
         });
       });
     }

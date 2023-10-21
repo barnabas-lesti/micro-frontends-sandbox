@@ -21,8 +21,8 @@ export class PlatformService {
   private constructor() {
     this.logger.info('constructor');
 
-    mfsEventBus.listen(PlatformCommand.IsBrowser, (payload) => payload.onSuccess?.(this.isBrowser()));
-    mfsEventBus.listen(PlatformCommand.GetBrowserType, (payload) => payload.onSuccess?.(this.getBrowserType()));
+    mfsEventBus.listen(PlatformCommand.IsBrowser, (callback) => callback(this.isBrowser()));
+    mfsEventBus.listen(PlatformCommand.GetBrowserType, (callback) => callback(this.getBrowserType()));
   }
 
   /**
