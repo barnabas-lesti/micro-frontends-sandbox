@@ -1,6 +1,6 @@
-import { createLogger } from '@mfs/utility';
+import { log } from '@mfs/utility';
 
-import { ShellCommand } from '../.';
+import { ShellCommand } from '..';
 import { type StartupContext } from './startup-context.interface';
 
 export class StartupContextService {
@@ -14,10 +14,8 @@ export class StartupContextService {
     this._instance = undefined;
   }
 
-  private readonly logger = createLogger('StartupContextService');
-
   private constructor() {
-    this.logger.info('constructor');
+    log({ sourceID: 'StartupContextService', method: 'constructor' });
 
     window.mfsEventBus.listen(ShellCommand.GetStartupContext, (callback) => callback(this.getStartupContext()));
   }

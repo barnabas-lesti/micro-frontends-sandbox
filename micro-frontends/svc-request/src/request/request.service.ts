@@ -1,7 +1,7 @@
 import { ShellCommand } from '@mfs/shell';
-import { createLogger } from '@mfs/utility';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
 
-import { RequestServiceCommand } from '../.';
+import { RequestServiceCommand } from '..';
 import { apiBaseURLRequiredError } from './request.errors';
 import { type MakeAPIRequestPayload } from './request.types';
 
@@ -16,11 +16,10 @@ export class RequestService {
     this._instance = undefined;
   }
 
-  private readonly logger = createLogger('RequestService');
   private _apiBaseURLPromise: Promise<string> | undefined;
 
   private constructor() {
-    this.logger.info('constructor');
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'RequestService', method: 'constructor' });
 
     mfsEventBus.listen(RequestServiceCommand.MakeAPIRequest, async (payload) => {
       const data = await this.makeAPIRequest(payload);

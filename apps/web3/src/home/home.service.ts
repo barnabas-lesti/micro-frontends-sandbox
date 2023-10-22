@@ -1,7 +1,7 @@
 import { ConfigServiceCommand } from '@mfs/svc-config';
 import { type BrowserType, PlatformServiceCommand } from '@mfs/svc-platform';
 import { RequestServiceCommand } from '@mfs/svc-request';
-import { createLogger } from '@mfs/utility';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
 
 import { PAGE_DATA_API_PATH } from './home.const';
 import { type PageData } from './home.types';
@@ -17,14 +17,13 @@ export class HomeService {
     this._instance = undefined;
   }
 
-  private logger = createLogger('HomeService');
   private _isBannerEnabledPromise?: Promise<boolean>;
   private _pageDataPromise?: Promise<PageData>;
   private _isBrowserPromise?: Promise<boolean>;
   private _browserTypePromise?: Promise<BrowserType>;
 
   private constructor() {
-    this.logger.info('constructor');
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'HomeService', method: 'constructor' });
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>

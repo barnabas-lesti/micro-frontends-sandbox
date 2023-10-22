@@ -9,8 +9,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@mfs/utility": "*",
     "@mfs/svc-request": "*",
+    "@mfs/svc-telemetry": "*",
     "@mfs/shell": "*",
     "@mfs/builder": "*"
   },

@@ -1,6 +1,6 @@
-import { createLogger } from '@mfs/utility';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
 
-import { PlatformServiceCommand } from '../.';
+import { PlatformServiceCommand } from '..';
 import { BrowserType } from './platform.types';
 
 export class PlatformService {
@@ -14,12 +14,11 @@ export class PlatformService {
     this._instance = undefined;
   }
 
-  private readonly logger = createLogger('PlatformService');
   private _isBrowser: boolean | undefined;
   private _browserType: BrowserType | undefined;
 
   private constructor() {
-    this.logger.info('constructor');
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'PlatformService', method: 'constructor' });
 
     mfsEventBus.listen(PlatformServiceCommand.IsBrowser, (callback) => callback(this.isBrowser()));
     mfsEventBus.listen(PlatformServiceCommand.GetBrowserType, (callback) => callback(this.getBrowserType()));

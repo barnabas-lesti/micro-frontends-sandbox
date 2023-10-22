@@ -1,7 +1,7 @@
 import { RequestServiceCommand } from '@mfs/svc-request';
-import { createLogger } from '@mfs/utility';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
 
-import { ConfigServiceCommand } from '../.';
+import { ConfigServiceCommand } from '..';
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
 import { type RemoteConfig } from './remote-config.types';
 
@@ -19,11 +19,10 @@ export class RemoteConfigService {
     this._instance = undefined;
   }
 
-  private readonly logger = createLogger('RemoteConfigService');
   private _remoteConfigPromise: Promise<RemoteConfig> | undefined;
 
   private constructor() {
-    this.logger.info('constructor');
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'RemoteConfigService', method: 'constructor' });
 
     mfsEventBus.listen(ConfigServiceCommand.GetRemoteConfig, async (callback) => callback(await this.get()));
   }

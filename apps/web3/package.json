@@ -13,7 +13,7 @@
     "@mfs/svc-config": "*",
     "@mfs/svc-platform": "*",
     "@mfs/svc-request": "*",
-    "@mfs/utility": "*",
+    "@mfs/svc-telemetry": "*",
     "concurrently": "^8.2.2",
     "ts-loader": "^9.4.4",
     "webpack": "^5.88.2",

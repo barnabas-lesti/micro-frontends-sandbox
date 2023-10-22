@@ -117,6 +117,9 @@ importers:
       '@mfs/svc-request':
         specifier: '*'
         version: link:../../micro-frontends/svc-request
+      '@mfs/svc-telemetry':
+        specifier: '*'
+        version: link:../../micro-frontends/svc-telemetry
       express:
         specifier: ^4.18.2
         version: 4.18.2
@@ -138,9 +141,9 @@ importers:
       '@mfs/svc-request':
         specifier: '*'
         version: link:../../micro-frontends/svc-request
-      '@mfs/utility':
+      '@mfs/svc-telemetry':
         specifier: '*'
-        version: link:../../packages/utility
+        version: link:../../micro-frontends/svc-telemetry
       concurrently:
         specifier: ^8.2.2
         version: 8.2.2
@@ -168,9 +171,9 @@ importers:
       '@mfs/svc-request':
         specifier: '*'
         version: link:../svc-request
-      '@mfs/utility':
+      '@mfs/svc-telemetry':
         specifier: '*'
-        version: link:../../packages/utility
+        version: link:../svc-telemetry
 
   micro-frontends/svc-platform:
     dependencies:
@@ -180,11 +183,26 @@ importers:
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
+      '@mfs/svc-telemetry':
+        specifier: '*'
+        version: link:../svc-telemetry
+
+  micro-frontends/svc-request:
+    dependencies:
+      '@mfs/builder':
+        specifier: '*'
+        version: link:../../tools/builder
+      '@mfs/shell':
+        specifier: '*'
+        version: link:../../packages/shell
+      '@mfs/svc-telemetry':
+        specifier: '*'
+        version: link:../svc-telemetry
       '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
 
-  micro-frontends/svc-request:
+  micro-frontends/svc-telemetry:
     dependencies:
       '@mfs/builder':
         specifier: '*'
@@ -6256,6 +6274,7 @@ packages:
 
   /node-addon-api@3.2.1:
     resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6266,6 +6285,7 @@ packages:
   /node-gyp-build@4.6.1:
     resolution: {integrity: sha512-24vnklJmyRS8ViBNI8KbtK/r/DmXQMRiOMXTNz2nrTnAYUwjmEEbnnpB/+kt+yWRv73bPsSPRFddrcIbAxSiMQ==}
     hasBin: true
+    requiresBuild: true
     dev: true
     optional: true
 

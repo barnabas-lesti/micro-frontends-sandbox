@@ -3,7 +3,7 @@ import { LOGGER_TYPE_TO_FUNCTION_MAP } from './logger.const';
 import { type LogPayload } from './logger.types';
 
 export function log(payload: LogPayload): void {
-  const loggerFunction = LOGGER_TYPE_TO_FUNCTION_MAP[payload.loggerType || 'info'];
+  const loggerFunction = LOGGER_TYPE_TO_FUNCTION_MAP[payload.loggerType || 'debug'];
   const formattedMessage = formatMessage(payload.sourceID, payload.method, payload.message);
   const sanitizedData = sanitizeData(payload.data);
   if (sanitizedData) {

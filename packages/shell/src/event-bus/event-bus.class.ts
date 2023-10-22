@@ -13,12 +13,12 @@ export class EventBus<Contracts> {
   private readonly loadedMicroFrontends: string[] = [];
 
   constructor() {
-    this.logger.info('constructor');
+    this.logger.debug('constructor');
   }
 
   dispatch<Command extends keyof Contracts & string>(command: Command, payload: Contracts[Command]): void {
     unblockThread(() => {
-      this.logger.info('dispatch', command, payload);
+      this.logger.debug('dispatch', `"${command}"`, payload);
       this.ensureDispatchSubject(command).next(payload);
       this.ensureMicroFrontend(command);
     });
@@ -28,8 +28,8 @@ export class EventBus<Contracts> {
     command: Command,
     listener: Listener<Contracts[Command]>,
   ): () => void {
+    this.logger.debug('listen', `Registered listener for "${command}"`);
     const { unsubscribe } = this.ensureDispatchSubject<Contracts[Command]>(command).asObservable().subscribe(listener);
-    this.logger.info('listen', `Registered listener for "${command}"`);
     unblockThread(() => this.ensureMicroFrontend(command));
     return unsubscribe;
   }

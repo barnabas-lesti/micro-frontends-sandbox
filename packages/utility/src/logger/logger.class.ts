@@ -60,6 +60,6 @@ export class Logger {
    * @param data - Optional data to include in the log.
    */
   info(method: string, message?: string, data?: unknown): void {
-    log({ sourceID: this.sourceID, method, message, data });
+    log({ sourceID: this.sourceID, method, message, data, loggerType: 'info' });
   }
 }

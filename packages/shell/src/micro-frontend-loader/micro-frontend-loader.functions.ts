@@ -1,15 +1,14 @@
-import { createLogger, stripSlashes } from '@mfs/utility';
+import { log, stripSlashes } from '@mfs/utility';
 
 import { MICRO_FRONTEND_LOADER_FILE_PATH } from './micro-frontend-loader.const';
 import { microFrontendsRemoteURLRequiredError } from './micro-frontend-loader.errors';
 import { type MicroFrontendOptions } from './micro-frontend-loader.types';
 
 export function loadMicroFrontend(microFrontend: string | MicroFrontendOptions): void {
-  const logInfo = createLogger('MicroFrontendLoader').createMethodLogger('loadMicroFrontend');
   const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
   if (!isMicroFrontendLoaded(createMicroFrontendSource(name))) {
     appendMicroFrontendScript(name);
-    logInfo(`Loaded micro frontend: "${name}"`);
+    log({ sourceID: 'MicroFrontendLoader', method: 'loadMicroFrontend', message: `Loaded micro frontend: "${name}"` });
   }
 }
 

@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/svc-request",
+  "name": "@mfs/svc-telemetry",
   "type": "module",
   "version": "1.0.0",
   "main": "./dist/index.js",
@@ -9,7 +9,6 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@mfs/svc-telemetry": "*",
     "@mfs/utility": "*",
     "@mfs/shell": "*",
     "@mfs/builder": "*"
