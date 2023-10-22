@@ -1,4 +1,4 @@
-import { sanitizeData } from '../common';
+import { sanitizeData } from '../utility';
 import { LOGGER_TYPE_TO_FUNCTION_MAP } from './logger.const';
 import { type LogPayload } from './logger.types';
 

@@ -1,4 +1,4 @@
-import { type CustomErrorPayload } from './common.types';
+import { type CustomErrorPayload } from './utility.types';
 
 export class CustomError<Data = undefined> extends Error {
   readonly code: string | undefined;
