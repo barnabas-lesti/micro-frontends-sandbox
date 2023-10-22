@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "build:watch": "tsup --watch"
+    "dev": "tsup --watch",
+    "build": "tsup"
   },
   "dependencies": {
     "@mfs/builder": "*"

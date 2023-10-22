@@ -7,10 +7,8 @@
   "packageManager": "pnpm@8.6.0",
   "type": "module",
   "scripts": {
+    "dev": "turbo dev",
     "build": "turbo build",
-    "build:watch": "turbo build:watch",
-    "start:dev": "turbo start:dev",
-    "start:prod": "turbo start:prod",
     "lint": "prettier . --check && eslint . --cache",
     "lint:fix": "prettier . --write && eslint . --cache --fix",
     "graph": "node ./tools/cli/graph.cjs",

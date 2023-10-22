@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "start:micro-frontend-server:dev": "nodemon ../../apps/micro-frontend-server --port 8090",
-    "start:web3-app:dev": "webpack-dev-server --mode development",
-    "start:dev": "concurrently \"pnpm start:micro-frontend-server:dev\" \"pnpm start:web3-app:dev\""
+    "dev:micro-frontend-server": "nodemon ../../apps/micro-frontend-server --port 8090",
+    "dev:web3-app": "webpack-dev-server --mode development",
+    "dev": "concurrently \"pnpm dev:micro-frontend-server\" \"pnpm dev:web3-app\""
   },
   "dependencies": {
     "@mfs/builder": "*",

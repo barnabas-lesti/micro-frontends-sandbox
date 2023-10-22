@@ -2,27 +2,27 @@
 
 Sandbox project to test out Micro Frontends.
 
+## Prerequisites
+
 ## Development
 
 1. Clone the repository.
 2. Run `pnpm i` to install dependencies and prepare the project.
-3. Start the `micro-frontend-server` with `pnpm start:dev --filter micro-frontend-server`
-   - This will start the server to serve micro frontend loaders. In the future serving MFe-s might be from S3 or some
-     other remote source.
-4. Start your application or MFe builder
-   - Start an application example: `pnpm start:dev --filter web3-app`
-   - Start a MFe builder in watch mode: `pnpm build:watch --filter svc-platform`
+   - The `prepare` script will build some workspaces to, well... prepare the repo.
+3. Start an application or other component builder:
+   - Starting an app: `pnpm dev --filter web3-app`
+     - This will also start the `micro-frontend-server` to serve micro frontends.
+   - Start a MFe (or package) builder in development mode: `pnpm dev --filter svc-platform`
+     - This will run build in watch mode for the component.
 
 ### Scripts
 
 ```sh
 # Build components:
 pnpm build --filter component-name
-pnpm build:watch --filter component-name
 
-# Start and application in a specific environment mode:
-pnpm start:dev --filter app-name
-pnpm start:prod --filter app-name
+# Start and application or a specific component in development mode (build in watch mode):
+pnpm dev --filter component-name
 
 # Lint and format project source files:
 pnpm lint

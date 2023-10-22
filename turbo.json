@@ -2,15 +2,7 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": { "dependsOn": ["^build"] },
-    "build:watch": {
-      "persistent": true,
-      "dependsOn": ["^build"]
-    },
-    "start:dev": {
-      "persistent": true,
-      "dependsOn": ["^build"]
-    },
-    "start:prod": {
+    "dev": {
       "persistent": true,
       "dependsOn": ["^build"]
     }
