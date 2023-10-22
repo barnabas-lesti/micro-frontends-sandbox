@@ -35,15 +35,6 @@ module.exports = {
     extensions: ['.js', '.ts'],
     alias: getTypescriptPathAliases(),
   },
-  devServer: {
-    static: [
-      'public',
-      {
-        directory: './node_modules/@mfs',
-        publicPath: '/micro-frontends',
-      },
-    ],
-  },
 };
 /**
  * Resolve tsconfig.json paths to Webpack aliases

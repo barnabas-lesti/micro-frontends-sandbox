@@ -1,6 +1,7 @@
-import { createLogger } from '@mfs/utility';
+import { createLogger, stripSlashes } from '@mfs/utility';
 
-import { MICRO_FRONTEND_LOADER_FILE_NAME } from './micro-frontend-loader.const';
+import { MICRO_FRONTEND_LOADER_FILE_PATH } from './micro-frontend-loader.const';
+import { microFrontendsRemoteURLRequiredError } from './micro-frontend-loader.errors';
 import { type MicroFrontendOptions } from './micro-frontend-loader.types';
 
 export function loadMicroFrontend(microFrontend: string | MicroFrontendOptions): void {
@@ -24,7 +25,9 @@ function appendMicroFrontendScript(mfeName: string): void {
 }
 
 function createMicroFrontendSource(mfeName: string): string {
-  return `micro-frontends/${mfeName}/dist/${MICRO_FRONTEND_LOADER_FILE_NAME}`;
+  const { microFrontendsRemoteURL } = window.mfsStartupContext || {};
+  if (!microFrontendsRemoteURL) throw microFrontendsRemoteURLRequiredError();
+  return `${stripSlashes(microFrontendsRemoteURL)}/${mfeName}/${stripSlashes(MICRO_FRONTEND_LOADER_FILE_PATH)}`;
 }
 
 function isMicroFrontendLoaded(mfeSource: string): boolean {

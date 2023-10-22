@@ -1,2 +1,2 @@
-export { CustomError, delay, getRandomInteger, unblockThread } from './common';
+export { CustomError, delay, getRandomInteger, stripSlashes, unblockThread } from './common';
 export { createLogger, log, type LogPayload } from './logger';

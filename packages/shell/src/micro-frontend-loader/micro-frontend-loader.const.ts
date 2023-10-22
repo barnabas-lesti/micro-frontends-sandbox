@@ -1,1 +1,1 @@
-export const MICRO_FRONTEND_LOADER_FILE_NAME = 'loader.global.js';
+export const MICRO_FRONTEND_LOADER_FILE_PATH = '/dist/loader.global.js';

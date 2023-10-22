@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start:dev": "ng serve",
     "build": "ng build",
-    "build:watch": "ng build --watch --configuration development"
+    "build:watch": "ng build --watch --configuration development",
+    "start:micro-frontend-server:dev": "nodemon ../../apps/micro-frontend-server --port 4210",
+    "start:angular-app:dev": "ng serve",
+    "start:dev": "concurrently \"pnpm start:micro-frontend-server:dev\" \"pnpm start:angular-app:dev\""
   },
   "dependencies": {
     "@angular/animations": "^16.2.0",
@@ -16,10 +18,11 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@mfs/shell": "*",
+    "concurrently": "^8.2.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.13.0",
-    "@mfs/shell": "*"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.6",

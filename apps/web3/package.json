@@ -3,20 +3,21 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "start:dev": "webpack-dev-server --mode development",
-    "start:prod": "webpack-dev-server --mode production"
+    "start:micro-frontend-server:dev": "nodemon ../../apps/micro-frontend-server --port 8090",
+    "start:web3-app:dev": "webpack-dev-server --mode development",
+    "start:dev": "concurrently \"pnpm start:micro-frontend-server:dev\" \"pnpm start:web3-app:dev\""
   },
   "dependencies": {
-    "@mfs/shell": "*",
-    "@mfs/utility": "*",
-    "@mfs/svc-config": "*",
-    "@mfs/svc-request": "*",
-    "@mfs/svc-platform": "*",
     "@mfs/builder": "*",
+    "@mfs/shell": "*",
+    "@mfs/svc-config": "*",
+    "@mfs/svc-platform": "*",
+    "@mfs/svc-request": "*",
+    "@mfs/utility": "*",
+    "concurrently": "^8.2.2",
+    "ts-loader": "^9.4.4",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "ts-loader": "^9.4.4"
-  },
-  "devDependencies": {}
+    "webpack-dev-server": "^4.15.1"
+  }
 }

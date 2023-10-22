@@ -38,3 +38,7 @@ export function sanitizeData<Data>(data: Data): Partial<Data> | undefined {
   if (data && typeof data !== 'function') return JSON.parse(JSON.stringify(data));
   return undefined;
 }
+
+export function stripSlashes(input: string): string {
+  return input.replace(/^\/+|\/+$/g, '');
+}
