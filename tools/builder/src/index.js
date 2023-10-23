@@ -1,3 +1,6 @@
+const { defineBaseTSUpConfig, defineMFeTSUpConfig } = require('./tsup');
+
 module.exports = {
-  ...require('./tsup'),
+  defineBaseTSUpConfig,
+  defineMFeTSUpConfig,
 };

@@ -16,9 +16,9 @@ npm install -g pnpm
 2. Run `pnpm i` to install dependencies and prepare the project.
    - The `prepare` script will build some components to, well... prepare the repo.
 3. Start an application or other component builders:
-   - Starting an application with `pnpm dev --filter web3-app`
+   - Starting an application with `pnpm start --filter web3-app`
      - This will also start the `micro-frontend-server` to serve micro frontends.
-   - Start a MFe (or package) builder in development mode: `pnpm dev --filter svc-platform`
+   - Start a MFe (or package) builder in development mode: `pnpm build:watch --filter svc-platform`
      - This will run build in watch mode for the component.
 
 ### Scripts
@@ -26,9 +26,14 @@ npm install -g pnpm
 ```sh
 # Build components:
 pnpm build --filter component-name
+pnpm build:watch --filter component-name
 
-# Start and application or a specific component in development mode (build in watch mode):
-pnpm dev --filter component-name
+# Start an application:
+pnpm start --filter app-name
+
+# Run test:
+pnpm test --filter component-name
+pnpm test:watch --filter component-name
 
 # Lint and format project source files:
 pnpm lint

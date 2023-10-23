@@ -5,8 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "build:watch": "tsup --watch"
   },
   "dependencies": {
     "@mfs/svc-request": "*",

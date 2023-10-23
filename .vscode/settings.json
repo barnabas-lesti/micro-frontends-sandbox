@@ -12,12 +12,14 @@
   },
   "cSpell.words": [
     "archi",
+    "barna",
     "crios",
     "devkit",
     "eslintcache",
     "frontends",
     "fxios",
     "iife",
+    "lcov",
     "Lesti",
     "mfes",
     "microapp",
@@ -25,6 +27,7 @@
     "samsungbrowser",
     "tsup",
     "ucbrowser",
-    "unlisten"
+    "unlisten",
+    "unmocked"
   ]
 }

@@ -1,11 +1,11 @@
-const { defineBaseConfig } = require('./tsup-base.config');
+const { defineBaseTSUpConfig } = require('./tsup-base.config');
 
 module.exports = {
   /**
    * @param {import('tsup').Options | undefined} overrideOptions
    */
-  defineMFEConfig(overrideOptions) {
-    return defineBaseConfig({
+  defineMFeTSUpConfig(overrideOptions) {
+    return defineBaseTSUpConfig({
       format: ['esm', 'iife'],
       ...(overrideOptions || {}),
     });

@@ -4,7 +4,7 @@ module.exports = {
   /**
    * @param {import('tsup').Options | undefined} overrideOptions
    */
-  defineBaseConfig(overrideOptions) {
+  defineBaseTSUpConfig(overrideOptions) {
     return defineConfig({
       format: ['esm'],
       clean: false,

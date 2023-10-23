@@ -31,7 +31,7 @@ export function getRandomInteger(min: number, max: number): number {
  * @param callback - The function to be executed.
  */
 export function unblockThread(callback: () => void): void {
-  setTimeout(callback, 0);
+  setTimeout(callback, 1);
 }
 
 export function sanitizeData<Data>(data: Data): Partial<Data> | undefined {

@@ -5,11 +5,14 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@mfs/builder": "*"
+    "@mfs/builder": "*",
+    "@mfs/testing": "*"
   },
   "devDependencies": {}
 }
