@@ -6,7 +6,7 @@ module.exports = {
    */
   defineBaseTSUpConfig(overrideOptions) {
     return defineConfig({
-      format: ['esm'],
+      format: ['esm', 'cjs'],
       clean: false,
       dts: true,
       minify: true,

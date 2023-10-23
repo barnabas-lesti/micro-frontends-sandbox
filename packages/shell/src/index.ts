@@ -3,7 +3,7 @@ import { type LoadMicroFrontendPayload, MicroFrontendLoaderService } from './mic
 import { type AllCommandsPayload } from './shell';
 import { type GetStartupContextPayload, StartupContextService } from './startup-context';
 
-export { type EventBus } from './event-bus';
+export { EventBus } from './event-bus';
 
 export const enum ShellCommand {
   AllCommands = '*',

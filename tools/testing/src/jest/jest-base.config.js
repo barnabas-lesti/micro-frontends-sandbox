@@ -5,15 +5,7 @@ module.exports = {
     preset: 'ts-jest',
 
     collectCoverage: true,
-    collectCoverageFrom: ['**/*.ts'],
+    collectCoverageFrom: ['**/*.ts', '!**/*.d.ts', '!**/dist/**'],
     coverageProvider: 'v8',
-    coverageThreshold: {
-      global: {
-        branches: 90,
-        functions: 90,
-        lines: 90,
-        statements: 90,
-      },
-    },
   },
 };

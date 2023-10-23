@@ -1,4 +1,3 @@
-// import { PlatformServiceCommand } from '..';
 import { PlatformServiceCommand } from '..';
 import { PlatformService } from './platform.service';
 

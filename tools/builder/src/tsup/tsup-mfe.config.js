@@ -6,7 +6,7 @@ module.exports = {
    */
   defineMFeTSUpConfig(overrideOptions) {
     return defineBaseTSUpConfig({
-      format: ['esm', 'iife'],
+      format: ['esm', 'cjs', 'iife'],
       ...(overrideOptions || {}),
     });
   },
