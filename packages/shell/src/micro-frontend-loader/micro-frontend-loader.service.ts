@@ -24,12 +24,15 @@ export class MicroFrontendLoaderService {
 
     window.mfsEventBus.listen(ShellCommand.LoadMicroFrontend, (payload) => this.loadMicroFrontend(payload));
 
-    window.mfsEventBus.listen(ShellCommand.AllCommands, (payload) => this.ensureMicroFrontend(payload.command));
+    window.mfsEventBus.listen(ShellCommand.AllCommands, (payload) =>
+      this.loadMicroFrontendWithCommand(payload.command),
+    );
   }
 
   loadMicroFrontend(microFrontend: string | LoadMicroFrontendPayload): void {
     const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
-    if (!this.isMicroFrontendLoaded(this.createMicroFrontendSource(name))) {
+    if (!this.isMicroFrontendLoaded(name)) {
+      this.loadedMicroFrontends.push(name);
       this.appendMicroFrontendScript(name);
       log({
         sourceID: 'MicroFrontendLoader',
@@ -52,17 +55,16 @@ export class MicroFrontendLoaderService {
     return `${stripSlashes(microFrontendsRemoteURL)}/${mfeName}/${stripSlashes(MICRO_FRONTEND_LOADER_FILE_PATH)}`;
   }
 
-  private isMicroFrontendLoaded(mfeSource: string): boolean {
-    return !!document.querySelector(`script[src="${mfeSource}"]`);
+  private isMicroFrontendLoaded(name: string): boolean {
+    return (
+      this.loadedMicroFrontends.includes(name) ||
+      !!document.querySelector(`script[src="${this.createMicroFrontendSource(name)}"]`)
+    );
   }
 
-  private ensureMicroFrontend(command: string): void {
+  private loadMicroFrontendWithCommand(command: string): void {
     if (command !== ShellCommand.AllCommands && !command.startsWith(SHELL_COMMAND_PREFIX)) {
-      const microFrontendName = this.getMicroFrontendNameFromCommand(command);
-      if (!this.loadedMicroFrontends.includes(microFrontendName)) {
-        this.loadedMicroFrontends.push(microFrontendName);
-        this.loadMicroFrontend(microFrontendName);
-      }
+      this.loadMicroFrontend(this.getMicroFrontendNameFromCommand(command));
     }
   }
 
