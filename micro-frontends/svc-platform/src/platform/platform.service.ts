@@ -14,9 +14,6 @@ export class PlatformService {
     this._instance = undefined;
   }
 
-  private _isBrowser: boolean | undefined;
-  private _browserType: BrowserType | undefined;
-
   private constructor() {
     mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['svc-platform', 'PlatformService', 'constructor'] });
 
@@ -29,24 +26,10 @@ export class PlatformService {
    * @returns - True if the current environment is a browser, false otherwise.
    */
   isBrowser(): boolean {
-    if (this._isBrowser === undefined) {
-      this._isBrowser = typeof window !== 'undefined';
-    }
-    return this._isBrowser;
+    return !!globalThis.window;
   }
 
-  /**
-   * Returns the type of browser being used.
-   * @returns The type of browser being used.
-   */
   getBrowserType(): BrowserType {
-    if (this._browserType === undefined) {
-      this._browserType = this.determineBrowserType();
-    }
-    return this._browserType;
-  }
-
-  private determineBrowserType(): BrowserType {
     if (!this.isBrowser()) {
       return BrowserType.Unknown;
     }

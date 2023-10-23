@@ -6,12 +6,15 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "build:watch": "tsup --watch"
+    "build:watch": "tsup --watch",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@mfs/svc-telemetry": "*",
     "@mfs/shell": "*",
-    "@mfs/builder": "*"
+    "@mfs/builder": "*",
+    "@mfs/testing": "*"
   },
   "devDependencies": {}
 }

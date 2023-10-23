@@ -57,9 +57,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: '**/*.contract.ts',
+      files: '**/*.spec.ts',
       rules: {
-        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
       },
     },
   ],
