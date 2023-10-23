@@ -18,7 +18,7 @@ export class PlatformService {
   private _browserType: BrowserType | undefined;
 
   private constructor() {
-    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'PlatformService', method: 'constructor' });
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['svc-platform', 'PlatformService', 'constructor'] });
 
     mfsEventBus.listen(PlatformServiceCommand.IsBrowser, (callback) => callback(this.isBrowser()));
     mfsEventBus.listen(PlatformServiceCommand.GetBrowserType, (callback) => callback(this.getBrowserType()));

@@ -19,7 +19,7 @@ export class RequestService {
   private _apiBaseURLPromise: Promise<string> | undefined;
 
   private constructor() {
-    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'RequestService', method: 'constructor' });
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['svc-request', 'RequestService', 'constructor'] });
 
     mfsEventBus.listen(RequestServiceCommand.MakeAPIRequest, async (payload) => {
       const data = await this.makeAPIRequest(payload);

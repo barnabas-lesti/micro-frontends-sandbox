@@ -14,7 +14,7 @@ export class LoggerService {
   }
 
   private constructor() {
-    log({ sourceID: 'LoggerService', method: 'constructor' });
+    log({ source: ['svc-telemetry', 'LoggerService', 'constructor'] });
 
     mfsEventBus.listen(TelemetryServiceCommand.Log, (payload) => log(payload));
   }

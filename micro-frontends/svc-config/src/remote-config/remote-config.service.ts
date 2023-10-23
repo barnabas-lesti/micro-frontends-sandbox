@@ -22,7 +22,7 @@ export class RemoteConfigService {
   private _remoteConfigPromise: Promise<RemoteConfig> | undefined;
 
   private constructor() {
-    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'RemoteConfigService', method: 'constructor' });
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['svc-config', 'RemoteConfigService', 'constructor'] });
 
     mfsEventBus.listen(ConfigServiceCommand.GetRemoteConfig, async (callback) => callback(await this.get()));
   }

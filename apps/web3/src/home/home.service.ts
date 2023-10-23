@@ -23,7 +23,7 @@ export class HomeService {
   private _browserTypePromise?: Promise<BrowserType>;
 
   private constructor() {
-    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { sourceID: 'HomeService', method: 'constructor' });
+    mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['web3-app', 'HomeService', 'constructor'] });
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>

@@ -20,7 +20,7 @@ export class MicroFrontendLoaderService {
   private readonly loadedMicroFrontends: string[] = [];
 
   private constructor() {
-    log({ sourceID: 'MicroFrontendLoaderService', method: 'constructor' });
+    log({ source: ['shell', 'MicroFrontendLoaderService', 'constructor'] });
 
     window.mfsEventBus.listen(ShellCommand.LoadMicroFrontend, (payload) => this.loadMicroFrontend(payload));
 
@@ -34,11 +34,7 @@ export class MicroFrontendLoaderService {
     if (!this.isMicroFrontendLoaded(name)) {
       this.loadedMicroFrontends.push(name);
       this.appendMicroFrontendScript(name);
-      log({
-        sourceID: 'MicroFrontendLoader',
-        method: 'loadMicroFrontend',
-        message: `"${name}"`,
-      });
+      log({ source: ['shell', 'MicroFrontendLoaderService', 'loadMicroFrontend'], message: `"${name}"` });
     }
   }
 

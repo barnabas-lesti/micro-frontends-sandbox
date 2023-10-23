@@ -15,7 +15,7 @@ export class StartupContextService {
   }
 
   private constructor() {
-    log({ sourceID: 'StartupContextService', method: 'constructor' });
+    log({ source: ['shell', 'StartupContextService', 'constructor'] });
 
     window.mfsEventBus.listen(ShellCommand.GetStartupContext, (callback) => callback(this.getStartupContext()));
   }
