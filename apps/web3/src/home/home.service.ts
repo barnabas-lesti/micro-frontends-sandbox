@@ -13,10 +13,6 @@ export class HomeService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroyInstance(): void {
-    this._instance = undefined;
-  }
-
   private _isBannerEnabledPromise?: Promise<boolean>;
   private _pageDataPromise?: Promise<PageData>;
   private _isBrowserPromise?: Promise<boolean>;

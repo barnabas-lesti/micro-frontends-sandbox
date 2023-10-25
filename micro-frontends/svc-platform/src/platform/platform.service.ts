@@ -10,10 +10,6 @@ export class PlatformService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroyInstance(): void {
-    this._instance = undefined;
-  }
-
   private constructor() {
     mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['svc-platform', 'PlatformService', 'constructor'] });
 

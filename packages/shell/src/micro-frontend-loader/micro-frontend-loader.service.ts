@@ -13,10 +13,6 @@ export class MicroFrontendLoaderService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroyInstance(): void {
-    this._instance = undefined;
-  }
-
   private readonly loadedMicroFrontends: string[] = [];
 
   private constructor() {

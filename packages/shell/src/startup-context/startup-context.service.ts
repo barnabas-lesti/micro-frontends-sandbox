@@ -10,10 +10,6 @@ export class StartupContextService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroyInstance(): void {
-    this._instance = undefined;
-  }
-
   private constructor() {
     log({ source: ['shell', 'StartupContextService', 'constructor'] });
 

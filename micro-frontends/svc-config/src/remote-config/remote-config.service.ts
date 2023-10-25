@@ -15,10 +15,6 @@ export class RemoteConfigService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroyInstance(): void {
-    this._instance = undefined;
-  }
-
   private _remoteConfigPromise: Promise<RemoteConfig> | undefined;
 
   private constructor() {

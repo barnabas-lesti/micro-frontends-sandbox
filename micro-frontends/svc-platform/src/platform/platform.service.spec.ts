@@ -14,7 +14,7 @@ describe('PlatformService', () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
-    PlatformService.destroyInstance();
+    (PlatformService as any)._instance = undefined;
     (window as any).mfsEventBus = undefined;
   });
 

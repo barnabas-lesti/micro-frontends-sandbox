@@ -12,10 +12,6 @@ export class RequestService {
     return this._instance || (this._instance = new this());
   }
 
-  static destroyInstance(): void {
-    this._instance = undefined;
-  }
-
   private _apiBaseURLPromise: Promise<string> | undefined;
 
   private constructor() {
