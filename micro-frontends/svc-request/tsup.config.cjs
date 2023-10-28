@@ -1,6 +1,6 @@
-const { defineMFeTSUpConfig } = require('@mfs/builder');
+const { defineMFeTSUPConfig } = require('@mfs/builder');
 
-module.exports = defineMFeTSUpConfig({
+module.exports = defineMFeTSUPConfig({
   entry: ['./src/index.ts', './src/loader.ts'],
   outDir: './dist',
 });

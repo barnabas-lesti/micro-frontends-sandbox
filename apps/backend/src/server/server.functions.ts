@@ -1,3 +1,4 @@
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
@@ -25,6 +26,8 @@ export function startServer(): void {
 
   const app = express();
   const portNumber = getPortNumber();
+
+  app.use(cors());
 
   app.use(MICRO_FRONTENDS_URL_PATH, express.static(path.resolve(process.cwd(), MICRO_FRONTENDS_FILE_SYSTEM_PATH)));
 

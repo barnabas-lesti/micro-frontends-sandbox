@@ -1,6 +1,6 @@
-const { defineBaseTSUpConfig } = require('@mfs/builder');
+const { defineBaseTSUPConfig } = require('@mfs/builder');
 
-module.exports = defineBaseTSUpConfig({
+module.exports = defineBaseTSUPConfig({
   entry: ['./src/index.ts'],
   outDir: './dist',
 });

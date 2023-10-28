@@ -12,9 +12,10 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@mfs/svc-telemetry": "*",
-    "@mfs/shell": "*",
     "@mfs/builder": "*",
+    "@mfs/shell": "*",
+    "@mfs/svc-telemetry": "*",
+    "localforage": "^1.10.0",
     "tsup": "^7.2.0"
   },
   "devDependencies": {

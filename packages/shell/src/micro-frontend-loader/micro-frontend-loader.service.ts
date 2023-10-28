@@ -2,7 +2,7 @@ import { log, stripSlashes } from '@mfs/utility';
 
 import { ShellCommand } from '..';
 import { SHELL_COMMAND_PREFIX } from '../shell';
-import { MICRO_FRONTEND_LOADER_FILE_PATH } from './micro-frontend-loader.const';
+import { MICRO_FRONTEND_LOADER_FILE_PATH, MICRO_FRONTEND_SCRIPT_TYPE } from './micro-frontend-loader.const';
 import { microFrontendsRemoteURLRequiredError } from './micro-frontend-loader.errors';
 import { type LoadMicroFrontendPayload } from './micro-frontend-loader.types';
 
@@ -38,6 +38,7 @@ export class MicroFrontendLoaderService {
     const script = document.createElement('script');
     script.setAttribute('src', this.createMicroFrontendSource(mfeName));
     script.setAttribute('defer', '');
+    script.setAttribute('type', MICRO_FRONTEND_SCRIPT_TYPE);
     document.head.appendChild(script);
   }
 

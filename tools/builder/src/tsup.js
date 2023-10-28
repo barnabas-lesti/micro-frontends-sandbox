@@ -3,7 +3,7 @@ const { defineConfig } = require('tsup');
 /**
  * @param {import('tsup').Options | undefined} overrideOptions
  */
-function defineBaseTSUpConfig(overrideOptions) {
+function defineBaseTSUPConfig(overrideOptions) {
   return defineConfig({
     format: ['esm', 'cjs'],
     clean: false,
@@ -17,9 +17,9 @@ function defineBaseTSUpConfig(overrideOptions) {
 /**
  * @param {import('tsup').Options | undefined} overrideOptions
  */
-function defineMFeTSUpConfig(overrideOptions) {
-  return defineBaseTSUpConfig({
-    format: ['esm', 'cjs', 'iife'],
+function defineMFeTSUPConfig(overrideOptions) {
+  return defineBaseTSUPConfig({
+    noExternal: [/(.*)/],
     ...(overrideOptions || {}),
   });
 }
@@ -27,9 +27,8 @@ function defineMFeTSUpConfig(overrideOptions) {
 /**
  * @param {import('tsup').Options | undefined} overrideOptions
  */
-function defineNodeTSUpConfig(overrideOptions) {
-  return defineBaseTSUpConfig({
-    format: ['cjs', 'esm'],
+function defineNodeTSUPConfig(overrideOptions) {
+  return defineBaseTSUPConfig({
     dts: false,
     minify: false,
     sourcemap: false,
@@ -38,7 +37,7 @@ function defineNodeTSUpConfig(overrideOptions) {
 }
 
 module.exports = {
-  defineBaseTSUpConfig,
-  defineMFeTSUpConfig,
-  defineNodeTSUpConfig,
+  defineBaseTSUPConfig,
+  defineMFeTSUPConfig,
+  defineNodeTSUPConfig,
 };

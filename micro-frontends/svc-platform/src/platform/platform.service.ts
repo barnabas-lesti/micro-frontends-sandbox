@@ -1,3 +1,5 @@
+import localforage from 'localforage';
+
 import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
 
 import { PlatformServiceCommand } from '..';
@@ -11,6 +13,13 @@ export class PlatformService {
   }
 
   private constructor() {
+    localforage.setItem('key', 'value', function (error) {
+      console.log(error);
+      localforage.getItem('key', function (error, value) {
+        console.log(error, value);
+      });
+    });
+
     mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['svc-platform', 'PlatformService', 'constructor'] });
 
     mfsEventBus.listen(PlatformServiceCommand.IsBrowser, (callback) => callback(this.isBrowser()));

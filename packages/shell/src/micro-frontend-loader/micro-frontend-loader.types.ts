@@ -6,3 +6,5 @@ export interface LoadMicroFrontendPayload {
   name: string;
   version?: string;
 }
+
+export type ScriptTagType = 'module' | 'text/javascript';
