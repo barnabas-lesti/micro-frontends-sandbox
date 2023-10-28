@@ -1,6 +1,7 @@
 # Files
 .DS_Store
 .eslintcache
+pnpm-lock.yaml
 
 # Folders
 .angular/
