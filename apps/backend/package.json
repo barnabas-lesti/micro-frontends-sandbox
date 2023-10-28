@@ -1,5 +1,5 @@
 {
-  "name": "@mfs/api",
+  "name": "@mfs/backend-app",
   "version": "1.0.0",
   "description": "",
   "type": "module",

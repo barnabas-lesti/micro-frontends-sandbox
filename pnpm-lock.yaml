@@ -78,6 +78,9 @@ importers:
       '@angular/router':
         specifier: ^16.2.0
         version: 16.2.11(@angular/common@16.2.11)(@angular/core@16.2.11)(@angular/platform-browser@16.2.11)(rxjs@7.8.1)
+      '@mfs/backend-app':
+        specifier: '*'
+        version: link:../backend
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
@@ -97,7 +100,7 @@ importers:
         specifier: ~0.13.0
         version: 0.13.3
 
-  apps/api:
+  apps/backend:
     dependencies:
       '@mfs/builder':
         specifier: '*'
@@ -141,6 +144,9 @@ importers:
 
   apps/web3:
     dependencies:
+      '@mfs/backend-app':
+        specifier: '*'
+        version: link:../backend
       '@mfs/builder':
         specifier: '*'
         version: link:../../tools/builder

@@ -16,7 +16,7 @@
     "lint:fix": "prettier . --write && eslint . --cache --fix",
     "graph": "node ./tools/cli/graph.cjs",
     "clean": "node ./tools/cli/clean.cjs",
-    "prepare": "pnpm build --filter=./apps/api --filter=./packages/* --filter=./micro-frontends/*"
+    "postinstall": "pnpm build --filter=./packages/* --filter=./micro-frontends/*"
   },
   "dependencies": {
     "turbo": "^1.10.16"

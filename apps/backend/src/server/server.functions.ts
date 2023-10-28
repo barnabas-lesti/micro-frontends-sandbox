@@ -29,7 +29,8 @@ export function startServer(): void {
   app.use(MICRO_FRONTENDS_URL_PATH, express.static(path.resolve(process.cwd(), MICRO_FRONTENDS_FILE_SYSTEM_PATH)));
 
   app.listen(portNumber, () => {
-    console.log(`API server started at: "http://localhost:${portNumber}"`);
-    console.log(`Micro Frontends available at: "${MICRO_FRONTENDS_URL_PATH}"`);
+    const address = `http://localhost:${portNumber}`;
+    console.log(`Backend resource server started at: "${address}"`);
+    console.log(`Micro Frontends available at: "${address + MICRO_FRONTENDS_URL_PATH}"`);
   });
 }

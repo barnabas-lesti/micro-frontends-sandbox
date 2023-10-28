@@ -3,11 +3,12 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"pnpm start:api\" \"pnpm start:web\"",
-    "start:api": "node ../api --port 8090",
-    "start:web": "webpack-dev-server --mode development"
+    "start": "concurrently \"pnpm start:backend\" \"pnpm start:frontend\"",
+    "start:backend": "node ../backend --port 8090",
+    "start:frontend": "webpack-dev-server --mode development"
   },
   "dependencies": {
+    "@mfs/backend-app": "*",
     "@mfs/builder": "*",
     "@mfs/shell": "*",
     "@mfs/svc-config": "*",

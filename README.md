@@ -14,10 +14,8 @@ npm install -g pnpm
 
 1. Clone the repository.
 2. Run `pnpm i` to install dependencies and prepare the project.
-   - The `prepare` script will build some components to, well... prepare the repo.
 3. Start an application or other component builders:
    - Starting an application with `pnpm start --filter web3-app`
-     - This will also start the `micro-frontend-server` to serve micro frontends.
    - Start a MFe (or package) builder in development mode: `pnpm build:watch --filter svc-platform`
      - This will run build in watch mode for the component.
 
