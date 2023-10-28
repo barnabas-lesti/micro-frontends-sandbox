@@ -5,9 +5,9 @@
     "ng": "ng",
     "build": "ng build",
     "build:watch": "ng build --watch --configuration development",
-    "start": "concurrently \"pnpm start:micro-frontend-server\" \"pnpm start:angular-app\"",
-    "start:micro-frontend-server": "nodemon ../../apps/micro-frontend-server --port 4210",
-    "start:angular-app": "ng serve"
+    "start": "concurrently \"pnpm start:api\" \"pnpm start:web\"",
+    "start:api": "node ../api --port 4210",
+    "start:web": "ng serve"
   },
   "dependencies": {
     "@angular/animations": "^16.2.0",
