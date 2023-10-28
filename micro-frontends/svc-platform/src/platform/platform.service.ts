@@ -13,9 +13,9 @@ export class PlatformService {
   }
 
   private constructor() {
-    localforage.setItem('key', 'value', function (error) {
+    localforage?.setItem('key', 'value', function (error) {
       console.log(error);
-      localforage.getItem('key', function (error, value) {
+      localforage?.getItem('key', function (error, value) {
         console.log(error, value);
       });
     });

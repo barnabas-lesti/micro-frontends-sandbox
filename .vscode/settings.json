@@ -9,26 +9,5 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-  },
-  "cSpell.words": [
-    "archi",
-    "barna",
-    "crios",
-    "devkit",
-    "eslintcache",
-    "frontends",
-    "fxios",
-    "iife",
-    "lcov",
-    "Lesti",
-    "localforage",
-    "mfes",
-    "microapp",
-    "obgs",
-    "samsungbrowser",
-    "tsup",
-    "ucbrowser",
-    "unlisten",
-    "unmocked"
-  ]
+  }
 }
