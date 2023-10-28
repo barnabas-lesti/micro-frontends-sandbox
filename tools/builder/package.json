@@ -9,6 +9,7 @@
     "./tsconfig/*": "./src/tsconfig/*"
   },
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "tsup": "^7.2.0"
+  }
 }

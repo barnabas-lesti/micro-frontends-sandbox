@@ -15,7 +15,13 @@
     "@mfs/svc-telemetry": "*",
     "@mfs/shell": "*",
     "@mfs/builder": "*",
-    "@mfs/testing": "*"
+    "tsup": "^7.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@mfs/testing": "*",
+    "@types/jest": "^29.5.6",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.1.1"
+  }
 }

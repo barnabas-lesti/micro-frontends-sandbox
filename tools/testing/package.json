@@ -5,6 +5,7 @@
   "main": "./src/index.js",
   "types": "./src/index.js",
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
