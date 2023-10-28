@@ -10,6 +10,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "tsup": "^7.2.0"
+    "tsup": "^7.2.0",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.6.2"
   }
 }

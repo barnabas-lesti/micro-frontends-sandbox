@@ -6,8 +6,8 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup",
-    "build:watch": "tsup --watch",
+    "build": "vite build",
+    "build:watch": "vite build --watch",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -16,7 +16,7 @@
     "@mfs/shell": "*",
     "@mfs/svc-telemetry": "*",
     "localforage": "^1.10.0",
-    "tsup": "^7.2.0"
+    "vite": "^4.4.9"
   },
   "devDependencies": {
     "@mfs/testing": "*",
