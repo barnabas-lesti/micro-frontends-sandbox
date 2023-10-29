@@ -2,8 +2,12 @@ import { log, stripSlashes } from '@mfs/utility';
 
 import { ShellCommand } from '..';
 import { SHELL_COMMAND_PREFIX } from '../shell';
-import { MICRO_FRONTEND_LOADER_FILE_PATH, MICRO_FRONTEND_SCRIPT_TYPE } from './micro-frontend-loader.const';
-import { microFrontendsRemoteURLRequiredError } from './micro-frontend-loader.errors';
+import {
+  MICRO_FRONTEND_LOADER_FILE_PATH,
+  MICRO_FRONTEND_SCRIPT_TYPE,
+  MICRO_FRONTEND_URL,
+} from './micro-frontend-loader.const';
+import { backendBaseURLRequiredError } from './micro-frontend-loader.errors';
 import { type LoadMicroFrontendPayload } from './micro-frontend-loader.types';
 
 export class MicroFrontendLoaderService {
@@ -43,9 +47,11 @@ export class MicroFrontendLoaderService {
   }
 
   private createMicroFrontendSource(mfeName: string): string {
-    const { microFrontendsRemoteURL } = window.mfsStartupContext || {};
-    if (!microFrontendsRemoteURL) throw microFrontendsRemoteURLRequiredError();
-    return `${stripSlashes(microFrontendsRemoteURL)}/${mfeName}/${stripSlashes(MICRO_FRONTEND_LOADER_FILE_PATH)}`;
+    const { backendBaseURL } = window.mfsStartupContext || {};
+    if (!backendBaseURL) throw backendBaseURLRequiredError();
+
+    const mfeBaseURL = `${stripSlashes(backendBaseURL)}/${stripSlashes(MICRO_FRONTEND_URL)}`;
+    return `${mfeBaseURL}/${mfeName}/${stripSlashes(MICRO_FRONTEND_LOADER_FILE_PATH)}`;
   }
 
   private isMicroFrontendLoaded(name: string): boolean {

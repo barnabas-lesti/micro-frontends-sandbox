@@ -1,4 +1,4 @@
 export interface StartupContext {
   apiBaseURL?: string;
-  microFrontendsRemoteURL?: string;
+  backendBaseURL?: string;
 }
