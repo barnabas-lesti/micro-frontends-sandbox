@@ -1,4 +1,5 @@
 export interface StartupContext {
-  apiBaseURL?: string;
-  backendBaseURL?: string;
+  apiURL?: string;
+  microFrontendsURL?: string;
+  contentURL?: string;
 }

@@ -4,6 +4,7 @@ import { type AllCommandsPayload } from './shell';
 import { type GetStartupContextPayload, StartupContextService } from './startup-context';
 
 export { EventBus } from './event-bus';
+export { StartupContext } from './startup-context';
 
 export const enum ShellCommand {
   AllCommands = '*',

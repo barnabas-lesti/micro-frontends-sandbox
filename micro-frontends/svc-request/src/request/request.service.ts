@@ -2,7 +2,7 @@ import { ShellCommand } from '@mfs/shell';
 import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
 
 import { RequestServiceCommand } from '..';
-import { apiBaseURLRequiredError } from './request.errors';
+import { apiURLRequiredError } from './request.errors';
 import { type MakeAPIRequestPayload } from './request.types';
 
 export class RequestService {
@@ -39,9 +39,9 @@ export class RequestService {
   async getAPIBaseURL(): Promise<string> {
     if (!this._apiBaseURLPromise) {
       this._apiBaseURLPromise = new Promise((resolve) => {
-        mfsEventBus.dispatch(ShellCommand.GetStartupContext, ({ apiBaseURL }) => {
-          if (!apiBaseURL) throw apiBaseURLRequiredError();
-          resolve(apiBaseURL);
+        mfsEventBus.dispatch(ShellCommand.GetStartupContext, ({ apiURL }) => {
+          if (!apiURL) throw apiURLRequiredError();
+          resolve(apiURL);
         });
       });
     }

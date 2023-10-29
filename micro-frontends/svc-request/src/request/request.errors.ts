@@ -2,9 +2,9 @@ import { CustomError } from '@mfs/utility';
 
 import { RequestErrorCode } from './request.types';
 
-export function apiBaseURLRequiredError(): CustomError {
+export function apiURLRequiredError(): CustomError {
   return new CustomError({
-    code: RequestErrorCode.API_BASE_URL_REQUIRED,
-    message: '"window.mfsStartupContext.apiBaseURL" is required to make API requests',
+    code: RequestErrorCode.API_URL_REQUIRED,
+    message: '"window.mfsStartupContext.apiURL" is required to make API requests',
   });
 }
