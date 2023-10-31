@@ -3,8 +3,7 @@
   "pipeline": {
     "build": { "dependsOn": ["^build"] },
     "dev": {
-      "persistent": true,
-      "dependsOn": ["^build"]
+      "persistent": true
     },
     "test": {}
   }

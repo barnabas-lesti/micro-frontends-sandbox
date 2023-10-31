@@ -14,12 +14,12 @@ npm install -g pnpm
 
 1. Clone the repository.
 2. Run `pnpm i` to install dependencies.
-3. Start application and component builders with `pnpm dev`.
+3. Build the project with `pnpm build`
+4. Start application and component builders with `pnpm dev`.
 
 > **Note**
-> Because components need to be built to use them in other components, VSCode and other IDE-s might complain when you
-> first open files in the editor after checkout. To solve this just start the project in dev mode with `pnpm dev`, or
-> build the components with `pnpm build`.
+> Because components need to be built to use them in other components, code editors and `pnpm dev` might complain after
+> checkout. To solve this just build the project with `pnpm build`.
 
 ### Start specific builders
 
