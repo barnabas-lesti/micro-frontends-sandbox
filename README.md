@@ -16,7 +16,7 @@ npm install -g pnpm
 2. Run `pnpm i` to install dependencies.
 3. Start application and component builders with `pnpm dev`.
 
-> **Info**
+> **Note**
 > Because components need to be built to use them in other components, VSCode and other IDE-s might complain when you
 > first open files in the editor after checkout. To solve this just start the project in dev mode with `pnpm dev`, or
 > build the components with `pnpm build`.
@@ -24,7 +24,7 @@ npm install -g pnpm
 ### Start specific builders
 
 The `pnpm dev` commands start everything and everything. This might get resource heavy (and slow) so we can specify
-what builders to start. Examples:
+what builders to start:
 
 ```bash
 # You are only working on the shell package:
