@@ -8,15 +8,15 @@
   "type": "module",
   "scripts": {
     "build": "turbo build",
-    "build:watch": "turbo build:watch",
-    "start": "turbo start",
+    "dev": "turbo dev --concurrency=20",
+    "dev:be-core": "turbo dev --filter be-core",
+    "dev:fe-web3": "turbo dev --filter be-core --filter fe-web3",
+    "dev:fe-angular": "turbo dev --filter be-core --filter fe-angular",
     "test": "turbo test",
-    "test:watch": "turbo test:watch",
     "lint": "prettier . --check && eslint . --cache",
     "lint:fix": "prettier . --write && eslint . --cache --fix",
     "graph": "node ./tools/cli/graph.cjs",
-    "clean": "node ./tools/cli/clean.cjs",
-    "postinstall": "pnpm build --filter=./packages/* --filter=./micro-frontends/*"
+    "clean": "node ./tools/cli/clean.cjs"
   },
   "dependencies": {
     "turbo": "^1.10.16"

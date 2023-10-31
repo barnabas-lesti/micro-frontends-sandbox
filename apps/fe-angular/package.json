@@ -1,13 +1,10 @@
 {
-  "name": "@mfs/angular-app",
+  "name": "@mfs/fe-angular",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "build:watch": "ng build --watch --configuration development",
-    "start": "concurrently \"pnpm start:backend\" \"pnpm start:frontend\"",
-    "start:backend": "node ../backend --port 4210",
-    "start:frontend": "ng serve"
+    "dev": "ng serve --port 4040"
   },
   "dependencies": {
     "@angular/animations": "^16.2.0",
@@ -21,7 +18,6 @@
     "@angular-devkit/build-angular": "^16.2.6",
     "@angular/cli": "^16.2.6",
     "@angular/compiler-cli": "^16.2.0",
-    "@mfs/backend-app": "*",
     "@mfs/shell": "*",
     "concurrently": "^8.2.2",
     "rxjs": "~7.8.0",

@@ -13,25 +13,43 @@ npm install -g pnpm
 ## Development
 
 1. Clone the repository.
-2. Run `pnpm i` to install dependencies and prepare the project.
-3. Start an application or other component builders:
-   - Starting an application with `pnpm start --filter web3-app`
-   - Start a MFe (or package) builder in development mode: `pnpm build:watch --filter svc-platform`
-     - This will run build in watch mode for the component.
+2. Run `pnpm i` to install dependencies.
+3. Start application and component builders with `pnpm dev`.
+
+> **Info**
+> Because components need to be built to use them in other components, VSCode and other IDE-s might complain when you
+> first open files in the editor after checkout. To solve this just start the project in dev mode with `pnpm dev`, or
+> build the components with `pnpm build`.
+
+### Start specific builders
+
+The `pnpm dev` commands start everything and everything. This might get resource heavy (and slow) so we can specify
+what builders to start. Examples:
+
+```bash
+# You are only working on the shell package:
+pnpm dev --filter shell
+
+# You are working on the utility package and the svc-platform MFe:
+pnpm dev --filter utility --filter svc-platform
+
+# Apps have direct shortcut scripts so you can start them with these scripts:
+pnpm dev:be-core
+pnpm dev:fe-web3
+# ... and so on.
+```
 
 ### Scripts
 
 ```sh
-# Build components:
-pnpm build --filter component-name
-pnpm build:watch --filter component-name
+# Start component builders in development mode:
+pnpm dev --filter component-name/filter-condition
 
-# Start an application:
-pnpm start --filter app-name
+# Build components:
+pnpm build --filter component-name/filter-condition
 
 # Run test:
-pnpm test --filter component-name
-pnpm test:watch --filter component-name
+pnpm test --filter component-name/filter-condition
 
 # Lint and format project source files:
 pnpm lint

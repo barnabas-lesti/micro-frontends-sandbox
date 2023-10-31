@@ -1,3 +1,3 @@
-const { defineMFEViteConfig } = require('@mfs/builder');
+const { defineMFeViteConfig } = require('@mfs/builder');
 
-module.exports = defineMFEViteConfig();
+module.exports = defineMFeViteConfig();

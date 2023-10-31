@@ -7,9 +7,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "vite build",
-    "build:watch": "vite build --watch",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "dev": "vite build --watch",
+    "test": "jest"
   },
   "dependencies": {
     "@mfs/builder": "*",

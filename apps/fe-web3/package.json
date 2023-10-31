@@ -1,14 +1,11 @@
 {
-  "name": "@mfs/web3-app",
+  "name": "@mfs/fe-web3",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently \"pnpm start:backend\" \"pnpm start:frontend\"",
-    "start:backend": "node ../backend --port 8090",
-    "start:frontend": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development --port 3030"
   },
   "dependencies": {
-    "@mfs/backend-app": "*",
     "@mfs/builder": "*",
     "@mfs/shell": "*",
     "@mfs/svc-config": "*",

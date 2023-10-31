@@ -1,14 +1,11 @@
 {
-  "name": "@mfs/backend-app",
+  "name": "@mfs/be-core",
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
   "scripts": {
     "build": "tsup",
-    "build:watch": "tsup --watch",
-    "start": "concurrently \"pnpm build:watch\" \"nodemon\""
+    "dev": "tsup && concurrently \"tsup --watch\" \"nodemon ./dist/index.cjs --port 8080\""
   },
   "dependencies": {
     "@mfs/builder": "*",

@@ -1,9 +1,10 @@
 const { defineConfig } = require('vite');
 const dts = require('vite-plugin-dts');
 
-function defineMFEViteConfig() {
+function defineMFeViteConfig() {
   return defineConfig({
     build: {
+      emptyOutDir: false,
       lib: {
         entry: ['./src/index.ts', './src/loader.ts'],
         formats: ['cjs', 'es'],
@@ -16,5 +17,5 @@ function defineMFEViteConfig() {
 }
 
 module.exports = {
-  defineMFEViteConfig,
+  defineMFeViteConfig,
 };
