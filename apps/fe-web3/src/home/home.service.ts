@@ -1,3 +1,4 @@
+import { AccountAppCommand } from '@mfs/app-account/types';
 import { ConfigServiceCommand } from '@mfs/svc-config';
 import { type BrowserType, PlatformServiceCommand } from '@mfs/svc-platform';
 import { RequestServiceCommand } from '@mfs/svc-request';
@@ -20,6 +21,8 @@ export class HomeService {
 
   private constructor() {
     mfsEventBus.dispatch(TelemetryServiceCommand.Log, { source: ['web3-app', 'HomeService', 'constructor'] });
+
+    mfsEventBus.dispatch(AccountAppCommand.Verify, { onSuccess: () => {} });
 
     Promise.all([this.isBannerEnabled(), this.getPageData(), this.isBrowser(), this.getBrowserType()]).then(
       ([isBannerEnabled, pageData, isBrowser, browserType]) =>

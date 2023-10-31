@@ -1,3 +1,4 @@
+import { type AccountAppContract } from '@mfs/app-account/types';
 import { type EventBus, type StartupContext } from '@mfs/shell';
 import { type ConfigServiceContract } from '@mfs/svc-config';
 import { type PlatformServiceContract } from '@mfs/svc-platform';
@@ -6,7 +7,11 @@ import { type TelemetryServiceContract } from '@mfs/svc-telemetry';
 
 declare global {
   const mfsEventBus: EventBus<
-    TelemetryServiceContract & ConfigServiceContract & PlatformServiceContract & RequestServiceContract
+    TelemetryServiceContract &
+    ConfigServiceContract &
+    PlatformServiceContract &
+    RequestServiceContract &
+    AccountAppContract
   >;
 
   interface Window {

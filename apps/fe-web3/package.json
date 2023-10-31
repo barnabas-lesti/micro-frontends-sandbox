@@ -8,6 +8,7 @@
   "dependencies": {
     "@mfs/builder": "*",
     "@mfs/shell": "*",
+    "@mfs/app-account": "*",
     "@mfs/svc-config": "*",
     "@mfs/svc-platform": "*",
     "@mfs/svc-request": "*",

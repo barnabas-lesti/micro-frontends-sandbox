@@ -1,0 +1,24 @@
+{
+  "name": "@mfs/app-account",
+  "version": "0.0.1",
+  "description": "Account MFe app",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "collection": "./dist/collection/collection-manifest.json",
+  "exports": {
+    "./types": "./dist/types/types.d.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "types": ["./dist/types/types.d.ts"]
+    }
+  },
+  "scripts": {
+    "build": "stencil build",
+    "dev": "stencil build --watch"
+  },
+  "dependencies": {
+    "@stencil/core": "^4.7.0"
+  }
+}
