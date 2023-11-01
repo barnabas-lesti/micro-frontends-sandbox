@@ -1,21 +1,37 @@
 const { defineConfig } = require('vite');
 const dts = require('vite-plugin-dts');
 
-function defineMFeViteConfig() {
+/**
+ * @param {import('vite').UserConfig | undefined} overrideConfig
+ */
+function defineBaseViteConfig(overrideConfig) {
   return defineConfig({
     build: {
-      emptyOutDir: false,
       lib: {
-        entry: ['./src/index.ts', './src/loader.ts'],
+        entry: overrideConfig?.build?.lib?.entry || ['./src/index.ts'],
         formats: ['cjs', 'es'],
       },
-      minify: true,
+      outDir: './dist',
+      emptyOutDir: false,
       sourcemap: true,
+      // minify: true,
     },
-    plugins: [dts({ rollupTypes: true })],
+    plugins: [dts()],
+    // plugins: [dts({ rollupTypes: true })],
+  });
+}
+
+function defineMFeViteConfig() {
+  return defineBaseViteConfig({
+    build: {
+      lib: {
+        entry: ['./src/index.ts', './src/contract.ts'],
+      },
+    },
   });
 }
 
 module.exports = {
+  defineBaseViteConfig,
   defineMFeViteConfig,
 };
