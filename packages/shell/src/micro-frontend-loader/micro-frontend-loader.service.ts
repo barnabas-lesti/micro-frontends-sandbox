@@ -1,6 +1,6 @@
 import { log, stripSlashes } from '@mfs/utility';
 
-import { ShellCommand } from '..';
+import { ShellCommand } from '../contract';
 import { SHELL_COMMAND_PREFIX } from '../shell';
 import { MICRO_FRONTEND_LOADER_FILE_PATH, MICRO_FRONTEND_SCRIPT_TYPE } from './micro-frontend-loader.const';
 import { microFrontendsURLRequiredError } from './micro-frontend-loader.errors';

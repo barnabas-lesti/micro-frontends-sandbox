@@ -5,14 +5,25 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    "./contract": {
+      "require": "./dist/contract.cjs",
+      "import": "./dist/contract.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "contract": [
+        "./dist/contract.d.ts"
+      ]
+    }
+  },
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
+    "build": "vite build",
+    "dev": "vite build --watch"
   },
   "dependencies": {
     "rxjs": "^7.8.1",
-    "@mfs/utility": "*",
-    "@mfs/builder": "*",
-    "tsup": "^7.2.0"
+    "@mfs/utility": "*"
   }
 }

@@ -2,7 +2,7 @@ import { ReplaySubject } from 'rxjs';
 
 import { log, unblockThread } from '@mfs/utility';
 
-import { ShellCommand } from '..';
+import { ShellCommand } from '../contract';
 import { REPLAY_BUFFER_SIZE, REPLAY_BUFFER_WINDOW_TIME } from './event-bus.const';
 import { type DispatchSubject, type DispatchSubjectMap, type Listener } from './event-bus.types';
 
