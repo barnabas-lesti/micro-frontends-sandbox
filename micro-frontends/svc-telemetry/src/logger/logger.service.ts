@@ -1,6 +1,6 @@
 import { log } from '@mfs/utility';
 
-import { TelemetryServiceCommand } from '..';
+import { TelemetryServiceCommand } from '../contract';
 
 export class LoggerService {
   private static _instance: LoggerService | undefined;

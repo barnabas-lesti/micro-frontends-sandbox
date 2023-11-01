@@ -283,18 +283,12 @@ importers:
 
   micro-frontends/svc-telemetry:
     dependencies:
-      '@mfs/builder':
-        specifier: '*'
-        version: link:../../tools/builder
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
       '@mfs/utility':
         specifier: '*'
         version: link:../../packages/utility
-      tsup:
-        specifier: ^7.2.0
-        version: 7.2.0(typescript@5.2.2)
 
   packages/shell:
     dependencies:

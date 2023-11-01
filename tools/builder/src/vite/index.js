@@ -4,6 +4,7 @@ const dts = require('vite-plugin-dts');
 /**
  * @typedef {Object} OverrideConfig
  * @property {string[]} entry
+ * @property {boolean} minify
  */
 
 /**
@@ -19,20 +20,20 @@ function defineBaseViteConfig(overrideConfig) {
       outDir: './dist',
       emptyOutDir: false,
       sourcemap: true,
-      // minify: true,
+      minify: overrideConfig?.minify || false,
     },
     plugins: [dts()],
-    // plugins: [dts({ rollupTypes: true })],
   });
 }
 
-function defineMFeViteConfig() {
+function defineMFEServiceViteConfig() {
   return defineBaseViteConfig({
     entry: ['./src/index.ts', './src/contract.ts'],
+    minify: true,
   });
 }
 
 module.exports = {
   defineBaseViteConfig,
-  defineMFeViteConfig,
+  defineMFEServiceViteConfig,
 };
