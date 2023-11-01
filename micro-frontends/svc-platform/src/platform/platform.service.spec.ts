@@ -1,4 +1,4 @@
-import { PlatformServiceCommand } from '..';
+import { PlatformServiceCommand } from '../contract';
 import { PlatformService } from './platform.service';
 
 describe('PlatformService', () => {

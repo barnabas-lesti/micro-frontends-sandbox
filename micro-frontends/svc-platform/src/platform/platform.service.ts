@@ -1,8 +1,8 @@
 import localforage from 'localforage';
 
-import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry/contract';
 
-import { PlatformServiceCommand } from '..';
+import { PlatformServiceCommand } from '../contract';
 import { BrowserType } from './platform.types';
 
 export class PlatformService {

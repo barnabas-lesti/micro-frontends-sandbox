@@ -3,9 +3,5 @@
   "type": "commonjs",
   "version": "1.0.0",
   "main": "./src/index.js",
-  "types": "./src/index.js",
-  "scripts": {},
-  "devDependencies": {
-    "jest": "^29.7.0"
-  }
+  "types": "./src/index.js"
 }

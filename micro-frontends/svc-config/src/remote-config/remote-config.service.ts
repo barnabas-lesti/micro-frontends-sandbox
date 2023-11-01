@@ -1,7 +1,7 @@
-import { RequestServiceCommand } from '@mfs/svc-request';
-import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
+import { RequestServiceCommand } from '@mfs/svc-request/contract';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry/contract';
 
-import { ConfigServiceCommand } from '..';
+import { ConfigServiceCommand } from '../contract';
 import { REMOTE_CONFIG_API_PATH } from './remote-config.const';
 import { type RemoteConfig } from './remote-config.types';
 

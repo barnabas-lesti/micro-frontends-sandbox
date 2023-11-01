@@ -213,9 +213,6 @@ importers:
 
   micro-frontends/svc-config:
     dependencies:
-      '@mfs/builder':
-        specifier: '*'
-        version: link:../../tools/builder
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
@@ -225,15 +222,9 @@ importers:
       '@mfs/svc-telemetry':
         specifier: '*'
         version: link:../svc-telemetry
-      tsup:
-        specifier: ^7.2.0
-        version: 7.2.0(typescript@5.2.2)
 
   micro-frontends/svc-platform:
     dependencies:
-      '@mfs/builder':
-        specifier: '*'
-        version: link:../../tools/builder
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
@@ -243,25 +234,6 @@ importers:
       localforage:
         specifier: ^1.10.0
         version: 1.10.0
-      vite:
-        specifier: ^4.4.9
-        version: 4.5.0
-    devDependencies:
-      '@mfs/testing':
-        specifier: '*'
-        version: link:../../tools/testing
-      '@types/jest':
-        specifier: ^29.5.6
-        version: 29.5.6
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0
-      jest-environment-jsdom:
-        specifier: ^29.7.0
-        version: 29.7.0
-      ts-jest:
-        specifier: ^29.1.1
-        version: 29.1.1(@babel/core@7.23.2)(jest@29.7.0)(typescript@5.2.2)
 
   micro-frontends/svc-request:
     dependencies:
@@ -304,11 +276,7 @@ importers:
         specifier: ^3.6.2
         version: 3.6.2(typescript@5.2.2)(vite@4.4.9)
 
-  tools/testing:
-    devDependencies:
-      jest:
-        specifier: ^29.7.0
-        version: 29.7.0
+  tools/testing: {}
 
 packages:
 
@@ -10248,41 +10216,6 @@ packages:
 
   /vite@4.4.9:
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.18.20
-      postcss: 8.4.31
-      rollup: 3.29.4
-    optionalDependencies:
-      fsevents: 2.3.3
-    dev: false
-
-  /vite@4.5.0:
-    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
