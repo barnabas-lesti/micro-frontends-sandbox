@@ -6,7 +6,6 @@
     "dev": "webpack-dev-server --mode development --port 3030"
   },
   "dependencies": {
-    "@mfs/builder": "*",
     "@mfs/shell": "*",
     "@mfs/app-account": "*",
     "@mfs/svc-config": "*",

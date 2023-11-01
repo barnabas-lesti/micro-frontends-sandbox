@@ -1,8 +1,8 @@
 import { AccountAppCommand } from '@mfs/app-account/types';
-import { ConfigServiceCommand } from '@mfs/svc-config';
-import { type BrowserType, PlatformServiceCommand } from '@mfs/svc-platform';
-import { RequestServiceCommand } from '@mfs/svc-request';
-import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
+import { ConfigServiceCommand } from '@mfs/svc-config/contract';
+import { type BrowserType, PlatformServiceCommand } from '@mfs/svc-platform/contract';
+import { RequestServiceCommand } from '@mfs/svc-request/contract';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry/contract';
 
 import { PAGE_DATA_API_PATH } from './home.const';
 import { type PageData } from './home.types';

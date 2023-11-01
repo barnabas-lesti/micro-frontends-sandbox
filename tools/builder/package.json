@@ -8,9 +8,7 @@
     ".": "./src/index.js",
     "./tsconfig/*": "./src/tsconfig/*"
   },
-  "scripts": {},
   "dependencies": {
-    "tsup": "^7.2.0",
     "vite-plugin-dts": "^3.6.2"
   }
 }

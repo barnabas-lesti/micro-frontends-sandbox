@@ -153,9 +153,6 @@ importers:
       tslib:
         specifier: ^2.3.0
         version: 2.6.1
-      typescript:
-        specifier: ~5.1.3
-        version: 5.1.6
       zone.js:
         specifier: ~0.13.0
         version: 0.13.3
@@ -165,9 +162,6 @@ importers:
       '@mfs/app-account':
         specifier: '*'
         version: link:../../micro-frontends/app-account
-      '@mfs/builder':
-        specifier: '*'
-        version: link:../../tools/builder
       '@mfs/shell':
         specifier: '*'
         version: link:../../packages/shell
@@ -263,9 +257,6 @@ importers:
 
   tools/builder:
     dependencies:
-      tsup:
-        specifier: ^7.2.0
-        version: 7.2.0(typescript@5.2.2)
       vite-plugin-dts:
         specifier: ^3.6.2
         version: 3.6.2(typescript@5.2.2)(vite@4.4.9)
