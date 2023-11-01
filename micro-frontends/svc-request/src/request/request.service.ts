@@ -1,7 +1,7 @@
-import { ShellCommand } from '@mfs/shell';
-import { TelemetryServiceCommand } from '@mfs/svc-telemetry';
+import { ShellCommand } from '@mfs/shell/contract';
+import { TelemetryServiceCommand } from '@mfs/svc-telemetry/contract';
 
-import { RequestServiceCommand } from '..';
+import { RequestServiceCommand } from '../contract';
 import { apiURLRequiredError } from './request.errors';
 import { type MakeAPIRequestPayload } from './request.types';
 
