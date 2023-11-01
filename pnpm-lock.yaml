@@ -66,9 +66,6 @@ importers:
 
   apps/be-core:
     dependencies:
-      '@mfs/builder':
-        specifier: '*'
-        version: link:../../tools/builder
       '@mfs/svc-config':
         specifier: '*'
         version: link:../../micro-frontends/svc-config
@@ -108,9 +105,6 @@ importers:
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(typescript@5.2.2)
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
 
   apps/fe-angular:
     dependencies:

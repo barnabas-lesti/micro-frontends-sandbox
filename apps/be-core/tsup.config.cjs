@@ -1,6 +1,3 @@
-const { defineNodeTSUPConfig } = require('@mfs/builder');
+const { defineBaseTSUPConfig } = require('@mfs/builder');
 
-module.exports = defineNodeTSUPConfig({
-  entry: ['./src/index.ts'],
-  outDir: './dist',
-});
+module.exports = defineBaseTSUPConfig();
