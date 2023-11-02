@@ -2,9 +2,9 @@ import { log, stripSlashes } from '@mfs/utility';
 
 import { ShellCommand } from '../contract';
 import { SHELL_COMMAND_PREFIX } from '../shell';
-import { MICRO_FRONTEND_LOADER_FILE_PATH, MICRO_FRONTEND_SCRIPT_TYPE } from './micro-frontend-loader.const';
+import { MICRO_FRONTEND_SCRIPT_TYPE, MICRO_FRONTEND_SERVICE_LOADER_FILE_PATH } from './micro-frontend-loader.const';
 import { microFrontendsURLRequiredError } from './micro-frontend-loader.errors';
-import { type LoadMicroFrontendPayload } from './micro-frontend-loader.types';
+import { type LoadMicroFrontendServicePayload } from './micro-frontend-loader.types';
 
 export class MicroFrontendLoaderService {
   private static _instance: MicroFrontendLoaderService | undefined;
@@ -18,14 +18,16 @@ export class MicroFrontendLoaderService {
   private constructor() {
     log({ source: ['shell', 'MicroFrontendLoaderService', 'constructor'] });
 
-    window.mfsEventBus.listen(ShellCommand.LoadMicroFrontend, (payload) => this.loadMicroFrontend(payload));
+    window.mfsEventBus.listen(ShellCommand.LoadMicroFrontendService, (payload) =>
+      this.loadMicroFrontendService(payload),
+    );
 
     window.mfsEventBus.listen(ShellCommand.AllCommands, (payload) =>
-      this.loadMicroFrontendWithCommand(payload.command),
+      this.loadMicroFrontendServiceWithCommand(payload.command),
     );
   }
 
-  loadMicroFrontend(microFrontend: string | LoadMicroFrontendPayload): void {
+  loadMicroFrontendService(microFrontend: string | LoadMicroFrontendServicePayload): void {
     const name = typeof microFrontend === 'string' ? microFrontend : microFrontend.name;
     if (!this.isMicroFrontendLoaded(name)) {
       this.loadedMicroFrontends.push(name);
@@ -46,7 +48,7 @@ export class MicroFrontendLoaderService {
     const { microFrontendsURL } = window.mfsStartupContext || {};
     if (!microFrontendsURL) throw microFrontendsURLRequiredError();
 
-    return `${stripSlashes(microFrontendsURL)}/${mfeName}/${stripSlashes(MICRO_FRONTEND_LOADER_FILE_PATH)}`;
+    return `${stripSlashes(microFrontendsURL)}/${mfeName}/${stripSlashes(MICRO_FRONTEND_SERVICE_LOADER_FILE_PATH)}`;
   }
 
   private isMicroFrontendLoaded(name: string): boolean {
@@ -56,9 +58,9 @@ export class MicroFrontendLoaderService {
     );
   }
 
-  private loadMicroFrontendWithCommand(command: string): void {
+  private loadMicroFrontendServiceWithCommand(command: string): void {
     if (command !== ShellCommand.AllCommands && !command.startsWith(SHELL_COMMAND_PREFIX)) {
-      this.loadMicroFrontend(this.getMicroFrontendNameFromCommand(command));
+      this.loadMicroFrontendService(this.getMicroFrontendNameFromCommand(command));
     }
   }
 

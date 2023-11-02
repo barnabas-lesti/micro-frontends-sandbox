@@ -28,7 +28,7 @@ function defineBaseViteConfig(overrideConfig) {
 
 function defineMFEServiceViteConfig() {
   return defineBaseViteConfig({
-    entry: ['./src/index.ts', './src/contract.ts'],
+    entry: ['./src/service-loader.ts', './src/contract.ts'],
     minify: true,
   });
 }
