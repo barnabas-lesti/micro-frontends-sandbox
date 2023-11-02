@@ -11,6 +11,9 @@ importers:
       '@mfs/builder':
         specifier: '*'
         version: link:tools/builder
+      '@stencil/core':
+        specifier: ^4.7.0
+        version: 4.7.0
       turbo:
         specifier: ^1.10.16
         version: 1.10.16
@@ -196,11 +199,7 @@ importers:
         specifier: ^4.15.1
         version: 4.15.1(webpack-cli@5.1.4)(webpack@5.88.2)
 
-  micro-frontends/app-account:
-    dependencies:
-      '@stencil/core':
-        specifier: ^4.7.0
-        version: 4.7.0
+  micro-frontends/app-account: {}
 
   micro-frontends/svc-config:
     dependencies:

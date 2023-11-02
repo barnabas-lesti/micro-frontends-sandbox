@@ -2,12 +2,6 @@
   "name": "@mfs/builder",
   "type": "commonjs",
   "version": "1.0.0",
-  "main": "./src/index.js",
-  "types": "./src/index.js",
-  "exports": {
-    ".": "./src/index.js",
-    "./tsconfig/*": "./src/tsconfig/*"
-  },
   "dependencies": {
     "vite-plugin-dts": "^3.6.2"
   }

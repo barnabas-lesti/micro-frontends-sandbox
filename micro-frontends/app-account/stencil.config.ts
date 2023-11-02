@@ -1,11 +1,5 @@
-import { type Config } from '@stencil/core';
+import { defineBaseStencilConfig } from '@mfs/builder/stencil';
 
-export const config: Config = {
+export const config = defineBaseStencilConfig({
   namespace: 'app-account',
-  outputTargets: [
-    {
-      type: 'dist',
-      empty: false,
-    },
-  ],
-};
+});

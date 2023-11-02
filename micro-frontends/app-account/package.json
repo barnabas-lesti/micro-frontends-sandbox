@@ -11,14 +11,13 @@
   },
   "typesVersions": {
     "*": {
-      "types": ["./dist/types/types.d.ts"]
+      "types": [
+        "./dist/types/types.d.ts"
+      ]
     }
   },
   "scripts": {
     "build": "stencil build",
     "dev": "stencil build --watch"
-  },
-  "dependencies": {
-    "@stencil/core": "^4.7.0"
   }
 }

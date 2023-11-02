@@ -22,6 +22,7 @@
     "@mfs/builder": "*",
     "turbo": "^1.10.16",
     "vite": "^4.4.9",
+    "@stencil/core": "^4.7.0",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
