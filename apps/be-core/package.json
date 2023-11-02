@@ -12,6 +12,7 @@
     "@mfs/svc-platform": "*",
     "@mfs/svc-request": "*",
     "@mfs/svc-telemetry": "*",
+    "@mfs/app-account": "*",
     "@types/cors": "^2.8.15",
     "@types/express": "^4.17.20",
     "@types/node": "^20.8.9",

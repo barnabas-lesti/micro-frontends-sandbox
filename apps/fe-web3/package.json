@@ -7,11 +7,11 @@
   },
   "dependencies": {
     "@mfs/shell": "*",
-    "@mfs/app-account": "*",
     "@mfs/svc-config": "*",
     "@mfs/svc-platform": "*",
     "@mfs/svc-request": "*",
     "@mfs/svc-telemetry": "*",
+    "@mfs/app-account": "*",
     "concurrently": "^8.2.2",
     "ts-loader": "^9.4.4",
     "webpack": "^5.88.2",

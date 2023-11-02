@@ -66,6 +66,9 @@ importers:
 
   apps/be-core:
     dependencies:
+      '@mfs/app-account':
+        specifier: '*'
+        version: link:../../micro-frontends/app-account
       '@mfs/svc-config':
         specifier: '*'
         version: link:../../micro-frontends/svc-config

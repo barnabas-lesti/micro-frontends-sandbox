@@ -1,4 +1,4 @@
-import { type AuthVerifyPayload } from './services/auth';
+import { type AuthVerifyPayload } from './auth';
 
 export const enum AccountAppCommand {
   Verify = 'app-account:auth:verify',
